@@ -1,0 +1,19 @@
+{
+    "analytics": {
+        "awscloudformation": {
+            "AuthRoleName": "analytics-analytics-20190805144937-authRole",
+            "UnauthRoleArn": "arn:aws:iam::505559108782:role/analytics-analytics-20190805144937-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::505559108782:role/analytics-analytics-20190805144937-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "analytics-analytics-20190805144937-deployment",
+            "UnauthRoleName": "analytics-analytics-20190805144937-unauthRole",
+            "StackName": "analytics-analytics-20190805144937",
+            "StackId": "arn:aws:cloudformation:us-east-1:505559108782:stack/analytics-analytics-20190805144937/ebd878a0-b7ca-11e9-bba4-0a456a010dd4"
+        },
+        "categories": {
+            "auth": {
+                "analyticsAuth": {}
+            }
+        }
+    }
+}

@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 import Home from './containers/Home';
 import Home2 from './containers/Home2';
+import Home3 from './containers/Home3';
 
 const RestrictedRoute = ({ component: Component, isLoggedIn, ...rest }) => (
   <Route
@@ -26,17 +27,17 @@ const RestrictedRoute = ({ component: Component, isLoggedIn, ...rest }) => (
 class MyRouter extends Component {
   render() {
     return (
-      <Router>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <RestrictedRoute
-            exact
-            path="/pro"
-            component={Home2}
-            isLoggedIn={this.props.isLoggedIn}
-          />
-        </Switch>
-      </Router>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/home-2" component={Home2} />
+        <Route exact path="/home-3" component={Home3} />
+        <RestrictedRoute
+          exact
+          path="/pro"
+          component={Home2}
+          isLoggedIn={this.props.isLoggedIn}
+        />
+      </Switch>
     );
   }
 }

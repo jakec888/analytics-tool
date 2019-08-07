@@ -17,8 +17,8 @@ export default class Layout extends Component {
             <Link to="/sign-up" className="nav-link">
               Sign Up
             </Link>
-            <Link to="/home-3" className="nav-link">
-              Home 3
+            <Link to="/login" className="nav-link">
+              Login
             </Link>
           </Nav>
           <Form inline>

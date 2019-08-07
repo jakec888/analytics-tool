@@ -4,7 +4,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 
 import Home from './containers/Home';
 import SignUp from './containers/SignUp';
-import Home3 from './containers/Home3';
+import Login from './containers/Login';
 
 const RestrictedRoute = ({ component: Component, isLoggedIn, ...rest }) => (
   <Route
@@ -15,7 +15,7 @@ const RestrictedRoute = ({ component: Component, isLoggedIn, ...rest }) => (
       ) : (
         <Redirect
           to={{
-            pathname: '/',
+            pathname: '/login',
             state: { from: props.location }
           }}
         />
@@ -28,13 +28,12 @@ class MyRouter extends Component {
   render() {
     return (
       <Switch>
-        <Route exact path="/" component={Home} />
         <Route exact path="/sign-up" component={SignUp} />
-        <Route exact path="/home-3" component={Home3} />
+        <Route exact path="/login" component={Login} />
         <RestrictedRoute
           exact
-          path="/pro"
-          component={SignUp}
+          path="/"
+          component={Home}
           isLoggedIn={this.props.isLoggedIn}
         />
       </Switch>

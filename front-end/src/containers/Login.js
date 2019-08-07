@@ -5,7 +5,7 @@ import { Card, Form, Button } from 'react-bootstrap';
 
 import authActions from '../redux/actions/authActions.action';
 
-export class SignUp extends Component {
+export class Login extends Component {
   onUpdateEmail = (event) => {
     console.log(event);
     this.props.updateEmail(event.target.value);
@@ -16,17 +16,17 @@ export class SignUp extends Component {
     this.props.updatePassword(event.target.value);
   };
 
-  onSignUp = (event) => {
+  onLogin = (event) => {
     event.preventDefault();
 
-    this.props.signUp(this.props.history);
+    this.props.login(this.props.history);
   };
 
   render() {
     return (
       <Fragment>
-        <Card.Title>Sign Up</Card.Title>
-        <Form onSubmit={this.onSignUp}>
+        <Card.Title>Login</Card.Title>
+        <Form onSubmit={this.onLogin}>
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Email</Form.Label>
             <Form.Control
@@ -46,7 +46,7 @@ export class SignUp extends Component {
             />
           </Form.Group>
           <Button variant="primary" type="submit">
-            Submit
+            Login
           </Button>
         </Form>
       </Fragment>
@@ -62,10 +62,10 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
   updateEmail: authActions.updateEmail,
   updatePassword: authActions.updatePassword,
-  signUp: authActions.signUp
+  login: authActions.login
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(SignUp);
+)(Login);

@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
-import { Navbar, Nav, Form, FormControl, Button, Card } from 'react-bootstrap';
+import { Navbar, Nav, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-export default class Layout extends Component {
+import authActions from '../redux/actions/authActions.action';
+
+class Layout extends Component {
+  onLogoutUser = () => {
+    this.props.logout(this.props.history);
+  };
+
   render() {
     return (
       <div>
@@ -21,10 +28,22 @@ export default class Layout extends Component {
               Login
             </Link>
           </Nav>
-          <Form inline>
-            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-            <Button variant="outline-light">Search</Button>
-          </Form>
+          {this.props.isLoggedIn ? (
+            <Link
+              to="/login"
+              style={{ color: 'rgba(255,255,255,.5)', textDecoration: 'none' }}
+              onClick={this.onLogoutUser}
+            >
+              Logout
+            </Link>
+          ) : (
+            <Link
+              to="/login"
+              style={{ color: 'rgba(255,255,255,.5)', textDecoration: 'none' }}
+            >
+              Login
+            </Link>
+          )}
         </Navbar>
         <Card
           style={{
@@ -44,3 +63,16 @@ export default class Layout extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  isLoggedIn: state.Auth.isLoggedIn
+});
+
+const mapDispatchToProps = {
+  logout: authActions.logout
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Layout);

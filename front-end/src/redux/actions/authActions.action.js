@@ -1,10 +1,9 @@
 import { Auth } from 'aws-amplify';
 
 const authActions = {
+  LOGOUT: 'LOGOUT',
   SIGNUP_SUCCESS: 'SIGNUP_SUCCESS',
   LOGIN_SUCCESS: 'LOGIN_SUCCESS',
-  LOGOUT: 'LOGOUT',
-  LOGIN: 'LOGIN',
   UPDATE_EMAIL: 'UPDATE_EMAIL',
   UPDATE_PASSWORD: 'UPDATE_PASSWORD',
   updateEmail: (email) => {
@@ -37,7 +36,7 @@ const authActions = {
           dispatch({
             type: authActions.SIGNUP_SUCCESS,
             payload: { email: '', password: '' }
-          }); 
+          });
           history.push('/login');
         })
         .catch((err) => {
@@ -71,6 +70,30 @@ const authActions = {
         })
         .catch((err) => {
           console.log('Login Fail!');
+          console.log(err);
+        });
+    };
+  },
+  logout: (history) => {
+    return (dispatch, getState) => {
+      const userCred = getState().Auth;
+      console.log(userCred);
+      Auth.signOut()
+        .then((data) => {
+          console.log('Logut Success!');
+          console.log(data);
+          dispatch({
+            type: authActions.LOGOUT,
+            payload: {
+              isLoggedIn: false,
+              idToken: '',
+              userId: ''
+            }
+          });
+          history.push('/login');
+        })
+        .catch((err) => {
+          console.log('Logout Fail!');
           console.log(err);
         });
     };

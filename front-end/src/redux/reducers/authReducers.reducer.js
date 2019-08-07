@@ -4,7 +4,6 @@ const initialState = {
   idToken: null,
   userId: null,
   isLoggedIn: false,
-
   email: '',
   password: ''
 };
@@ -12,10 +11,12 @@ const initialState = {
 export default (state = initialState, { type, payload }) => {
   switch (type) {
     case authActions.LOGOUT:
-      return { ...state, email: payload.email };
-    case authActions.LOGIN:
-      return { ...state, password: payload.password };
-
+      return {
+        ...state,
+        isLoggedIn: payload.isLoggedIn,
+        idToken: payload.idToken,
+        userId: payload.userId
+      };
     case authActions.UPDATE_EMAIL:
       return { ...state, email: payload.email };
     case authActions.UPDATE_PASSWORD:

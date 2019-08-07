@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 import Home from './containers/Home';
-import Home2 from './containers/Home2';
+import SignIn from './containers/SignIn';
 import Home3 from './containers/Home3';
 
 const RestrictedRoute = ({ component: Component, isLoggedIn, ...rest }) => (
@@ -29,12 +29,12 @@ class MyRouter extends Component {
     return (
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path="/home-2" component={Home2} />
+        <Route exact path="/login" component={SignIn} />
         <Route exact path="/home-3" component={Home3} />
         <RestrictedRoute
           exact
           path="/pro"
-          component={Home2}
+          component={SignIn}
           isLoggedIn={this.props.isLoggedIn}
         />
       </Switch>

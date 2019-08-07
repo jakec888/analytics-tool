@@ -14,8 +14,8 @@ export default class Layout extends Component {
             <Link to="/" className="nav-link">
               Home
             </Link>
-            <Link to="/home-2" className="nav-link">
-              Home 2
+            <Link to="/login" className="nav-link">
+              Login
             </Link>
             <Link to="/home-3" className="nav-link">
               Home 3
@@ -26,7 +26,18 @@ export default class Layout extends Component {
             <Button variant="outline-light">Search</Button>
           </Form>
         </Navbar>
-        <Card>
+        <Card
+          style={{
+            topHeight: '15px',
+            width: '85%',
+            minHeight: '300px',
+            height: 'auto',
+            padding: '15px',
+            marginTop: '25px',
+            marginLeft: 'auto',
+            marginRight: 'auto'
+          }}
+        >
           <Card.Body>{this.props.children}</Card.Body>
         </Card>
       </div>

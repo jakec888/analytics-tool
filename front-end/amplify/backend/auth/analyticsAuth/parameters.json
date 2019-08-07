@@ -1,9 +1,9 @@
 {
-    "identityPoolName": "analyticsIdentityPool",
+    "identityPoolName": "analyticsIP",
     "allowUnauthenticatedIdentities": false,
-    "openIdLambdaRoleName": "analyt63e10981_openid_lambda_role",
-    "resourceNameTruncated": "analyt63e10981",
-    "userPoolName": "analyticsUserPool",
+    "openIdLambdaRoleName": "analyt12039c4d_openid_lambda_role",
+    "resourceNameTruncated": "analyt12039c4d",
+    "userPoolName": "analyticsUP",
     "autoVerifiedAttributes": [
         "email"
     ],
@@ -13,7 +13,7 @@
     ],
     "smsAuthenticationMessage": "Your authentication code is {####}",
     "smsVerificationMessage": "Your verification code is {####}",
-    "emailVerificationSubject": "Your verification code",
+    "emailVerificationSubject": "Your Verification Link",
     "emailVerificationMessage": "Your verification code is {####}",
     "defaultPasswordPolicy": false,
     "passwordPolicyMinLength": 8,
@@ -21,17 +21,17 @@
     "requiredAttributes": [
         "email"
     ],
-    "userpoolClientName": "analyt63e10981_app_client",
+    "userpoolClientName": "analyt12039c4d_app_client",
     "userpoolClientGenerateSecret": true,
-    "userpoolClientRefreshTokenValidity": "5",
+    "userpoolClientRefreshTokenValidity": 30,
     "userpoolClientWriteAttributes": [
         "email"
     ],
     "userpoolClientReadAttributes": [
         "email"
     ],
-    "mfaLambdaRole": "analyt63e10981_totp_lambda_role",
-    "userpoolClientLambdaRole": "analyt63e10981_userpoolclient_lambda_role",
+    "mfaLambdaRole": "analyt12039c4d_totp_lambda_role",
+    "userpoolClientLambdaRole": "analyt12039c4d_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
     "useDefault": "manual",
     "authSelections": "identityPoolAndUserPool",

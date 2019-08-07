@@ -27,7 +27,7 @@ const authActions = {
       console.log(userCred);
 
       Auth.signUp({
-        email: userCred.email,
+        username: userCred.email,
         password: userCred.password
       })
         .then((data) => {

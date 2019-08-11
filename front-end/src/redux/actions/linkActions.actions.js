@@ -2,6 +2,7 @@ const authActions = {
   UPDATE_LINK: 'UPDATE_LINK',
   UPDATE_TITLE: 'UPDATE_TITLE',
   CREATE_LINK: 'CREATE_LINK',
+  SELECT_LINK: 'SELECT_LINK',
   updateLink: (link) => {
     return (dispatch) => {
       dispatch({
@@ -31,6 +32,19 @@ const authActions = {
       });
 
       history.push('/view');
+    };
+  },
+  selectLink: (id, link, title, date) => {
+    return (dispatch) => {
+      dispatch({
+        type: authActions.SELECT_LINK,
+        payload: {
+          id,
+          link,
+          title,
+          date
+        }
+      });
     };
   }
 };

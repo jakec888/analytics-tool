@@ -1,3 +1,5 @@
+import uuidv4 from 'uuid/v4';
+
 import linkActions from '../actions/linkActions.actions';
 
 const initialState = {
@@ -46,7 +48,21 @@ export default (state = initialState, { type, payload }) => {
     case linkActions.UPDATE_TITLE:
       return { ...state, title: payload.title };
     case linkActions.CREATE_LINK:
-      return { ...state, link: payload.link, title: payload.title, date: payload.date };
+      return {
+        ...state,
+        id: uuidv4(),
+        link: payload.link,
+        title: payload.title,
+        date: payload.date
+      };
+    case linkActions.SELECT_LINK:
+      return {
+        ...state,
+        id: payload.id,
+        link: payload.link,
+        title: payload.title,
+        date: payload.date
+      };
     default:
       return state;
   }

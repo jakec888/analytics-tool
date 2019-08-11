@@ -9,22 +9,24 @@ import linkActions from '../redux/actions/linkActions.actions';
 
 export class CreateLink extends Component {
   onUpdateLink = (event) => {
-    console.log(event);
     this.props.updateLink(event.target.value);
   };
 
-  getTitle = () => {
+  onSubmitLink = (event) => {
+    event.preventDefault();
+    this.getTitle(this.props.link);
+  };
+
+  getTitle = (link) => {
     axios
-      .get('https://www.nfl.com/')
+      .get(link)
       .then((result) => {
         const html = result.data;
         const $ = cheerio.load(html);
-
         var title = $(html)
           .filter('title')
           .text();
-
-        console.log(title);
+        this.props.updateTitle(title);
       })
       .catch((err) => {
         console.log('error');
@@ -36,7 +38,7 @@ export class CreateLink extends Component {
     return (
       <Fragment>
         <Card.Title>Create Link</Card.Title>
-        <Form onSubmit={this.onSignUp}>
+        <Form onSubmit={this.onSubmitLink}>
           <InputGroup className="mb-3">
             <InputGroup.Prepend>
               <InputGroup.Text id="basic-addon3">Your URL</InputGroup.Text>
@@ -63,7 +65,9 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-  updateLink: linkActions.updateLink
+  updateLink: linkActions.updateLink,
+  updateTitle: linkActions.updateTitle,
+  createLink: linkActions.createLink
 };
 
 export default connect(

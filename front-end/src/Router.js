@@ -6,6 +6,7 @@ import CreateLink from './containers/CreateLink';
 import SignUp from './containers/SignUp';
 import Login from './containers/Login';
 import ViewLink from './containers/ViewLink';
+import ViewLinks from './containers/ViewLinks';
 
 const RestrictedRoute = ({ component: Component, isLoggedIn, ...rest }) => (
   <Route
@@ -31,7 +32,8 @@ class MyRouter extends Component {
       <Switch>
         <Route exact path="/sign-up" component={SignUp} />
         <Route exact path="/login" component={Login} />
-        <Route exact path="/" component={CreateLink} />
+        <Route exact path="/" component={ViewLinks} />
+        <Route exact path="/create" component={CreateLink} />
         <Route exact path="/view" component={ViewLink} />
 
         <RestrictedRoute

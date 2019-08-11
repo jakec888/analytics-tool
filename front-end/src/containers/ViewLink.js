@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 import { Card } from 'react-bootstrap';
 import moment from 'moment';
 
-// import linkActions from '../redux/actions/linkActions.actions';
-
 export class ViewLink extends Component {
   render() {
     return (

@@ -15,6 +15,7 @@ export class CreateLink extends Component {
   onSubmitLink = (event) => {
     event.preventDefault();
     this.getTitle(this.props.link);
+    this.props.createLink(this.props.history);
   };
 
   getTitle = (link) => {

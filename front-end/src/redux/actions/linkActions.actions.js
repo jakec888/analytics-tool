@@ -1,6 +1,7 @@
 const authActions = {
   UPDATE_LINK: 'UPDATE_LINK',
   UPDATE_TITLE: 'UPDATE_TITLE',
+  CREATE_LINK: 'CREATE_LINK',
   updateLink: (link) => {
     return (dispatch) => {
       dispatch({
@@ -17,13 +18,19 @@ const authActions = {
       });
     };
   },
-  createLink: () => {
+  createLink: (history) => {
     return (dispatch, getState) => {
       const currentState = getState().Link;
       dispatch({
         type: authActions.CREATE_LINK,
-        payload: { linkTitle: currentState }
+        payload: {
+          link: currentState.link,
+          title: currentState.title,
+          date: new Date().toGMTString()
+        }
       });
+
+      history.push('/zzz');
     };
   }
 };

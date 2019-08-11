@@ -2,7 +2,8 @@ import linkActions from '../actions/linkActions.actions';
 
 const initialState = {
   link: '',
-  title: ''
+  title: '',
+  date: ''
 };
 
 export default (state = initialState, { type, payload }) => {
@@ -11,6 +12,8 @@ export default (state = initialState, { type, payload }) => {
       return { ...state, link: payload.link };
     case linkActions.UPDATE_TITLE:
       return { ...state, title: payload.title };
+    case linkActions.CREATE_LINK:
+      return { ...state, link: payload.link, title: payload.title, date: payload.date };
     default:
       return state;
   }

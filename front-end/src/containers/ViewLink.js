@@ -24,18 +24,11 @@ export class ViewLink extends Component {
         </Card.Text>
         <Bar
           data={{
-            labels: [
-              `${new Date().getDate()}/${new Date().getMonth()}/${new Date().getFullYear()}`,
-              `${new Date().getDate()}/${new Date().getMonth()}/${new Date().getFullYear()}`,
-              `${new Date().getDate()}/${new Date().getMonth()}/${new Date().getFullYear()}`,
-              `${new Date().getDate()}/${new Date().getMonth()}/${new Date().getFullYear()}`,
-              `${new Date().getDate()}/${new Date().getMonth()}/${new Date().getFullYear()}`,
-              `${new Date().getDate()}/${new Date().getMonth()}/${new Date().getFullYear()}`
-            ],
+            labels: this.props.data.map((data) => data.date),
             datasets: [
               {
                 label: 'Clicks',
-                data: [617594, 181045, 153060, 106519, 105162, 95072],
+                data: this.props.data.map((data) => data.clicks),
                 backgroundColor: '#147afe'
               }
             ]
@@ -60,7 +53,8 @@ export class ViewLink extends Component {
 const mapStateToProps = (state) => ({
   link: state.Link.link,
   title: state.Link.title,
-  date: state.Link.date
+  date: state.Link.date,
+  data: state.Link.data
 });
 
 const mapDispatchToProps = {};

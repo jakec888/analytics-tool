@@ -33,7 +33,7 @@ const authActions = {
       history.push('/view');
     };
   },
-  selectLink: (history, id, link, title, date) => {
+  selectLink: (history, id, link, title, date, data) => {
     return (dispatch) => {
       dispatch({
         type: authActions.SELECT_LINK,
@@ -41,7 +41,8 @@ const authActions = {
           id,
           link,
           title,
-          date
+          date,
+          data
         }
       });
       history.push('/view');

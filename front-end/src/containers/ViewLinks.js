@@ -6,8 +6,8 @@ import moment from 'moment';
 import linkActions from '../redux/actions/linkActions.actions';
 
 export class ViewLinks extends Component {
-  onViewLink = ({ id, link, title, date }) => {
-    this.props.selectLink(this.props.history, id, link, title, date);
+  onViewLink = ({ id, link, title, date, data }) => {
+    this.props.selectLink(this.props.history, id, link, title, date, data);
   };
 
   render() {
@@ -19,7 +19,11 @@ export class ViewLinks extends Component {
               <ListGroup.Item key={link.id} onClick={() => this.onViewLink(link)}>
                 <Row>
                   <Col sm={8}>{link.title}</Col>
-                  <Col sm={4} className="d-flex justify-content-end" style={{fontStyle: 'italic'}}>
+                  <Col
+                    sm={4}
+                    className="d-flex justify-content-end"
+                    style={{ fontStyle: 'italic' }}
+                  >
                     ({moment(new Date(link.date)).fromNow()})
                   </Col>
                 </Row>

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { Card, Form, Button } from 'react-bootstrap';
 
-import authActions from '../redux/actions/authActions.action';
+import authActions from '../redux/actions/authActions.actions';
 
 export class Login extends Component {
   onUpdateEmail = (event) => {

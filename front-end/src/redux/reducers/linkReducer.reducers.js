@@ -1,11 +1,7 @@
-import authActions from '../actions/authActions.action';
+import authActions from '../actions/authActions.actions';
 
 const initialState = {
-  idToken: null,
-  userId: null,
-  isLoggedIn: false,
-  email: '',
-  password: ''
+  givenLink: ''
 };
 
 export default (state = initialState, { type, payload }) => {

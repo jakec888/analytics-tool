@@ -3,7 +3,7 @@ import { Navbar, Nav, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import authActions from '../redux/actions/authActions.action';
+import authActions from '../redux/actions/authActions.actions';
 
 class Layout extends Component {
   onLogoutUser = () => {
@@ -18,15 +18,15 @@ class Layout extends Component {
             Analytics
           </Link>
           <Nav className="mr-auto">
-            <Link to="/" className="nav-link">
-              Home
-            </Link>
-            <Link to="/sign-up" className="nav-link">
-              Sign Up
-            </Link>
-            <Link to="/login" className="nav-link">
-              Login
-            </Link>
+            {this.props.isLoggedIn ? (
+              <Link to="/create-link" className="nav-link">
+                Create Link
+              </Link>
+            ) : (
+              <Link to="/sign-up" className="nav-link">
+                Sign Up
+              </Link>
+            )}
           </Nav>
           {this.props.isLoggedIn ? (
             <Link

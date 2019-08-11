@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
-import Home from './containers/Home';
+import CreateLink from './containers/CreateLink';
 import SignUp from './containers/SignUp';
 import Login from './containers/Login';
 
@@ -30,10 +30,11 @@ class MyRouter extends Component {
       <Switch>
         <Route exact path="/sign-up" component={SignUp} />
         <Route exact path="/login" component={Login} />
+        <Route exact path="/" component={CreateLink} />
         <RestrictedRoute
           exact
-          path="/"
-          component={Home}
+          path="/create-link"
+          component={CreateLink}
           isLoggedIn={this.props.isLoggedIn}
         />
       </Switch>

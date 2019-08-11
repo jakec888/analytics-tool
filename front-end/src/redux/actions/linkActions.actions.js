@@ -30,7 +30,7 @@ const authActions = {
         }
       });
 
-      history.push('/zzz');
+      history.push('/view');
     };
   }
 };

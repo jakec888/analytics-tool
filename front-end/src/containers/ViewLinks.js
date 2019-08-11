@@ -7,7 +7,7 @@ import linkActions from '../redux/actions/linkActions.actions';
 
 export class ViewLinks extends Component {
   onViewLink = ({ id, link, title, date }) => {
-    this.props.selectLink(id, link, title, date);
+    this.props.selectLink(this.props.history, id, link, title, date);
   };
 
   render() {

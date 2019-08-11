@@ -30,11 +30,10 @@ const authActions = {
           date: new Date().toGMTString()
         }
       });
-
       history.push('/view');
     };
   },
-  selectLink: (id, link, title, date) => {
+  selectLink: (history, id, link, title, date) => {
     return (dispatch) => {
       dispatch({
         type: authActions.SELECT_LINK,
@@ -45,6 +44,7 @@ const authActions = {
           date
         }
       });
+      history.push('/view');
     };
   }
 };

@@ -5,7 +5,14 @@ import { Card, Form, Button, InputGroup, FormControl } from 'react-bootstrap';
 import axios from 'axios';
 import cheerio from 'cheerio';
 
+import linkActions from '../redux/actions/linkActions.actions';
+
 export class CreateLink extends Component {
+  onUpdateLink = (event) => {
+    console.log(event);
+    this.props.updateLink(event.target.value);
+  };
+
   getTitle = () => {
     axios
       .get('https://www.nfl.com/')
@@ -34,7 +41,12 @@ export class CreateLink extends Component {
             <InputGroup.Prepend>
               <InputGroup.Text id="basic-addon3">Your URL</InputGroup.Text>
             </InputGroup.Prepend>
-            <FormControl id="basic-url" aria-describedby="basic-addon3" />
+            <FormControl
+              id="basic-url"
+              aria-describedby="basic-addon3"
+              onChange={this.onUpdateLink}
+              value={this.props.link}
+            />
           </InputGroup>
 
           <Button variant="primary" type="submit">
@@ -46,9 +58,13 @@ export class CreateLink extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  link: state.Link.link
+});
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  updateLink: linkActions.updateLink
+};
 
 export default connect(
   mapStateToProps,

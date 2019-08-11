@@ -1,5 +1,3 @@
-import uuidv4 from 'uuid/v4';
-
 import linkActions from '../actions/linkActions.actions';
 
 const initialState = {
@@ -181,10 +179,21 @@ export default (state = initialState, { type, payload }) => {
     case linkActions.CREATE_LINK:
       return {
         ...state,
-        id: uuidv4(),
+        id: payload.id,
         link: payload.link,
         title: payload.title,
-        date: payload.date
+        date: payload.date,
+        data: payload.data,
+        links: [
+          ...state.links,
+          {
+            id: payload.id,
+            link: payload.link,
+            title: payload.title,
+            date: payload.date,
+            data: payload.data
+          }
+        ]
       };
     case linkActions.SELECT_LINK:
       return {

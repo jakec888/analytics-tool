@@ -1,3 +1,5 @@
+import uuidv4 from 'uuid/v4';
+
 const authActions = {
   UPDATE_LINK: 'UPDATE_LINK',
   UPDATE_TITLE: 'UPDATE_TITLE',
@@ -25,9 +27,11 @@ const authActions = {
       dispatch({
         type: authActions.CREATE_LINK,
         payload: {
+          id: uuidv4(),
           link: currentState.link,
           title: currentState.title,
-          date: new Date().toGMTString()
+          date: new Date().toGMTString(),
+          data: []
         }
       });
       history.push('/view');

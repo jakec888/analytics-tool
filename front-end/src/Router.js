@@ -32,14 +32,22 @@ class MyRouter extends Component {
       <Switch>
         <Route exact path="/sign-up" component={SignUp} />
         <Route exact path="/login" component={Login} />
-        <Route exact path="/" component={ViewLinks} />
-        <Route exact path="/create" component={CreateLink} />
-        <Route exact path="/view" component={ViewLink} />
-
         <RestrictedRoute
           exact
-          path="/create-link"
+          path="/"
+          component={ViewLinks}
+          isLoggedIn={this.props.isLoggedIn}
+        />
+        <RestrictedRoute
+          exact
+          path="/create"
           component={CreateLink}
+          isLoggedIn={this.props.isLoggedIn}
+        />
+        <RestrictedRoute
+          exact
+          path="/view"
+          component={ViewLink}
           isLoggedIn={this.props.isLoggedIn}
         />
       </Switch>

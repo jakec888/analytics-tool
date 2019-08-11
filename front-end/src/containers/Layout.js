@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Navbar, Nav, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -19,9 +19,14 @@ class Layout extends Component {
           </Link>
           <Nav className="mr-auto">
             {this.props.isLoggedIn ? (
-              <Link to="/create-link" className="nav-link">
-                Create Link
-              </Link>
+              <Fragment>
+                <Link to="/" className="nav-link">
+                  Links
+                </Link>
+                <Link to="/create" className="nav-link">
+                  Create
+                </Link>
+              </Fragment>
             ) : (
               <Link to="/sign-up" className="nav-link">
                 Sign Up
@@ -30,7 +35,7 @@ class Layout extends Component {
           </Nav>
           {this.props.isLoggedIn ? (
             <Link
-              to="/login"
+              to="/"
               style={{ color: 'rgba(255,255,255,.5)', textDecoration: 'none' }}
               onClick={this.onLogoutUser}
             >

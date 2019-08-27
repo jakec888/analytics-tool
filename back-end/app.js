@@ -1,5 +1,7 @@
 const express = require('express');
 const app = express();
+const mongoose = require('mongoose');
+
 const port = 3001;
 
 app.get('/', (req, res) => res.send('Hello World!'));

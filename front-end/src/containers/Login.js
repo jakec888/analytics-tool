@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { Card, Form, Button } from 'react-bootstrap';
 
-import authActions from '../redux/actions/authActions.actions';
+import {updateEmail, updatePassword, login} from "../redux/actions/authActions.actions";
 
 export class Login extends Component {
   onUpdateEmail = (event) => {
@@ -60,9 +60,9 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-  updateEmail: authActions.updateEmail,
-  updatePassword: authActions.updatePassword,
-  login: authActions.login
+  updateEmail: updateEmail,
+  updatePassword: updatePassword,
+  login: login
 };
 
 export default connect(

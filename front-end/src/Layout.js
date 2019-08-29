@@ -3,7 +3,7 @@ import { Navbar, Nav, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import authActions from '../redux/actions/authActions.actions';
+import {logout} from "./redux/actions/authActions.actions"
 
 class Layout extends Component {
   onLogoutUser = () => {
@@ -74,7 +74,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-  logout: authActions.logout
+  logout: logout
 };
 
 export default connect(

@@ -1,37 +1,40 @@
-import React, { Component, Fragment } from 'react';
-import { connect } from 'react-redux';
-import { Card, Form, Button, InputGroup, FormControl } from 'react-bootstrap';
+import React, { Component, Fragment } from "react";
+import { connect } from "react-redux";
+import { Card, Form, Button, InputGroup, FormControl } from "react-bootstrap";
 
-import axios from 'axios';
-import cheerio from 'cheerio';
+import axios from "axios";
+import cheerio from "cheerio";
 
-import {updateLink, updateTitle, createLink} from '../redux/actions/linkActions.actions';
-
+import {
+  updateLink,
+  updateTitle,
+  createLink
+} from "../redux/actions/linkActions.actions";
 
 export class CreateLink extends Component {
-  onUpdateLink = (event) => {
+  onUpdateLink = event => {
     this.props.updateLink(event.target.value);
   };
 
-  onSubmitLink = (event) => {
+  onSubmitLink = event => {
     event.preventDefault();
     this.getTitle(this.props.link);
     this.props.createLink(this.props.history);
   };
 
-  getTitle = (link) => {
+  getTitle = link => {
     axios
       .get(link)
-      .then((result) => {
+      .then(result => {
         const html = result.data;
         const $ = cheerio.load(html);
         var title = $(html)
-          .filter('title')
+          .filter("title")
           .text();
         this.props.updateTitle(title);
       })
-      .catch((err) => {
-        console.log('error');
+      .catch(err => {
+        console.log("error");
         console.log(err);
       });
   };
@@ -62,7 +65,7 @@ export class CreateLink extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   link: state.Link.link
 });
 

@@ -1,29 +1,29 @@
-import uuidv4 from 'uuid/v4';
+import uuidv4 from "uuid/v4";
 
-export const UPDATE_LINK = 'UPDATE_LINK'
-export const UPDATE_TITLE = 'UPDATE_TITLE'
-export const CREATE_LINK = 'CREATE_LINK'
-export const SELECT_LINK = 'SELECT_LINK'
+export const UPDATE_LINK = "UPDATE_LINK";
+export const UPDATE_TITLE = "UPDATE_TITLE";
+export const CREATE_LINK = "CREATE_LINK";
+export const SELECT_LINK = "SELECT_LINK";
 
-export const updateLink = (link) => {
-  return (dispatch) => {
+export const updateLink = link => {
+  return dispatch => {
     dispatch({
       type: UPDATE_LINK,
       payload: { link: link }
     });
-  }
-}
+  };
+};
 
-export const updateTitle = (title) => {
-  return (dispatch) => {
+export const updateTitle = title => {
+  return dispatch => {
     dispatch({
       type: UPDATE_TITLE,
       payload: { title: title }
     });
-  }
-}
+  };
+};
 
-export const createLink = (history) => {
+export const createLink = history => {
   return (dispatch, getState) => {
     const currentState = getState().Link;
     dispatch({
@@ -36,13 +36,12 @@ export const createLink = (history) => {
         data: []
       }
     });
-    history.push('/view');
-  }
-}
-
+    history.push("/view");
+  };
+};
 
 export const selectLink = (history, id, link, title, date, data) => {
-  return (dispatch) => {
+  return dispatch => {
     dispatch({
       type: SELECT_LINK,
       payload: {
@@ -53,6 +52,6 @@ export const selectLink = (history, id, link, title, date, data) => {
         data
       }
     });
-    history.push('/view');
-  }
-}
+    history.push("/view");
+  };
+};

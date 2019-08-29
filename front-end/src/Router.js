@@ -1,23 +1,23 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { Switch, Route, Redirect } from "react-router-dom";
 
-import CreateLink from './containers/CreateLink';
-import SignUp from './containers/SignUp';
-import Login from './containers/Login';
-import ViewLink from './containers/ViewLink';
-import ViewLinks from './containers/ViewLinks';
+import CreateLink from "./containers/CreateLink";
+import SignUp from "./containers/SignUp";
+import Login from "./containers/Login";
+import ViewLink from "./containers/ViewLink";
+import ViewLinks from "./containers/ViewLinks";
 
 const RestrictedRoute = ({ component: Component, isLoggedIn, ...rest }) => (
   <Route
     {...rest}
-    render={(props) =>
+    render={props =>
       isLoggedIn ? (
         <Component {...props} />
       ) : (
         <Redirect
           to={{
-            pathname: '/login',
+            pathname: "/login",
             state: { from: props.location }
           }}
         />
@@ -55,7 +55,7 @@ class MyRouter extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   isLoggedIn: state.Auth.isLoggedIn
 });
 

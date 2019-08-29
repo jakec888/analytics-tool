@@ -1,22 +1,26 @@
-import React, { Component, Fragment } from 'react';
-import { connect } from 'react-redux';
+import React, { Component, Fragment } from "react";
+import { connect } from "react-redux";
 
-import { Card, Form, Button } from 'react-bootstrap';
+import { Card, Form, Button } from "react-bootstrap";
 
-import {updateEmail, updatePassword, signUp} from "../redux/actions/authActions.actions";
+import {
+  updateEmail,
+  updatePassword,
+  signUp
+} from "../redux/actions/authActions.actions";
 
 export class SignUp extends Component {
-  onUpdateEmail = (event) => {
+  onUpdateEmail = event => {
     console.log(event);
     this.props.updateEmail(event.target.value);
   };
 
-  onUpdatePassword = (event) => {
+  onUpdatePassword = event => {
     console.log(event);
     this.props.updatePassword(event.target.value);
   };
 
-  onSignUp = (event) => {
+  onSignUp = event => {
     event.preventDefault();
 
     this.props.signUp(this.props.history);
@@ -54,7 +58,7 @@ export class SignUp extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   email: state.Auth.email,
   password: state.Auth.password
 });

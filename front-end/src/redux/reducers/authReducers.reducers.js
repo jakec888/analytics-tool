@@ -1,11 +1,17 @@
-import {LOGOUT, SIGNUP_SUCCESS, LOGIN_SUCCESS, UPDATE_EMAIL, UPDATE_PASSWORD } from '../actions/authActions.actions'
+import {
+  LOGOUT,
+  SIGNUP_SUCCESS,
+  LOGIN_SUCCESS,
+  UPDATE_EMAIL,
+  UPDATE_PASSWORD
+} from "../actions/authActions.actions";
 
 const initialState = {
   idToken: null,
   userId: null,
   isLoggedIn: false,
-  email: '',
-  password: ''
+  email: "",
+  password: ""
 };
 
 export default (state = initialState, { type, payload }) => {

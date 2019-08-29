@@ -1,9 +1,11 @@
-const express = require('express');
-const app = express();
-const mongoose = require('mongoose');
+const express = require('express')
 
-const port = 3001;
+const app = express()
 
-app.get('/', (req, res) => res.send('Hello World!'));
+const port = 3001
 
-app.listen(port, () => console.log(`express listening on http://localhost:${port}/`));
+app.use(express.json())
+
+app.use('/api', require('./api/url'))
+
+app.listen(port, () => console.log(`http://localhost:${port}`))

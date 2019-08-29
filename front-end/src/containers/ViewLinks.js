@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import { ListGroup, Row, Col } from 'react-bootstrap';
 import moment from 'moment';
 
-import linkActions from '../redux/actions/linkActions.actions';
+import {selectLink} from '../redux/actions/linkActions.actions';
+
 
 export class ViewLinks extends Component {
   onViewLink = ({ id, link, title, date, data }) => {
@@ -41,7 +42,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-  selectLink: linkActions.selectLink
+  selectLink: selectLink
 };
 
 export default connect(

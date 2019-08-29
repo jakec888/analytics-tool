@@ -1,4 +1,4 @@
-import linkActions from '../actions/linkActions.actions';
+import {UPDATE_LINK, UPDATE_TITLE, CREATE_LINK, SELECT_LINK} from '../actions/linkActions.actions';
 
 const initialState = {
   id: '',
@@ -172,11 +172,11 @@ const initialState = {
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
-    case linkActions.UPDATE_LINK:
+    case UPDATE_LINK:
       return { ...state, link: payload.link };
-    case linkActions.UPDATE_TITLE:
+    case UPDATE_TITLE:
       return { ...state, title: payload.title };
-    case linkActions.CREATE_LINK:
+    case CREATE_LINK:
       return {
         ...state,
         id: payload.id,
@@ -195,7 +195,7 @@ export default (state = initialState, { type, payload }) => {
           }
         ]
       };
-    case linkActions.SELECT_LINK:
+    case SELECT_LINK:
       return {
         ...state,
         id: payload.id,

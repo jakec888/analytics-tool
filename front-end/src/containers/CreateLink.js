@@ -5,7 +5,8 @@ import { Card, Form, Button, InputGroup, FormControl } from 'react-bootstrap';
 import axios from 'axios';
 import cheerio from 'cheerio';
 
-import linkActions from '../redux/actions/linkActions.actions';
+import {updateLink, updateTitle, createLink} from '../redux/actions/linkActions.actions';
+
 
 export class CreateLink extends Component {
   onUpdateLink = (event) => {
@@ -66,9 +67,9 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-  updateLink: linkActions.updateLink,
-  updateTitle: linkActions.updateTitle,
-  createLink: linkActions.createLink
+  updateLink: updateLink,
+  updateTitle: updateTitle,
+  createLink: createLink
 };
 
 export default connect(

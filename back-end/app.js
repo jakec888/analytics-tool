@@ -1,4 +1,5 @@
 const express = require('express')
+const mongoose = require('mongoose')
 
 const app = express()
 
@@ -6,7 +7,7 @@ const port = 3001
 
 app.use(express.json())
 
-app.use('/api', require('./api/url'))
+app.use('/api', require('./api/links'))
 
 app.use((req, res, next) => {
   res.status(404).json({ error: "Sorry can't find that!" })
@@ -17,4 +18,9 @@ app.use((err, req, res, next) => {
   res.status(500).send({ error: err.stack })
 })
 
-app.listen(port, () => console.log(`http://localhost:${port}`))
+mongoose.connect('mongodb://localhost:27017/linkshortner', { useNewUrlParser: true })
+mongoose.connection.once('open', () => {
+  console.log('connected to mongoose database: linkshortner')
+})
+
+app.listen(port, () => console.log(`Express Running On --> http://localhost:${port}`))

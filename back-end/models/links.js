@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const uuid = require('uuid')
+// const uuid = require('uuid')
 
 const linkSchema = mongoose.Schema({
   // id: uuid.v4(),
@@ -12,8 +12,8 @@ const linkSchema = mongoose.Schema({
     title: String,
     date: String,
     data: [
-      { date: String, clicks: Number } ] 
-    }]
+      { date: String, clicks: Number }]
+  }]
 })
 
 const Links = mongoose.model('Links', linkSchema)

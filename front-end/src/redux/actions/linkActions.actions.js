@@ -1,4 +1,5 @@
 import uuidv4 from "uuid/v4";
+// import API from "../../api";
 
 export const UPDATE_LINK = "UPDATE_LINK";
 export const UPDATE_TITLE = "UPDATE_TITLE";
@@ -15,6 +16,8 @@ export const updateLink = link => {
 };
 
 export const updateTitle = title => {
+  console.log("Updating Title");
+  console.log(title);
   return dispatch => {
     dispatch({
       type: UPDATE_TITLE,
@@ -36,9 +39,30 @@ export const createLink = history => {
         data: []
       }
     });
-    history.push("/view");
   };
 };
+
+// export const createLink = history => {
+//   return (dispatch, getState) => {
+//     const currentState = getState().Link;
+//     const data = {
+//       id: uuidv4(),
+//       link: currentState.link,
+//       title: currentState.title,
+//       date: new Date().toGMTString(),
+//       data: []
+//     };
+
+//     API.post("/api/link", data).then(result => {
+//       console.log(result);
+//       // dispatch({
+//       //   type: CREATE_LINK,
+//       //   payload: data
+//       // });
+//       history.push("/view");
+//     });
+//   };
+// };
 
 export const selectLink = (history, id, link, title, date, data) => {
   return dispatch => {

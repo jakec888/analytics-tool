@@ -14,6 +14,18 @@ router.get('/', (req, res) => {
   })
 })
 
+router.post('/link', (req, res) => {
+  const { id, link, title, date, data } = req.body
+  const givenData = {
+    id,
+    link,
+    title,
+    date,
+    data
+  }
+  res.json({ data: givenData })
+})
+
 router.get('/working', (req, res) => res.json({ working: true, id: uuid.v4() }))
 
 module.exports = router

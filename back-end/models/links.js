@@ -16,6 +16,6 @@ const linkSchema = mongoose.Schema({
   }]
 })
 
-const Links = mongoose.model('Links', linkSchema)
+const Links = mongoose.model('links', linkSchema)
 
 module.exports = Links

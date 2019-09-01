@@ -10,8 +10,8 @@ const initialState = {
   idToken: null,
   userId: null,
   isLoggedIn: false,
-  email: "",
-  password: ""
+  email: "zapefol@app-expert.com",
+  password: "zapefol@app-expert.com"
 };
 
 export default (state = initialState, { type, payload }) => {

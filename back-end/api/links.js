@@ -16,16 +16,31 @@ router.get('/', (req, res) => {
 
 router.post('/link', (req, res) => {
   console.log('/link')
+  // const { id, link, title, date, data } = req.body
+  // const givenData = {
+  //   id,
+  //   link,
+  //   title,
+  //   date,
+  //   data
+  // }
+  // console.log(givenData)
+  // res.json({ data: givenData })
+
+  /// //////
   const { id, link, title, date, data } = req.body
-  const givenData = {
+
+  const myData = new Links({
     id,
     link,
     title,
     date,
     data
-  }
-  console.log(givenData)
-  res.json({ data: givenData })
+  })
+
+  myData.save().then((result) => {
+    res.json({ data: result })
+  })
 })
 
 router.get('/working', (req, res) => res.json({ working: true, id: uuid.v4() }))

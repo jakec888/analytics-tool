@@ -15,6 +15,7 @@ router.get('/', (req, res) => {
 })
 
 router.post('/link', (req, res) => {
+  console.log('/link')
   const { id, link, title, date, data } = req.body
   const givenData = {
     id,
@@ -23,6 +24,7 @@ router.post('/link', (req, res) => {
     date,
     data
   }
+  console.log(givenData)
   res.json({ data: givenData })
 })
 

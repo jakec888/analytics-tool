@@ -1,5 +1,4 @@
 const express = require('express')
-const uuid = require('uuid')
 
 const router = express.Router()
 
@@ -14,7 +13,7 @@ router.get('/', (req, res) => {
   })
 })
 
-router.post('/link', (req, res) => {
+router.post('/link', async (req, res) => {
   const { userId, link, title, date, data } = req.body
 
   const myData = new Links({
@@ -26,10 +25,10 @@ router.post('/link', (req, res) => {
   })
 
   myData.save().then((result) => {
-    res.json({ data: result })
+    res.json(result)
   })
 })
 
-router.get('/working', (req, res) => res.json({ working: true, id: uuid.v4() }))
+router.get('/working', (req, res) => res.json({ working: true }))
 
 module.exports = router

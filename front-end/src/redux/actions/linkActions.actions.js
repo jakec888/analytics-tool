@@ -1,4 +1,4 @@
-import uuidv4 from "uuid/v4";
+// import uuidv4 from "uuid/v4";
 import API from "../../api";
 
 export const UPDATE_LINK = "UPDATE_LINK";
@@ -44,11 +44,14 @@ export const updateTitle = title => {
 
 export const createLink = history => {
   return (dispatch, getState) => {
-    const currentState = getState().Link;
+    const currentLinkState = getState().Link;
+    const userId = getState().Auth.userId;
+
     const data = {
-      id: uuidv4(),
-      link: currentState.link,
-      title: currentState.title,
+      // id: uuidv4(),
+      userId: userId,
+      link: currentLinkState.link,
+      title: currentLinkState.title,
       date: new Date().toGMTString(),
       data: []
     };

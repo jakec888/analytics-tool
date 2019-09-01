@@ -6,7 +6,8 @@ import {
 } from "../actions/linkActions.actions";
 
 const initialState = {
-  id: "",
+  // id: "",
+  userId: "",
   link: "",
   title: "",
   date: "",

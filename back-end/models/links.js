@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 
 const linkSchema = mongoose.Schema({
   // id: uuid.v4(),
+  userId: String,
   link: String,
   title: String,
   date: String,

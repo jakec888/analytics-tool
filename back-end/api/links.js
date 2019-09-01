@@ -15,23 +15,10 @@ router.get('/', (req, res) => {
 })
 
 router.post('/link', (req, res) => {
-  console.log('/link')
-  // const { id, link, title, date, data } = req.body
-  // const givenData = {
-  //   id,
-  //   link,
-  //   title,
-  //   date,
-  //   data
-  // }
-  // console.log(givenData)
-  // res.json({ data: givenData })
-
-  /// //////
-  const { id, link, title, date, data } = req.body
+  const { userId, link, title, date, data } = req.body
 
   const myData = new Links({
-    id,
+    userId,
     link,
     title,
     date,

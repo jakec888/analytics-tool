@@ -18,32 +18,7 @@ const initialState = {
       link: "https://nfl.com",
       title: "Something NFL",
       date: "Sun, 8 Aug 2019 08:06:36 GMT",
-      data: [
-        {
-          date: "1/12/2019",
-          clicks: 617594
-        },
-        {
-          date: "2/30/2019",
-          clicks: 181045
-        },
-        {
-          date: "4/14/2019",
-          clicks: 153060
-        },
-        {
-          date: "5/23/2019",
-          clicks: 106519
-        },
-        {
-          date: "6/2/2019",
-          clicks: 105162
-        },
-        {
-          date: "7/4/2019",
-          clicks: 95072
-        }
-      ]
+      data: []
     },
     {
       id: 2,

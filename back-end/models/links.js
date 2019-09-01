@@ -5,6 +5,7 @@ const linkSchema = mongoose.Schema({
   link: String,
   title: String,
   date: String,
+  data: [],
   links: [{
     link: String,
     title: String,

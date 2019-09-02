@@ -11,8 +11,16 @@ export class ViewLinks extends Component {
     this.props.getLinks();
   }
 
-  onViewLink = ({ _id, link, title, date, data }) => {
-    this.props.selectLink(this.props.history, _id, link, title, date, data);
+  onViewLink = ({ _id, redirectURL, link, title, date, data }) => {
+    this.props.selectLink(
+      this.props.history,
+      _id,
+      redirectURL,
+      link,
+      title,
+      date,
+      data
+    );
   };
 
   render() {

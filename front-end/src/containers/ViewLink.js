@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import { Card } from "react-bootstrap";
+import { Card, InputGroup, FormControl, Button } from "react-bootstrap";
 import { Bar } from "react-chartjs-2";
 
 import moment from "moment";
@@ -29,6 +29,20 @@ export class ViewLink extends Component {
             {this.props.link}
           </a>
         </Card.Text>
+
+        <InputGroup className="mb-3">
+          <FormControl
+            disabled
+            value={this.props.redirectURL}
+            placeholder={this.props.redirectURL}
+            aria-label={this.props.redirectURL}
+            aria-describedby="basic-addon2"
+          />
+          <InputGroup.Append>
+            <Button variant="outline-secondary">Copy</Button>
+          </InputGroup.Append>
+        </InputGroup>
+
         <Bar
           data={{
             labels: this.props.data.map(data => data.date),
@@ -60,6 +74,7 @@ export class ViewLink extends Component {
 const mapStateToProps = state => ({
   link: state.Selected.link,
   title: state.Selected.title,
+  redirectURL: state.Selected.redirectURL,
   date: state.Selected.date,
   data: state.Selected.data
 });

@@ -59,12 +59,21 @@ export const createLink = history => {
   };
 };
 
-export const selectLink = (history, _id, link, title, date, data) => {
+export const selectLink = (
+  history,
+  _id,
+  redirectURL,
+  link,
+  title,
+  date,
+  data
+) => {
   return dispatch => {
     dispatch({
       type: SELECT_LINK,
       payload: {
         _id,
+        redirectURL,
         link,
         title,
         date,

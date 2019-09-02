@@ -2,11 +2,12 @@ import {
   UPDATE_LINK,
   UPDATE_TITLE,
   CREATE_LINK,
-  SELECT_LINK
+  SELECT_LINK,
+  GET_LINKS
 } from "../actions/linkActions.actions";
 
 const initialState = {
-  // id: "",
+  _id: "",
   userId: "",
   link: "",
   title: "",
@@ -14,14 +15,14 @@ const initialState = {
   data: [],
   links: [
     {
-      id: 1,
+      _id: 1,
       link: "https://nfl.com",
       title: "Something NFL",
       date: "Sun, 8 Aug 2019 08:06:36 GMT",
       data: []
     },
     {
-      id: 2,
+      _id: 2,
       link: "https://stackoverflow.com/",
       title: "Stack Overflow",
       date: "Sun, 9 Aug 2019 07:06:36 GMT",
@@ -53,7 +54,7 @@ const initialState = {
       ]
     },
     {
-      id: 3,
+      _id: 3,
       link: "https://react-bootstrap.github.io",
       title: "React Bootstrap",
       date: "Sun, 10 Aug 2019 03:06:36 GMT",
@@ -85,7 +86,7 @@ const initialState = {
       ]
     },
     {
-      id: 4,
+      _id: 4,
       link: "https://www.nba.com/news",
       title: "NBA News",
       date: "Sun, 11 Aug 2019 02:06:36 GMT",
@@ -117,7 +118,7 @@ const initialState = {
       ]
     },
     {
-      id: 5,
+      _id: 5,
       link: "https://www.baltimoreravens.com/",
       title: "Ravens",
       date: "Sun, 12 Aug 2019 05:06:36 GMT",
@@ -153,6 +154,8 @@ const initialState = {
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
+    case GET_LINKS:
+      return { ...state, links: payload.links };
     case UPDATE_LINK:
       return { ...state, link: payload.link };
     case UPDATE_TITLE:
@@ -160,7 +163,7 @@ export default (state = initialState, { type, payload }) => {
     case CREATE_LINK:
       return {
         ...state,
-        id: payload.id,
+        _id: payload.id,
         link: payload.link,
         title: payload.title,
         date: payload.date,
@@ -168,7 +171,7 @@ export default (state = initialState, { type, payload }) => {
         links: [
           ...state.links,
           {
-            id: payload.id,
+            _id: payload.id,
             link: payload.link,
             title: payload.title,
             date: payload.date,
@@ -179,7 +182,7 @@ export default (state = initialState, { type, payload }) => {
     case SELECT_LINK:
       return {
         ...state,
-        id: payload.id,
+        _id: payload.id,
         link: payload.link,
         title: payload.title,
         date: payload.date,

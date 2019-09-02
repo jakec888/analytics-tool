@@ -5,6 +5,25 @@ export const UPDATE_LINK = "UPDATE_LINK";
 export const UPDATE_TITLE = "UPDATE_TITLE";
 export const CREATE_LINK = "CREATE_LINK";
 export const SELECT_LINK = "SELECT_LINK";
+export const GET_LINKS = "GET_LINKS";
+
+export const getLinks = () => {
+  return (dispatch, getState) => {
+    const userId = getState().Auth.userId;
+    API.get(`/api/links/${userId}/`)
+      .then(result => {
+        console.log(result.data);
+        dispatch({
+          type: GET_LINKS,
+          payload: { links: result.data }
+        });
+      })
+      .catch(err => {
+        console.log("ERROR");
+        console.log(err);
+      });
+  };
+};
 
 export const updateTitle = title => ({
   type: UPDATE_TITLE,
@@ -40,12 +59,12 @@ export const createLink = history => {
   };
 };
 
-export const selectLink = (history, id, link, title, date, data) => {
+export const selectLink = (history, _id, link, title, date, data) => {
   return dispatch => {
     dispatch({
       type: SELECT_LINK,
       payload: {
-        id,
+        _id,
         link,
         title,
         date,

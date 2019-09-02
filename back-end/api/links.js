@@ -13,7 +13,12 @@ router.get('/', (req, res) => {
   })
 })
 
-router.post('/link', async (req, res) => {
+router.get('/links/:userId/', (req, res) => {
+  console.log(`USER ID: ${req.params.userId}`)
+  Links.find({ userId: req.params.userId }).then(result => res.send(result))
+})
+
+router.post('/link', (req, res) => {
   const { userId, link, title, date, data } = req.body
 
   const myData = new Links({

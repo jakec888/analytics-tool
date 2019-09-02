@@ -3,11 +3,15 @@ import { connect } from "react-redux";
 import { ListGroup, Row, Col } from "react-bootstrap";
 import moment from "moment";
 
-import { selectLink } from "../redux/actions/linkActions.actions";
+import { selectLink, getLinks } from "../redux/actions/linkActions.actions";
 
 export class ViewLinks extends Component {
-  onViewLink = ({ id, link, title, date, data }) => {
-    this.props.selectLink(this.props.history, id, link, title, date, data);
+  // componentWillMount() {
+  //   this.props.getLinks();
+  // }
+
+  onViewLink = ({ _id, link, title, date, data }) => {
+    this.props.selectLink(this.props.history, _id, link, title, date, data);
   };
 
   render() {
@@ -17,7 +21,7 @@ export class ViewLinks extends Component {
           {this.props.links.map(link => {
             return (
               <ListGroup.Item
-                key={link.id}
+                key={link._id}
                 onClick={() => this.onViewLink(link)}
               >
                 <Row>
@@ -44,6 +48,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
+  getLinks: getLinks,
   selectLink: selectLink
 };
 

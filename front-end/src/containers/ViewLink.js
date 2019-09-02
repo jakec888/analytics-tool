@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { Card, InputGroup, FormControl, Button } from "react-bootstrap";
 import { Bar } from "react-chartjs-2";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 import moment from "moment";
 
@@ -34,12 +35,12 @@ export class ViewLink extends Component {
           <FormControl
             disabled
             value={this.props.redirectURL}
-            placeholder={this.props.redirectURL}
-            aria-label={this.props.redirectURL}
             aria-describedby="basic-addon2"
           />
           <InputGroup.Append>
-            <Button variant="outline-secondary">Copy</Button>
+            <CopyToClipboard text={this.props.redirectURL}>
+              <Button variant="outline-secondary">Copy</Button>
+            </CopyToClipboard>
           </InputGroup.Append>
         </InputGroup>
 

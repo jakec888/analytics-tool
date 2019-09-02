@@ -3,12 +3,13 @@ import { connect } from "react-redux";
 import { ListGroup, Row, Col } from "react-bootstrap";
 import moment from "moment";
 
-import { selectLink, getLinks } from "../redux/actions/linkActions.actions";
+import { selectLink } from "../redux/actions/selectedActions.actions";
+import { getLinks } from "../redux/actions/linksActions.actions";
 
 export class ViewLinks extends Component {
-  // componentWillMount() {
-  //   this.props.getLinks();
-  // }
+  componentWillMount() {
+    this.props.getLinks();
+  }
 
   onViewLink = ({ _id, link, title, date, data }) => {
     this.props.selectLink(this.props.history, _id, link, title, date, data);

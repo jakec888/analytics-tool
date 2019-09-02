@@ -13,9 +13,8 @@ router.get('/', (req, res) => {
   })
 })
 
-router.get('/links/:userId/', (req, res) => {
-  console.log(`USER ID: ${req.params.userId}`)
-  Links.find({ userId: req.params.userId }).then(result => res.send(result))
+router.get('/links/:userId', (req, res) => {
+  Links.find({ userId: req.params.userId }).then(result => res.json(result))
 })
 
 router.post('/link', (req, res) => {

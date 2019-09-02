@@ -37,13 +37,13 @@ export const updateLink = link => ({
 
 export const createLink = history => {
   return (dispatch, getState) => {
-    const currentLinkState = getState().Link;
+    const selectedLink = getState().Selected;
     const userId = getState().Auth.userId;
 
     const data = {
       userId: userId,
-      link: currentLinkState.link,
-      title: currentLinkState.title,
+      link: selectedLink.link,
+      title: selectedLink.title,
       date: new Date().toGMTString(),
       data: []
     };

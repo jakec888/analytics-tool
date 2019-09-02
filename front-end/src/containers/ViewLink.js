@@ -58,10 +58,10 @@ export class ViewLink extends Component {
 }
 
 const mapStateToProps = state => ({
-  link: state.Link.link,
-  title: state.Link.title,
-  date: state.Link.date,
-  data: state.Link.data
+  link: state.Selected.link,
+  title: state.Selected.title,
+  date: state.Selected.date,
+  data: state.Selected.data
 });
 
 const mapDispatchToProps = {};

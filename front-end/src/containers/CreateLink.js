@@ -9,7 +9,7 @@ import {
   updateLink,
   updateTitle,
   createLink
-} from "../redux/actions/linkActions.actions";
+} from "../redux/actions/selectedActions.actions";
 
 export class CreateLink extends Component {
   onUpdateTitle = event => {

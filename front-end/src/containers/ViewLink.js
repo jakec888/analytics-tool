@@ -42,7 +42,12 @@ export class ViewLink extends Component {
           />
           <InputGroup.Append>
             <CopyToClipboard text={this.props.redirectURL}>
-              <Button variant="outline-secondary">Copy</Button>
+              <Button
+                variant="outline-secondary"
+                onClick={() => alert("Copied To Clipboard")}
+              >
+                Copy
+              </Button>
             </CopyToClipboard>
           </InputGroup.Append>
         </InputGroup>

@@ -13,10 +13,6 @@ router.get('/:redirectId', async (req, res) => {
 
   const redirect = await Links.findOne({ redirectId: req.params.redirectId })
 
-  await console.log(redirect)
-
-  await console.log(redirect.data.some(item => item.date === today))
-
   await redirect.data.some(item => item.date === today) ? (Links.findOneAndUpdate(
     {
       redirectId: req.params.redirectId,

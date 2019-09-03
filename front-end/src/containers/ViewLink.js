@@ -17,6 +17,8 @@ export class ViewLink extends Component {
         <Card.Title>
           <a
             href={this.props.link}
+            rel="noopener noreferrer"
+            target="_blank"
             style={{ textDecoration: "none", color: "black" }}
           >
             {this.props.title}
@@ -25,6 +27,8 @@ export class ViewLink extends Component {
         <Card.Text>
           <a
             href={this.props.link}
+            rel="noopener noreferrer"
+            target="_blank"
             style={{ textDecoration: "none", color: "black" }}
           >
             {this.props.link}

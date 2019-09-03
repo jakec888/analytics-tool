@@ -30,7 +30,6 @@ export class ViewLink extends Component {
             {this.props.link}
           </a>
         </Card.Text>
-
         <InputGroup className="mb-3">
           <FormControl
             disabled
@@ -43,7 +42,6 @@ export class ViewLink extends Component {
             </CopyToClipboard>
           </InputGroup.Append>
         </InputGroup>
-
         <Bar
           data={{
             labels: this.props.data.map(data => data.date),

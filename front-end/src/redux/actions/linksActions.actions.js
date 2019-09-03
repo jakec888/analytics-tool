@@ -10,7 +10,11 @@ export const getLinks = () => {
         console.log(result.data);
         dispatch({
           type: GET_LINKS,
-          payload: { links: result.data }
+          payload: {
+            links: result.data.sort(
+              (a, b) => new Date(b.date) - new Date(a.date)
+            )
+          }
         });
       })
       .catch(err => {

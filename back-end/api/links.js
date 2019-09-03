@@ -5,15 +5,6 @@ const router = express.Router()
 
 const Links = require('../models/links')
 
-router.get('/', (req, res) => {
-  Links.find({}, (err, foundLinks) => {
-    if (err) {
-      res.json(err)
-    }
-    res.json(foundLinks)
-  })
-})
-
 router.get('/links/:userId', (req, res) => {
   Links.find({ userId: req.params.userId }).then(result => res.json(result))
 })
@@ -41,7 +32,5 @@ router.post('/link', (req, res) => {
     res.json(result)
   })
 })
-
-router.get('/working', (req, res) => res.json({ working: true }))
 
 module.exports = router

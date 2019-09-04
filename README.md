@@ -1,19 +1,31 @@
-# analytics-tool
+# Bitly Clone
+
+## <center>Walkthrough Update</center>
+
+<p align="center">
+<img src="walkthough.gif" />
+</p>
 
 ### Description
 
-google analytics like attempt
+bitly clone.
 
-#### Libraries
+links shortner that tracks created links clicks.
 
-- aws cognito
-- react
-- react-bootstrap
+### Tech Stack
 
-#### To Do
+#### Front End
 
-- redux (done)
-- layout (done)
-- auth (done)
-- basic frontend functionality; boilerplate
-- basic backend funtionality
+- AWS cognito; authentication
+- React JS
+- React Bootstrap
+- Chart JS
+- Axios
+- Redux
+- Redux Thunk
+
+#### Back End
+
+- Express JS
+- Mongoose
+- UUID

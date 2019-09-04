@@ -23,9 +23,9 @@ app.use((err, req, res, next) => {
   res.status(500).send({ error: err.stack })
 })
 
-mongoose.connect('mongodb://localhost:27017/linkshortner', { useNewUrlParser: true })
+mongoose.connect('mongodb://localhost:27017/bitlyclone', { useNewUrlParser: true })
 mongoose.connection.once('open', () => {
-  console.log('connected to mongoose database: linkshortner')
+  console.log('connected to mongoose database: bitlyclone')
 })
 
 app.listen(port, () => console.log(`Express Running On --> http://localhost:${port}`))

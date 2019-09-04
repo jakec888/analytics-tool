@@ -2,9 +2,6 @@ import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { Card, Form, Button, InputGroup, FormControl } from "react-bootstrap";
 
-// import axios from "axios";
-// import cheerio from "cheerio";
-
 import {
   updateLink,
   updateTitle,
@@ -24,23 +21,6 @@ export class CreateLink extends Component {
     // this.getTitle(this.props.link);
     this.props.createLink(this.props.history);
   };
-
-  // getTitle = link => {
-  //   axios
-  //     .get(link)
-  //     .then(result => {
-  //       const html = result.data;
-  //       const $ = cheerio.load(html);
-  //       var title = $(html)
-  //         .filter("title")
-  //         .text();
-  //       this.props.updateTitle(title);
-  //     })
-  //     .catch(err => {
-  //       console.log("error");
-  //       console.log(err);
-  //     });
-  // };
 
   render() {
     return (

@@ -7,14 +7,7 @@ const linkSchema = mongoose.Schema({
   link: String,
   title: String,
   date: String,
-  data: [],
-  links: [{
-    link: String,
-    title: String,
-    date: String,
-    data: [
-      { date: String, clicks: Number }]
-  }]
+  data: []
 })
 
 const Links = mongoose.model('links', linkSchema)

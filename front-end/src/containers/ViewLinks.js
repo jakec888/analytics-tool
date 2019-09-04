@@ -7,7 +7,7 @@ import { selectLink } from "../redux/actions/selectedActions.actions";
 import { getLinks } from "../redux/actions/linksActions.actions";
 
 export class ViewLinks extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.getLinks();
   }
 

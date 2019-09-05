@@ -1,6 +1,6 @@
 # Bitly Clone
 
-### To Do:
+### In Progress:
 
 - testing using jest and enzyme
 - redux-saga (generators)

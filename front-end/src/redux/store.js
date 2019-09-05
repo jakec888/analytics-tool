@@ -4,9 +4,9 @@ import { combineReducers } from "redux";
 import rootReducer from "./reducers/reducers";
 import createSagaMiddleware from "redux-saga";
 
-const saga = createSagaMiddleware();
+const ReduxSaga = createSagaMiddleware();
 
-const middlewares = [ReduxThunk, saga];
+const middlewares = [ReduxThunk, ReduxSaga];
 
 const composeEnhancers = compose(
   applyMiddleware(...middlewares),

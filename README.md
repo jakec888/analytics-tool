@@ -1,5 +1,10 @@
 # Bitly Clone
 
+### To Do:
+
+- testing using jest and enzyme
+- redux-saga (generators)
+
 ## <center>Walkthrough Update</center>
 
 <p align="center">

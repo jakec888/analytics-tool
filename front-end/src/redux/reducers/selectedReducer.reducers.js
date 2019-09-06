@@ -3,7 +3,8 @@ import {
   UPDATE_TITLE,
   CREATE_LINK,
   SELECT_LINK,
-  GET_LINKS
+  GET_LINKS,
+  CREATE_LINK_SUCCESS
 } from "../actions/selectedActions.actions";
 
 const initialState = {
@@ -25,6 +26,15 @@ export default (state = initialState, { type, payload }) => {
     case UPDATE_TITLE:
       return { ...state, title: payload.title };
     case CREATE_LINK:
+      return {
+        ...state,
+        _id: payload.id,
+        link: payload.link,
+        title: payload.title,
+        date: payload.date,
+        data: payload.data
+      };
+    case CREATE_LINK_SUCCESS:
       return {
         ...state,
         _id: payload.id,

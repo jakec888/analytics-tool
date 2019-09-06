@@ -2,8 +2,8 @@
 
 ### In Progress:
 
+- redux-saga/generators (done)
 - testing using jest and enzyme
-- redux-saga (generators)
 
 ## <center>Walkthrough Update</center>
 

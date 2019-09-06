@@ -11,12 +11,10 @@ import {
 
 export class Login extends Component {
   onUpdateEmail = event => {
-    console.log(event);
     this.props.updateEmail(event.target.value);
   };
 
   onUpdatePassword = event => {
-    console.log(event);
     this.props.updatePassword(event.target.value);
   };
 

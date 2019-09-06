@@ -12,14 +12,18 @@ export class CreateLink extends Component {
   onUpdateTitle = event => {
     this.props.updateTitle(event.target.value);
   };
+
   onUpdateLink = event => {
     this.props.updateLink(event.target.value);
   };
 
   onSubmitLink = event => {
     event.preventDefault();
-    // this.getTitle(this.props.link);
-    this.props.createLink(this.props.history);
+    this.props.createLink(
+      this.props.selectedLink,
+      this.props.userId,
+      this.props.history
+    );
   };
 
   render() {
@@ -61,6 +65,8 @@ export class CreateLink extends Component {
 }
 
 const mapStateToProps = state => ({
+  selectedLink: state.Selected,
+  userId: state.Auth.userId,
   title: state.Link.title,
   link: state.Link.link
 });

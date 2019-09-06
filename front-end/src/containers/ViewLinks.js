@@ -27,25 +27,27 @@ export class ViewLinks extends Component {
     return (
       <Fragment>
         <ListGroup variant="flush">
-          {this.props.links.map(link => {
-            return (
-              <ListGroup.Item
-                key={link._id}
-                onClick={() => this.onViewLink(link)}
-              >
-                <Row>
-                  <Col sm={8}>{link.title}</Col>
-                  <Col
-                    sm={4}
-                    className="d-flex justify-content-end"
-                    style={{ fontStyle: "italic" }}
+          {this.props.links
+            ? this.props.links.map(link => {
+                return (
+                  <ListGroup.Item
+                    key={link._id}
+                    onClick={() => this.onViewLink(link)}
                   >
-                    ({moment(new Date(link.date)).fromNow()})
-                  </Col>
-                </Row>
-              </ListGroup.Item>
-            );
-          })}
+                    <Row>
+                      <Col sm={8}>{link.title}</Col>
+                      <Col
+                        sm={4}
+                        className="d-flex justify-content-end"
+                        style={{ fontStyle: "italic" }}
+                      >
+                        ({moment(new Date(link.date)).fromNow()})
+                      </Col>
+                    </Row>
+                  </ListGroup.Item>
+                );
+              })
+            : null}
         </ListGroup>
       </Fragment>
     );

@@ -8,7 +8,7 @@ import { getLinks } from "../redux/actions/linksActions.actions";
 
 export class ViewLinks extends Component {
   componentDidMount() {
-    this.props.getLinks();
+    this.props.getLinks(this.props.userId);
   }
 
   onViewLink = ({ _id, redirectURL, link, title, date, data }) => {
@@ -55,6 +55,7 @@ export class ViewLinks extends Component {
 }
 
 const mapStateToProps = state => ({
+  userId: state.Auth.userId,
   links: state.Link.links
 });
 

@@ -1,15 +1,10 @@
 export const GET_LINKS = "GET_LINKS";
 export const GET_LINKS_SUCCESS = "GET_LINKS_SUCCESS";
 
-export const getLinks = () => {
-  return (dispatch, getState) => {
-    const userId = getState().Auth.userId;
-    dispatch({
-      type: GET_LINKS,
-      payload: { userId }
-    });
-  };
-};
+export const getLinks = userId => ({
+  type: GET_LINKS,
+  payload: { userId }
+});
 
 export const getLinksSuccess = links => ({
   type: GET_LINKS_SUCCESS,

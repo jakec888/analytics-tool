@@ -23,7 +23,9 @@ export function* createLinkAsync({ payload }) {
 
   const request = yield call(onLinkRequest, data);
 
-  yield put(createLinkSuccess(request.data));
+  const result = request.data;
+
+  yield put(createLinkSuccess(result));
 
   history.push("/view");
 }

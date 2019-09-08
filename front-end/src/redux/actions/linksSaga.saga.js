@@ -15,11 +15,11 @@ export function* getLinksAsync({ payload }) {
 
   const request = yield call(onLinkRequest, userId);
 
-  yield put(
-    getLinksSuccess(
-      request.data.sort((a, b) => new Date(b.date) - new Date(a.date))
-    )
+  const result = request.data.sort(
+    (a, b) => new Date(b.date) - new Date(a.date)
   );
+
+  yield put(getLinksSuccess(result));
 }
 
 /* 

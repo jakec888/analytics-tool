@@ -34,3 +34,6 @@ links shortner that tracks created links clicks.
 - Express JS
 - Mongoose
 - UUID
+
+<!-- unit tests vs integration tests vs end-to-end tests -->
+<!-- TDD vs Test After -->

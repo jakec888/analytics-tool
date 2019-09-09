@@ -122,20 +122,27 @@ afterEach(() => {
 });
 
 it("can fetch a list of links and display them", done => {
-  const wrapped = mount(
+  let wrapped = mount(
     <Root>
       <ViewLinks />
     </Root>
   );
 
-  wrapped.find(".fetch-comments").simulate("click");
+  console.log(wrapped);
+
+  wrapped.find("ListGroup");
+
+  console.log(wrapped.find("ListGroup"));
 
   moxios.wait(() => {
     wrapped.update();
 
-    expect(wrapped.find("div.list-group-item").length).toEqual(7);
+    console.log(wrapped.find("Row"));
+
+    expect(wrapped.find("Row").length).toEqual(7);
 
     done();
+
     wrapped.unmount();
   });
 });

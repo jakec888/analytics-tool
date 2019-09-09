@@ -42,7 +42,6 @@ export class CreateLink extends Component {
               value={this.props.title}
             />
           </InputGroup>
-
           <InputGroup className="mb-3">
             <InputGroup.Prepend>
               <InputGroup.Text id="basic-addon3">Your URL</InputGroup.Text>
@@ -54,7 +53,6 @@ export class CreateLink extends Component {
               value={this.props.link}
             />
           </InputGroup>
-
           <Button variant="primary" type="submit">
             Submit
           </Button>

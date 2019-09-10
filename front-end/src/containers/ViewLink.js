@@ -11,8 +11,11 @@ export class ViewLink extends Component {
     return (
       <Fragment>
         <Card.Text>
-          Created On {this.props.date} | (
-          {moment(new Date(this.props.date)).fromNow()})
+          Created On <span className="link-date">{this.props.date}</span> | (
+          <span className="link-time">
+            {moment(new Date(this.props.date)).fromNow()}
+          </span>
+          )
         </Card.Text>
         <Card.Title>
           <a
@@ -31,6 +34,7 @@ export class ViewLink extends Component {
             rel="noopener noreferrer"
             target="_blank"
             style={{ textDecoration: "none", color: "black" }}
+            className="link-link"
           >
             {this.props.link}
           </a>
@@ -40,6 +44,7 @@ export class ViewLink extends Component {
             disabled
             value={this.props.redirectURL}
             aria-describedby="basic-addon2"
+            className="link-redirect"
           />
           <InputGroup.Append>
             <CopyToClipboard text={this.props.redirectURL}>

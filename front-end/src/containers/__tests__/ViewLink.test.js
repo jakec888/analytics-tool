@@ -1,6 +1,8 @@
 import React from "react";
 import { mount } from "enzyme";
 
+import moment from "moment";
+
 import Root from "../../Root";
 import ViewLink from "../ViewLink";
 
@@ -19,8 +21,6 @@ describe("<ViewLink /> Test", () => {
     }
   };
 
-  // initialState={initialState}
-
   beforeEach(() => {
     wrapper = mount(
       <Root initialState={initialState}>
@@ -37,11 +37,35 @@ describe("<ViewLink /> Test", () => {
     expect(wrapper.find("button").length).toEqual(1);
   });
 
-  // it("copy button should have proper text", () => {
-  //   expect(wrapper.find("button").text()).toEqual("Copy");
-  // });
+  it("copy button should have proper text", () => {
+    expect(wrapper.find("button").text()).toEqual("Copy");
+  });
+
+  it("check if date is properly shown", () => {
+    expect(wrapper.find("span.link-date").text()).toEqual(
+      initialState.Selected.date
+    );
+  });
+
+  it("check if date format is properly displayed", () => {
+    expect(wrapper.find("span.link-time").text()).toEqual(
+      moment(new Date(initialState.Selected.date)).fromNow()
+    );
+  });
 
   it("check if text shows from redux", () => {
     expect(wrapper.find("a.link-title").text()).toEqual("Rust");
+  });
+
+  it("check if link is correct", () => {
+    expect(wrapper.find("a.link-link").text()).toEqual(
+      "https://www.rust-lang.org"
+    );
+  });
+
+  it("check if input value is redirectURL", () => {
+    expect(wrapper.find("input.link-redirect").props().value).toEqual(
+      "http://localhost:3001/redirect/2059fa03-2f11-4db7-9c82-17c189360e57"
+    );
   });
 });

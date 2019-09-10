@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, jsonify, request
 
 
 app = Flask(__name__)
@@ -6,7 +6,23 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    return 'Hello, World!'
+    return jsonify({'hi': 'there'})
+
+
+@app.route('/api/links/<userId>', methods=['GET'])
+def get_links(userId):
+    return jsonify({'userId': userId})
+
+
+@app.route('/api/link', methods=['POST'])
+def add_link():
+    data = request.get_json()
+    return jsonify({'data': data})
+
+
+@app.route('/redirect/<redirectId>', methods=['GET'])
+def redirect_url(redirectId):
+    return jsonify({'redirectId': redirectId})
 
 
 if __name__ == '__main__':

@@ -20,6 +20,7 @@ export class ViewLink extends Component {
             rel="noopener noreferrer"
             target="_blank"
             style={{ textDecoration: "none", color: "black" }}
+            className="link-title"
           >
             {this.props.title}
           </a>

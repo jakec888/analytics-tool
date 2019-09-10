@@ -24,11 +24,17 @@ links shortner that tracks created links clicks.
 - Redux
 - Redux Thunk
 
-#### Back End
+#### Back End (NoSQL)
 
+- Node JS
 - Express JS
-- Mongoose
-- UUID
+- Mongo DB
+
+#### Back End (SQL)
+
+- Python 3
+- Flask
+- PostgreSQL
 
 #### Testing
 

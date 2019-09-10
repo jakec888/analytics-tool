@@ -27,14 +27,11 @@ export const updatePassword = password => {
 export const signUp = history => {
   return (dispatch, getState) => {
     const userCred = getState().Auth;
-    console.log(userCred);
     Auth.signUp({
       username: userCred.email,
       password: userCred.password
     })
       .then(data => {
-        console.log("Success!");
-        console.log(data);
         dispatch({
           type: SIGNUP_SUCCESS,
           payload: { email: "", password: "" }
@@ -51,14 +48,11 @@ export const signUp = history => {
 export const login = history => {
   return (dispatch, getState) => {
     const userCred = getState().Auth;
-    console.log(userCred);
     Auth.signIn({
       username: userCred.email,
       password: userCred.password
     })
       .then(data => {
-        console.log("Login Success!");
-        console.log(data);
         dispatch({
           type: LOGIN_SUCCESS,
           payload: {
@@ -80,12 +74,8 @@ export const login = history => {
 
 export const logout = history => {
   return (dispatch, getState) => {
-    const userCred = getState().Auth;
-    console.log(userCred);
     Auth.signOut()
       .then(data => {
-        console.log("Logut Success!");
-        console.log(data);
         dispatch({
           type: LOGOUT,
           payload: {

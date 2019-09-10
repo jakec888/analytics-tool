@@ -1,10 +1,5 @@
 # Bitly Clone
 
-### In Progress:
-
-- redux-saga/generators (done)
-- testing using jest and enzyme
-
 ## <center>Walkthrough Update</center>
 
 <p align="center">
@@ -35,5 +30,7 @@ links shortner that tracks created links clicks.
 - Mongoose
 - UUID
 
-<!-- unit tests vs integration tests vs end-to-end tests -->
-<!-- TDD vs Test After -->
+#### Testing
+
+- Jest
+- Enzyme

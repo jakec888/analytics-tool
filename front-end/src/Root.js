@@ -15,6 +15,7 @@ export default ({ children, initialState = {} }) => {
 
   const composeEnhancers = compose(
     applyMiddleware(...middlewares)
+    // comment this when testing
     // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   );
 

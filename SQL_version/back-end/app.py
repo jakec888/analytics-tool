@@ -6,9 +6,8 @@ from urllib.parse import urlparse
 
 app = Flask(__name__)
 
-
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://password:username@localhost/sample_db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
 
 
 db = SQLAlchemy(app)
@@ -25,7 +24,7 @@ class Link(db.Model):
     ).strftime('%Y-%m-%dT%H:%M:%S.%f')[:-3] + 'Z')
 
     data_id = db.Column(db.Integer, db.ForeignKey(
-        'data.id'), nullable=False)
+        'data.id'))
     data = db.relationship(
         'Data', backref=db.backref('link', lazy=True))
 
@@ -109,7 +108,7 @@ def add_link():
 
     protocol = base_url.scheme
     host = base_url.netloc
-    redirectId = uuid4()
+    redirectId = str(uuid4())
 
     redirectURL = f'{protocol}://{host}/redirect/{redirectId}'
 
@@ -128,10 +127,10 @@ def add_link():
     print('Link ID?')
     print(link.id)
 
-    db_link = User.query.filter_by(userId=userId).first()
+    # db_link = User.query.filter_by(userId=userId).first()
 
-    print('DB Link')
-    print(db_link)
+    # print('DB Link')
+    # print(db_link)
 
     return jsonify({'data': redirectURL})
 

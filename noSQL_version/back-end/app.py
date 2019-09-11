@@ -1,6 +1,8 @@
 from flask import Flask, jsonify, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+from uuid import uuid4
+from urllib.parse import urlparse
 
 app = Flask(__name__)
 
@@ -92,12 +94,46 @@ def add_link():
         "link": "https://mongoosejs.com/",
         "title": "Mongoose",
         "date": "2019-09-11T08:39:33.492Z",
-        "links": [],
         "__v": 0
     }
     """
-    data = request.get_json()
-    return jsonify({'data': data})
+    request_data = request.get_json()
+
+    userId = request_data['userId']
+    link = request_data['link']
+    title = request_data['title']
+    date = request_data['date']
+    data = request_data['data']
+
+    base_url = urlparse(request.base_url)
+
+    protocol = base_url.scheme
+    host = base_url.netloc
+    redirectId = uuid4()
+
+    redirectURL = f'{protocol}://{host}/redirect/{redirectId}'
+
+    link = Link(
+        userId=userId,
+        redirectId=redirectId,
+        redirectURL=redirectURL,
+        link=link,
+        title=title,
+        date=date
+    )
+
+    db.session.add(link)
+    db.session.commit()
+
+    print('Link ID?')
+    print(link.id)
+
+    db_link = User.query.filter_by(userId=userId).first()
+
+    print('DB Link')
+    print(db_link)
+
+    return jsonify({'data': redirectURL})
 
 
 @app.route('/redirect/<redirectId>', methods=['GET'])

@@ -1,14 +1,37 @@
 from flask import Flask, jsonify, request, redirect
 from flask_sqlalchemy import SQLAlchemy
-
+from datetime import datetime
 
 app = Flask(__name__)
 
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://password:username@localhost/sample_db'
+
 
 db = SQLAlchemy(app)
+
+
+class Link(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    userId = db.Column(db.String(80), nullable=False)
+    redirectId = db.Column(db.String(80), nullable=False)
+    redirectURL = db.Column(db.String(80), nullable=False)
+    link = db.Column(db.String(80), nullable=False)
+    title = db.Column(db.String(80), nullable=False)
+    date = db.Column(db.String(80), nullable=False, default=datetime.utcnow(
+    ).strftime('%Y-%m-%dT%H:%M:%S.%f')[:-3] + 'Z')
+
+    data_id = db.Column(db.Integer, db.ForeignKey(
+        'data.id'), nullable=False)
+    data = db.relationship(
+        'Data', backref=db.backref('link', lazy=True))
+
+
+class Data(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    date = db.Column(db.String(80), nullable=False)
+    clicks = db.Column(db.Integer, nullable=False)
 
 
 @app.route('/')
@@ -80,7 +103,7 @@ def add_link():
 @app.route('/redirect/<redirectId>', methods=['GET'])
 def redirect_url(redirectId):
     """
-    input: 
+    input:
     redirectId = "1a451bb3-cb6a-46c6-8761-fb6636089a6c"
 
     expect:

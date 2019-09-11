@@ -17,7 +17,7 @@ export function* createLinkAsync({ payload }) {
     userId: userId,
     link: selectedLink.link,
     title: selectedLink.title,
-    date: new Date().toGMTString(),
+    date: new Date().toISOString(),
     data: []
   };
 

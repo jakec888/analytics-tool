@@ -89,7 +89,7 @@ const mapStateToProps = state => ({
   link: state.Selected.link,
   title: state.Selected.title,
   redirectURL: state.Selected.redirectURL,
-  date: state.Selected.date,
+  date: new Date(state.Selected.date).toUTCString(),
   data: state.Selected.data
 });
 

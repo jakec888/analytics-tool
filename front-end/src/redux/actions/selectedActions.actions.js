@@ -37,7 +37,7 @@ export const createLinkSuccess = payload => ({
 //       userId: userId,
 //       link: selectedLink.link,
 //       title: selectedLink.title,
-//       date: new Date().toGMTString(),
+//       date: new Date().toISOString(),
 //       data: []
 //     };
 

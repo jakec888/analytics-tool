@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime, date
 from uuid import uuid4
 from urllib.parse import urlparse
+import json
 
 app = Flask(__name__)
 
@@ -68,11 +69,12 @@ def get_links(userId):
         etc...
     ]
     """
-    query = Link.query.filter_by(
-        userId="65ce5dad-85df-4355-94f5-2669d8fce4de").all()
+    query = Link.query.filter_by(userId=userId).all()
 
     links = []
+
     for l in query:
+
         link = {}
 
         link['id'] = l.id
@@ -84,17 +86,19 @@ def get_links(userId):
         link['date'] = l.date
 
         data = []
-        for link_data in link['data']:
-            data_object = {}
 
-            data_object['date'] = link_data['date']
-            data_object['clicks'] = link_data['clicks']
+        if l.data:
+            for link_data in l.data:
+                data_object = {}
 
-            data.append(data_object)
+                data_object['date'] = link_data['date']
+                data_object['clicks'] = link_data['clicks']
+
+                data.append(data_object)
 
         link['data'] = data
 
-        links.append(links)
+        links.append(link)
 
     return jsonify({'links': links})
 

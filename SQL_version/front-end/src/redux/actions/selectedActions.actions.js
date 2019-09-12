@@ -54,7 +54,7 @@ export const createLinkSuccess = payload => ({
 
 export const selectLink = (
   history,
-  _id,
+  id,
   redirectURL,
   link,
   title,
@@ -65,7 +65,7 @@ export const selectLink = (
     dispatch({
       type: SELECT_LINK,
       payload: {
-        _id,
+        id,
         redirectURL,
         link,
         title,

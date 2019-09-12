@@ -3,7 +3,7 @@ import API from "../../api";
 import { CREATE_LINK, createLinkSuccess } from "./selectedActions.actions";
 
 const onLinkRequest = data => {
-  const request = API.post("/api/link", data);
+  const request = API.post("/api/link/", data);
   return request;
 };
 

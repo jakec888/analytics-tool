@@ -11,10 +11,10 @@ export class ViewLinks extends Component {
     this.props.getLinks(this.props.userId);
   }
 
-  onViewLink = ({ _id, redirectURL, link, title, date, data }) => {
+  onViewLink = ({ id, redirectURL, link, title, date, data }) => {
     this.props.selectLink(
       this.props.history,
-      _id,
+      id,
       redirectURL,
       link,
       title,
@@ -31,7 +31,7 @@ export class ViewLinks extends Component {
             ? this.props.links.map(link => {
                 return (
                   <ListGroup.Item
-                    key={link._id}
+                    key={link.id}
                     onClick={() => this.onViewLink(link)}
                   >
                     <Row>

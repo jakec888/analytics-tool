@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime, date
 from uuid import uuid4
 from urllib.parse import urlparse
-import json
+from flask_cors import CORS
 
 app = Flask(__name__)
 
@@ -11,6 +11,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
 
 
+CORS(app)
 db = SQLAlchemy(app)
 
 
@@ -40,34 +41,8 @@ def test_route():
     return jsonify({'working': True})
 
 
-@app.route('/api/links/<userId>', methods=['GET'])
+@app.route('/api/links/<userId>/', methods=['GET'])
 def get_links(userId):
-    """
-    input:
-    userId = "65ce5dad-85df-4355-94f5-2669d8fce4de"
-
-    expected:
-    [
-        {
-            "data": [
-                {
-                    "date": "8/6/2019",
-                    "clicks": 2
-                }
-            ],
-            "_id": "5d6f07ad8e3b312e8c06b07f",
-            "redirectId": "1a451bb3-cb6a-46c6-8761-fb6636089a6c",
-            "redirectURL": "http://localhost:3001/redirect/1a451bb3-cb6a-46c6-8761-fb6636089a6c",
-            "userId": "65ce5dad-85df-4355-94f5-2669d8fce4de",
-            "link": "https://mongoosejs.com/",
-            "title": "Mongoose",
-            "date": "2019-09-11T08:39:33.492Z",
-            "links": [],
-            "__v": 0
-        },
-        etc...
-    ]
-    """
     query = Link.query.filter_by(userId=userId).all()
 
     links = []
@@ -90,8 +65,8 @@ def get_links(userId):
             for link_data in l.data:
                 data_object = {}
 
-                data_object['date'] = link_data['date']
-                data_object['clicks'] = link_data['clicks']
+                data_object['date'] = link_data.date
+                data_object['clicks'] = link_data.clicks
 
                 data.append(data_object)
 
@@ -99,34 +74,11 @@ def get_links(userId):
 
         links.append(link)
 
-    return jsonify({'links': links})
+    return jsonify(links)
 
 
-@app.route('/api/link', methods=['POST'])
+@app.route('/api/link/', methods=['POST'])
 def add_link():
-    """
-    input:
-    {
-        userId: "65ce5dad-85df-4355-94f5-2669d8fce4de",
-        link: "https://mongoosejs.com/",
-        title: "Mongoose",
-        date: "2019-09-11T08:39:33.492Z",
-        data: []
-    }
-
-    expect:
-    {
-        "data": [],
-        "_id": "5d6f07ad8e3b312e8c06b07f",
-        "redirectId": "1a451bb3-cb6a-46c6-8761-fb6636089a6c",
-        "redirectURL": "http://localhost:3001/redirect/1a451bb3-cb6a-46c6-8761-fb6636089a6c",
-        "userId": "65ce5dad-85df-4355-94f5-2669d8fce4de",
-        "link": "https://mongoosejs.com/",
-        "title": "Mongoose",
-        "date": "2019-09-11T08:39:33.492Z",
-        "__v": 0
-    }
-    """
     request_data = request.get_json()
 
     userId = request_data['userId']
@@ -166,21 +118,13 @@ def add_link():
         'data': []
     }
 
-    return jsonify({'data': link_data})
+    return jsonify(link_data)
 
 
 @app.route('/redirect/<redirectId>', methods=['GET'])
 def redirect_url(redirectId):
-    """
-    input:
-    redirectId = "e47e06fc-fe45-4bf5-987c-5496993a4371"
-
-    expect:
-    redirect to https://mongoosejs.com/
-    """
     # find out todays name in M/D/Y
     today = date.today()
-
     formated_day = f'{today.month}/{today.day}/{today.year}'
 
     # find link with redirectID
@@ -202,4 +146,4 @@ def redirect_url(redirectId):
 
 
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', port=3001, debug=True)
+    app.run(host='localhost', port=3001, debug=True)

@@ -24,16 +24,15 @@ class Link(db.Model):
     date = db.Column(db.String(80), nullable=False, default=datetime.utcnow(
     ).strftime('%Y-%m-%dT%H:%M:%S.%f')[:-3] + 'Z')
 
-    data_id = db.Column(db.Integer, db.ForeignKey(
-        'data.id'))
-    data = db.relationship(
-        'Data', backref=db.backref('link', lazy=True))
+    data = db.relationship('Data', backref=db.backref('link', lazy=True))
 
 
 class Data(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     date = db.Column(db.String(80), nullable=False)
     clicks = db.Column(db.Integer, nullable=False)
+
+    link_id = db.Column(db.Integer, db.ForeignKey('link.id'), nullable=False)
 
 
 @app.route('/')
@@ -156,17 +155,6 @@ def add_link():
     db.session.add(link)
     db.session.commit()
 
-    print('Link ID?')
-    print(link.id)
-
-    print('Is Object?')
-    print(link)
-
-    # db_link = User.query.filter_by(userId=userId).first()
-
-    # print('DB Link')
-    # print(db_link)
-
     link_data = {
         'id': link.id,
         'userId': link.userId,
@@ -185,14 +173,11 @@ def add_link():
 def redirect_url(redirectId):
     """
     input:
-    redirectId = "1a451bb3-cb6a-46c6-8761-fb6636089a6c"
+    redirectId = "e47e06fc-fe45-4bf5-987c-5496993a4371"
 
     expect:
     redirect to https://mongoosejs.com/
     """
-    print(redirectId)
-    # change to redirect
-
     # find out todays name in M/D/Y
     today = date.today()
 
@@ -201,20 +186,19 @@ def redirect_url(redirectId):
     # find link with redirectID
     link = Link.query.filter_by(redirectId=redirectId).first_or_404()
 
-    # check to see if date exsists
-    # https://stackoverflow.com/questions/3897499/check-if-value-already-exists-within-list-of-dictionaries
-    if not any(d['date'] == formated_day for d in link.data):
-        # does not exsits
-        data = Data(date=formated_day, clicks=0, link=link)
+    if link.data:
+        #  link DOES exsits
+        data = Data.query.filter_by(
+            date=formated_day, link_id=link.id).first_or_404()
+        data.clicks += 1
+        db.session.commit()
+        return redirect(link.link)
+    else:
+        # link DOES NOT exsits
+        data = Data(date=formated_day, clicks=1, link=link)
         db.session.add(data)
         db.session.commit()
-        return redirect(link.redirectURL)
-    else:
-        data = Data.query.filter_by(
-            date=formated_day, link=link).first_or_404()
-        data["clicks"] += 1
-        db.session.commit()
-        return redirect(link.redirectURL)
+        return redirect(link.link)
 
 
 if __name__ == '__main__':

@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request, redirect
 from flask_sqlalchemy import SQLAlchemy
-from datetime import datetime
+from datetime import datetime, date
 from uuid import uuid4
 from urllib.parse import urlparse
 
@@ -68,7 +68,35 @@ def get_links(userId):
         etc...
     ]
     """
-    return jsonify({'userId': userId})
+    query = Link.query.filter_by(
+        userId="65ce5dad-85df-4355-94f5-2669d8fce4de").all()
+
+    links = []
+    for l in query:
+        link = {}
+
+        link['id'] = l.id
+        link['redirectId'] = l.redirectId
+        link['redirectURL'] = l.redirectURL
+        link['userId'] = l.userId
+        link['link'] = l.link
+        link['title'] = l.title
+        link['date'] = l.date
+
+        data = []
+        for link_data in link['data']:
+            data_object = {}
+
+            data_object['date'] = link_data['date']
+            data_object['clicks'] = link_data['clicks']
+
+            data.append(data_object)
+
+        link['data'] = data
+
+        links.append(links)
+
+    return jsonify({'links': links})
 
 
 @app.route('/api/link', methods=['POST'])
@@ -127,12 +155,26 @@ def add_link():
     print('Link ID?')
     print(link.id)
 
+    print('Is Object?')
+    print(link)
+
     # db_link = User.query.filter_by(userId=userId).first()
 
     # print('DB Link')
     # print(db_link)
 
-    return jsonify({'data': redirectURL})
+    link_data = {
+        'id': link.id,
+        'userId': link.userId,
+        'redirectId': link.redirectId,
+        'redirectURL': link.redirectURL,
+        'link': link.link,
+        'title': link.title,
+        'date': link.date,
+        'data': []
+    }
+
+    return jsonify({'data': link_data})
 
 
 @app.route('/redirect/<redirectId>', methods=['GET'])
@@ -146,7 +188,29 @@ def redirect_url(redirectId):
     """
     print(redirectId)
     # change to redirect
-    return redirect("https://mongoosejs.com/")
+
+    # find out todays name in M/D/Y
+    today = date.today()
+
+    formated_day = f'{today.month}/{today.day}/{today.year}'
+
+    # find link with redirectID
+    link = Link.query.filter_by(redirectId=redirectId).first_or_404()
+
+    # check to see if date exsists
+    # https://stackoverflow.com/questions/3897499/check-if-value-already-exists-within-list-of-dictionaries
+    if not any(d['date'] == formated_day for d in link.data):
+        # does not exsits
+        data = Data(date=formated_day, clicks=0, link=link)
+        db.session.add(data)
+        db.session.commit()
+        return redirect(link.redirectURL)
+    else:
+        data = Data.query.filter_by(
+            date=formated_day, link=link).first_or_404()
+        data["clicks"] += 1
+        db.session.commit()
+        return redirect(link.redirectURL)
 
 
 if __name__ == '__main__':

@@ -15,13 +15,12 @@ class CreateLinksTable extends Migration
     {
         Schema::create('links', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $userId->string('userId');
-            $userId->string('redirectId');
-            $userId->string('redirectURL');
-            $userId->string('link');
-            $userId->string('title');
-            $userId->string('date');
-            $userId->string('RELATIONSHIP');
+            $table->string('userId');
+            $table->string('redirectId');
+            $table->string('redirectURL');
+            $table->string('link');
+            $table->string('title');
+            $table->string('date');
             $table->timestamps();
         });
     }

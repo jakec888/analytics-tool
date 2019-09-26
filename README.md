@@ -23,6 +23,7 @@ links shortner that tracks created links clicks.
 - Axios
 - Redux
 - Redux Thunk
+- Redux Saga
 
 #### Back End (NoSQL)
 

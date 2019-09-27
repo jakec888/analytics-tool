@@ -6,18 +6,18 @@
 <img src="walkthough.gif" />
 </p>
 
-### Description
+# Description
 
 bitly clone.
 
 links shortner that tracks created links clicks.
 
-### Tech Stack
+# Tech Stack
 
 #### Front End
 
 - AWS cognito; authentication
-- React JS
+- React JS (ES6+) - **_Typescript_** _(noSQL Version Only - almost complete)_
 - React Bootstrap
 - Chart JS
 - Axios

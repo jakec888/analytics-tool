@@ -1,58 +1,58 @@
 import {
-  LOGOUT,
-  SIGNUP_SUCCESS,
-  LOGIN_SUCCESS,
-  UPDATE_EMAIL,
-  UPDATE_PASSWORD
-} from '../../redux/actions/authActions.actions';
+  UPDATE_LINK,
+  UPDATE_TITLE,
+  CREATE_LINK,
+  CREATE_LINK_SUCCESS,
+  SELECT_LINK
+} from '../../redux/actions/selectedActions.actions';
 
-export interface updateEmailInterface {
-  type: typeof UPDATE_EMAIL;
+export interface updateTitleInterface {
+  type: typeof UPDATE_TITLE;
   payload: {
-    email: string;
+    title: string;
   };
 }
 
-export interface updatePasswordInterface {
-  type: typeof UPDATE_PASSWORD;
+export interface updateLinkInterface {
+  type: typeof UPDATE_LINK;
   payload: {
-    password: string;
+    link: string;
   };
 }
 
-export interface signUpInterface {
-  type: typeof SIGNUP_SUCCESS;
+export interface createLinkInterface {
+  type: typeof CREATE_LINK;
   payload: {
-    email: string;
-    password: string;
-  };
-}
-
-export interface loginInterface {
-  type: typeof LOGIN_SUCCESS;
-  payload: {
-    email: string;
-    password: string;
-    isLoggedIn: boolean;
-    idToken: string;
+    selectedLink: string;
     userId: string;
+    history: any;
   };
 }
 
-export interface logoutInterface {
-  type: typeof LOGOUT;
+export interface createLinkSuccessInterface {
+  type: typeof CREATE_LINK_SUCCESS;
   payload: {
-    isLoggedIn: boolean;
-    idToken: string;
-    userId: string;
+    payload: any;
   };
 }
 
-export type AuthActionTypes =
-  | updateEmailInterface
-  | updatePasswordInterface
-  | signUpInterface
-  | loginInterface
-  | logoutInterface;
+export interface selectLinkInterface {
+  type: typeof SELECT_LINK;
+  payload: {
+    _id: string;
+    redirectURL: string;
+    link: string;
+    title: string;
+    date: string;
+    data: any;
+  };
+}
 
-export type AuthActions = AuthActionTypes;
+export type SelectedActionTypes =
+  | updateTitleInterface
+  | updateLinkInterface
+  | createLinkInterface
+  | createLinkSuccessInterface
+  | selectLinkInterface;
+
+export type SelectedActions = SelectedActionTypes;

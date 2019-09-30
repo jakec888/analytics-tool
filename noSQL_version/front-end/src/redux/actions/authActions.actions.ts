@@ -19,7 +19,7 @@ export const updateEmail = (email: string) => {
   };
 };
 
-export const updatePassword = (password:string) => {
+export const updatePassword = (password: string) => {
   return (dispatch: Dispatch<AuthActions>, getState: () => AppState) => {
     dispatch({
       type: UPDATE_PASSWORD,

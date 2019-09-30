@@ -7,10 +7,10 @@ import { AppState } from './Root';
 import { logout } from './redux/actions/authActions.actions';
 import { Dispatch, bindActionCreators } from 'redux';
 import { AuthActions } from './types/auth/auth.actions';
+
 interface LayoutProps {
   isLoggedIn: boolean;
   history?: any;
-  logout(history?: any): any;
 }
 
 interface LayoutState {}
@@ -97,9 +97,9 @@ const mapStateToProps = (state: AppState, ownProps: LayoutProps): LayoutStatePro
 const mapDispatchToProps = (
   dispatch: ThunkDispatch<any, any, AuthActions>,
   ownProps: LayoutProps
-): LayoutDispatchProps => {
-  logout: bindActionCreators(logout, dispatch);
-};
+): LayoutDispatchProps => ({
+  logout: bindActionCreators(logout, dispatch)
+});
 
 export default connect(
   mapStateToProps,

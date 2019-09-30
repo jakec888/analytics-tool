@@ -1,24 +1,24 @@
-import React, { Component, Fragment } from "react";
-import { connect } from "react-redux";
+import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
 
-import { Card, Form, Button } from "react-bootstrap";
+import { Card, Form, Button } from 'react-bootstrap';
 
 import {
   updateEmail,
   updatePassword,
   signUp
-} from "../redux/actions/authActions.actions";
+} from '../redux/actions/authActions.actions';
 
 export class SignUp extends Component {
-  onUpdateEmail = event => {
+  onUpdateEmail = (event) => {
     this.props.updateEmail(event.target.value);
   };
 
-  onUpdatePassword = event => {
+  onUpdatePassword = (event) => {
     this.props.updatePassword(event.target.value);
   };
 
-  onSignUp = event => {
+  onSignUp = (event) => {
     event.preventDefault();
 
     this.props.signUp(this.props.history);
@@ -29,25 +29,25 @@ export class SignUp extends Component {
       <Fragment>
         <Card.Title>Sign Up</Card.Title>
         <Form onSubmit={this.onSignUp}>
-          <Form.Group controlId="formBasicEmail">
+          <Form.Group controlId='formBasicEmail'>
             <Form.Label>Email</Form.Label>
             <Form.Control
-              type="email"
-              placeholder="Enter email"
+              type='email'
+              placeholder='Enter email'
               onChange={this.onUpdateEmail}
               value={this.props.email}
             />
           </Form.Group>
-          <Form.Group controlId="formBasicPassword">
+          <Form.Group controlId='formBasicPassword'>
             <Form.Label>Password</Form.Label>
             <Form.Control
-              type="password"
-              placeholder="Password"
+              type='password'
+              placeholder='Password'
               onChange={this.onUpdatePassword}
               value={this.props.password}
             />
           </Form.Group>
-          <Button variant="primary" type="submit">
+          <Button variant='primary' type='submit'>
             Submit
           </Button>
         </Form>
@@ -56,7 +56,7 @@ export class SignUp extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   email: state.Auth.email,
   password: state.Auth.password
 });

@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk';
 import { AppState } from './Root';
 import { logout } from './redux/actions/authActions.actions';
-import { Dispatch, bindActionCreators } from 'redux';
+import { bindActionCreators } from 'redux';
 import { AuthActions } from './types/auth/auth.actions';
 
 interface LayoutProps {

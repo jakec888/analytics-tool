@@ -1,10 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { Form, Button, InputGroup, FormControl } from 'react-bootstrap';
-
-import { bindActionCreators } from 'redux';
-import { AppState } from '../Root';
-import { ThunkDispatch } from 'redux-thunk';
+import { Card, Form, Button, InputGroup, FormControl } from 'react-bootstrap';
 
 import {
   updateLink,
@@ -12,30 +8,16 @@ import {
   createLink
 } from '../redux/actions/selectedActions.actions';
 
-interface CreateLinkProps {
-  selectedLink: boolean;
-  userId: string;
-  title: string;
-  link: string;
-  updateLink(event?: any): any;
-  updateTitle(history?: any): any;
-  createLink(selectedLink: string, userId: string, history?: any): any;
-}
-
-interface CreateLinkState {}
-
-type Props = CreateLinkProps & CreateLinkStateProps & CreateLinkDispatchProps;
-
-export class CreateLink extends Component<Props, CreateLinkState> {
-  onUpdateTitle = (event: any) => {
+export class CreateLink extends Component {
+  onUpdateTitle = (event) => {
     this.props.updateTitle(event.target.value);
   };
 
-  onUpdateLink = (event: any) => {
+  onUpdateLink = (event) => {
     this.props.updateLink(event.target.value);
   };
 
-  onSubmitLink = (event: any) => {
+  onSubmitLink = (event) => {
     event.preventDefault();
     this.props.createLink(
       this.props.selectedLink,
@@ -80,34 +62,18 @@ export class CreateLink extends Component<Props, CreateLinkState> {
   }
 }
 
-interface CreateLinkStateProps {
-  selectedLink: boolean;
-  userId: string;
-  title: string;
-  link: string;
-}
-
-interface CreateLinkDispatchProps {
-  updateLink: (history?: any) => void;
-  updateTitle: (history?: any) => void;
-  createLink: (history?: any) => void;
-}
-
-const mapStateToProps = (state: AppState, ownProps: CreateLinkProps) => ({
+const mapStateToProps = (state) => ({
   selectedLink: state.Selected,
   userId: state.Auth.userId,
   title: state.Link.title,
   link: state.Link.link
 });
 
-const mapDispatchToProps = (
-  dispatch: ThunkDispatch<any, any, AppActions>,
-  ownProps: CreateLinkProps
-) => ({
-  updateLink: bindActionCreators(updateLink, dispatch),
-  updateTitle: bindActionCreators(updateTitle, dispatch),
-  createLink: bindActionCreators(createLink, dispatch)
-});
+const mapDispatchToProps = {
+  updateLink: updateLink,
+  updateTitle: updateTitle,
+  createLink: createLink
+};
 
 export default connect(
   mapStateToProps,

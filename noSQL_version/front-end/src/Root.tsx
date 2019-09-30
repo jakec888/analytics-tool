@@ -16,6 +16,8 @@ interface Props {
   };
 }
 
+export type AppState = ReturnType<typeof rootReducer>;
+
 export default ({ children, initialState = {} }: Props) => {
   const ReduxSaga = createSagaMiddleware();
 

@@ -2,17 +2,22 @@ import React, { Component, Fragment, ReactNode } from 'react';
 import { Navbar, Nav, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-
+import { ThunkDispatch } from 'redux-thunk';
+import { AppState } from './Root';
 import { logout } from './redux/actions/authActions.actions';
-
-interface Props {
+import { Dispatch, bindActionCreators } from 'redux';
+import { AuthActions } from './types/auth/auth.actions';
+interface LayoutProps {
   isLoggedIn: boolean;
   history?: any;
-  // logout(history?: any): () => void;
   logout(history?: any): any;
 }
 
-class Layout extends Component<Props> {
+interface LayoutState {}
+
+type Props = LayoutProps & LayoutStateProps & LayoutDispatchProps;
+
+class Layout extends Component<Props, LayoutState> {
   onLogoutUser = () => {
     this.props.logout(this.props.history);
   };
@@ -77,12 +82,23 @@ class Layout extends Component<Props> {
   }
 }
 
-const mapStateToProps = (state: any) => ({
+interface LayoutStateProps {
+  isLoggedIn: boolean;
+}
+
+interface LayoutDispatchProps {
+  logout: (history?: any) => void;
+}
+
+const mapStateToProps = (state: AppState, ownProps: LayoutProps): LayoutStateProps => ({
   isLoggedIn: state.Auth.isLoggedIn
 });
 
-const mapDispatchToProps = {
-  logout: logout
+const mapDispatchToProps = (
+  dispatch: ThunkDispatch<any, any, AuthActions>,
+  ownProps: LayoutProps
+): LayoutDispatchProps => {
+  logout: bindActionCreators(logout, dispatch);
 };
 
 export default connect(

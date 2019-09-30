@@ -8,16 +8,31 @@ import {
   createLink
 } from '../redux/actions/selectedActions.actions';
 
-export class CreateLink extends Component {
-  onUpdateTitle = (event) => {
+import { bindActionCreators } from 'redux';
+import { ThunkDispatch } from 'redux-thunk';
+import { AppState } from '../Root';
+import { SelectedActions } from '../types/selected/selected.actions';
+
+interface CreateLinkProps {
+  history?: any;
+  email: string;
+  password: string;
+}
+
+interface CreateLinkState {}
+
+type Props = CreateLinkProps & CreateLinkStateProps & CreateLinkDispatchProps;
+
+export class CreateLink extends Component<Props, CreateLinkState> {
+  onUpdateTitle = (event: any) => {
     this.props.updateTitle(event.target.value);
   };
 
-  onUpdateLink = (event) => {
+  onUpdateLink = (event: any) => {
     this.props.updateLink(event.target.value);
   };
 
-  onSubmitLink = (event) => {
+  onSubmitLink = (event: any) => {
     event.preventDefault();
     this.props.createLink(
       this.props.selectedLink,
@@ -62,18 +77,37 @@ export class CreateLink extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+interface CreateLinkStateProps {
+  selectedLink: string;
+  userId: string;
+  title: string;
+  link: string;
+}
+
+interface CreateLinkDispatchProps {
+  updateLink: (history?: any) => void;
+  updateTitle: (history?: any) => void;
+  createLink: (selectedLink: string, userId: string, istory?: any) => void;
+}
+
+const mapStateToProps = (
+  state: AppState,
+  ownProps: CreateLinkProps
+): CreateLinkStateProps => ({
   selectedLink: state.Selected,
   userId: state.Auth.userId,
   title: state.Link.title,
   link: state.Link.link
 });
 
-const mapDispatchToProps = {
-  updateLink: updateLink,
-  updateTitle: updateTitle,
-  createLink: createLink
-};
+const mapDispatchToProps = (
+  dispatch: ThunkDispatch<any, any, SelectedActions>,
+  ownProps: CreateLinkProps
+): CreateLinkDispatchProps => ({
+  updateLink: bindActionCreators(updateLink, dispatch),
+  updateTitle: bindActionCreators(updateTitle, dispatch),
+  createLink: bindActionCreators(createLink, dispatch)
+});
 
 export default connect(
   mapStateToProps,

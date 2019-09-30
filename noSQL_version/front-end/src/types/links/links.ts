@@ -1,3 +1,10 @@
+import { DataTypes } from './data';
+
 export interface LinksTypes {
-  sample: any;
+  _id: string;
+  redirectURL: string;
+  link: string;
+  title: string;
+  date: string;
+  data: DataTypes[];
 }

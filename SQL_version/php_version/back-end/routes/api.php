@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Http\Request;
+Use App\Links;
+Use App\Data;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,24 +15,31 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+// Route::get('link', function() {
+//   return Links::all();
+// });
+
+Route::get('links/{userId}', function($userId) {
+  return Links::find($userId);
 });
 
-Route::get('/', function (Request $request) {
-    $someArray = [
-        [
-          "name"   => "Jonathan Suh",
-          "gender" => "male"
-        ],
-        [
-          "name"   => "William Philbin",
-          "gender" => "male"
-        ],
-        [
-          "name"   => "Allison McKinnery",
-          "gender" => "female"
-        ]
-      ];
-    return $someArray;
+Route::post('link', function(Request $request) {
+  return Links::create($request->all);
 });
+
+// Route::put('link/{id}', function(Request $request, $id) {
+//   $links = Links::findOrFail($id);
+//   $links->update($request->all());
+
+//   return $links;
+// });
+
+// Route::delete('link/{id}', function($id) {
+//   Links::find($id)->delete();
+
+//   return 204;
+// });

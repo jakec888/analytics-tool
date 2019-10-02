@@ -12,11 +12,10 @@ import { bindActionCreators } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
 import { AppState } from '../Root';
 import { SelectedActions } from '../types/selected/selected.actions';
+import { LinkData } from '../types/links/link';
 
 interface CreateLinkProps {
   history?: any;
-  email: string;
-  password: string;
 }
 
 interface CreateLinkState {}
@@ -78,16 +77,16 @@ export class CreateLink extends Component<Props, CreateLinkState> {
 }
 
 interface CreateLinkStateProps {
-  selectedLink: string;
+  selectedLink: LinkData;
   userId: string;
   title: string;
   link: string;
 }
 
 interface CreateLinkDispatchProps {
-  updateLink: (history?: any) => void;
-  updateTitle: (history?: any) => void;
-  createLink: (selectedLink: string, userId: string, istory?: any) => void;
+  updateLink: (link: string) => void;
+  updateTitle: (title: string) => void;
+  createLink: (selectedLink: LinkData, userId: string, history?: any) => void;
 }
 
 const mapStateToProps = (

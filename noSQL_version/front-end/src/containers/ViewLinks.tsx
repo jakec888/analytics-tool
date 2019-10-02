@@ -10,12 +10,12 @@ import { bindActionCreators } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
 import { AppState } from '../Root';
 import { SelectedActions } from '../types/selected/selected.actions';
-import { LinksTypes } from '../types/links/links';
-import { DataTypes } from '../types/links/data';
+import { LinkData, DataTypes } from '../types/links/link';
+// import { DataTypes } from '../types/links/data';
 
 interface ViewLinksProps {
   history?: any;
-  links: LinksTypes[];
+  links: LinkData[];
 }
 
 interface ViewLinksState {}
@@ -27,7 +27,7 @@ export class ViewLinks extends Component<Props, ViewLinksState> {
     this.props.getLinks(this.props.userId);
   }
 
-  onViewLink = ({ _id, redirectURL, link, title, date, data }: LinksTypes) => {
+  onViewLink = ({ _id, redirectURL, link, title, date, data }: LinkData) => {
     this.props.selectLink(
       this.props.history,
       _id,
@@ -69,7 +69,7 @@ export class ViewLinks extends Component<Props, ViewLinksState> {
 
 interface ViewLinksStateProps {
   userId: string;
-  links: LinksTypes[];
+  links: LinkData[];
 }
 
 interface ViewLinksDispatchProps {

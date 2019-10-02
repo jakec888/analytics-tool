@@ -9,7 +9,6 @@ function App() {
   return (
     <Root>
       <BrowserRouter>
-        {/* https://medium.com/knerd/typescript-tips-series-proper-typing-of-react-redux-connected-components-eda058b6727d */}
         <Layout>
           <Router />
         </Layout>

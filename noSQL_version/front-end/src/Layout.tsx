@@ -9,11 +9,13 @@ import { bindActionCreators } from 'redux';
 import { AuthActions } from './types/auth/auth.actions';
 
 interface LayoutProps {
-  isLoggedIn: boolean;
   history?: any;
+  children: any;
 }
 
-interface LayoutState {}
+interface LayoutState {
+  isLoggedIn: boolean;
+}
 
 type Props = LayoutProps & LayoutStateProps & LayoutDispatchProps;
 

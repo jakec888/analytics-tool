@@ -3,24 +3,24 @@ import {
   UPDATE_TITLE,
   CREATE_LINK,
   SELECT_LINK,
-  GET_LINKS,
+  // GET_LINKS,
   CREATE_LINK_SUCCESS
-} from "../actions/selectedActions.actions";
+} from '../actions/selectedActions.actions';
 
 const initialState = {
-  _id: "",
-  redirectURL: "",
-  userId: "",
-  link: "",
-  title: "",
-  date: "",
+  _id: '',
+  redirectURL: '',
+  userId: '',
+  link: '',
+  title: '',
+  date: '',
   data: []
 };
 
-export default (state = initialState, { type, payload }) => {
+export default (state = initialState, { type, payload }: any) => {
   switch (type) {
-    case GET_LINKS:
-      return { ...state, links: payload.links };
+    // case GET_LINKS:
+    //   return { ...state, links: payload.links };
     case UPDATE_LINK:
       return { ...state, link: payload.link };
     case UPDATE_TITLE:

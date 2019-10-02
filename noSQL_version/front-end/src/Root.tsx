@@ -6,7 +6,7 @@ import createSagaMiddleware from 'redux-saga';
 import ReduxThunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-import rootReducer from './redux/rootReducers';
+import { rootReducer } from './redux/rootReducers';
 import rootSagas from './redux/rootSaga';
 
 interface Props {
@@ -25,11 +25,7 @@ export default ({ children, initialState = {} }: Props) => {
 
   const composeEnhancers = composeWithDevTools(applyMiddleware(...middlewares));
 
-  const store = createStore(
-    combineReducers(rootReducer),
-    initialState,
-    composeEnhancers
-  );
+  const store = createStore(rootReducer, initialState, composeEnhancers);
 
   ReduxSaga.run(rootSagas);
 

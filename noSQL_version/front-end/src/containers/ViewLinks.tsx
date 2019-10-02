@@ -6,13 +6,28 @@ import moment from 'moment';
 import { selectLink } from '../redux/actions/selectedActions.actions';
 import { getLinks } from '../redux/actions/linksActions.actions';
 
-export class ViewLinks extends Component {
+import { Link } from '../types/links/link';
+
+import { ThunkDispatch } from 'redux-thunk';
+import { AppActions } from '../types/rootType.actions';
+import { AppState } from '../redux/rootAppState';
+import { bindActionCreators } from 'redux';
+
+interface ViewLinksPageProps {
+  history?: any;
+}
+
+interface ViewLinksPageState {}
+
+type Props = ViewLinksPageProps & LinkStateProps & LinkDispatchProps;
+
+export class ViewLinks extends Component<Props, ViewLinksPageState> {
   componentDidMount() {
     this.props.getLinks(this.props.userId);
   }
 
-  onViewLink = ({ id, redirectURL, link, title, date, data }) => {
-    this.props.selectLink(this.props.history, id, redirectURL, link, title, date, data);
+  onViewLink = (selected: Link) => {
+    this.props.selectLink(this.props.history, selected);
   };
 
   render() {
@@ -20,9 +35,9 @@ export class ViewLinks extends Component {
       <Fragment>
         <ListGroup variant='flush'>
           {this.props.links
-            ? this.props.links.map((link) => {
+            ? this.props.links.map((link, index) => {
                 return (
-                  <ListGroup.Item key={link.id} onClick={() => this.onViewLink(link)}>
+                  <ListGroup.Item key={index} onClick={() => this.onViewLink(link)}>
                     <Row>
                       <Col sm={8}>{link.title}</Col>
                       <Col
@@ -43,15 +58,27 @@ export class ViewLinks extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+interface LinkStateProps {
+  userId: string;
+  links: Link[];
+}
+
+interface LinkDispatchProps {
+  getLinks: (userId: string) => void;
+  selectLink: (history: any, selected: Link) => void;
+}
+
+const mapStateToProps = (state: AppState): LinkStateProps => ({
   userId: state.Auth.userId,
-  links: state.Link.links
+  links: state.AllLinks.links
 });
 
-const mapDispatchToProps = {
-  getLinks: getLinks,
-  selectLink: selectLink
-};
+const mapDispatchToProps = (
+  dispatch: ThunkDispatch<any, any, AppActions>
+): LinkDispatchProps => ({
+  getLinks: bindActionCreators(getLinks, dispatch),
+  selectLink: bindActionCreators(selectLink, dispatch)
+});
 
 export default connect(
   mapStateToProps,

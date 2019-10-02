@@ -4,14 +4,14 @@ import {
   LOGIN_SUCCESS,
   UPDATE_EMAIL,
   UPDATE_PASSWORD
-} from "../actions/authActions.actions";
+} from '../actions/authActions.actions';
 
 const initialState = {
   idToken: null,
   userId: null,
   isLoggedIn: false,
-  email: "zapefol@app-expert.com",
-  password: "zapefol@app-expert.com"
+  email: 'zapefol@app-expert.com',
+  password: 'zapefol@app-expert.com'
 };
 
 export default (state = initialState, { type, payload }) => {

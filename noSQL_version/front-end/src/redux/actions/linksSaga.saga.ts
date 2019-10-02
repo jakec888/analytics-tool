@@ -1,8 +1,8 @@
-import { all, takeEvery, put, call } from "redux-saga/effects";
-import API from "../../api";
-import { GET_LINKS, getLinksSuccess } from "./linksActions.actions";
+import { all, takeEvery, put, call } from 'redux-saga/effects';
+import API from '../../api';
+import { GET_LINKS, getLinksSuccess } from './linksActions.actions';
 
-const onLinkRequest = userId => {
+const onLinkRequest = (userId) => {
   const request = API.get(`/api/links/${userId}/`);
   return request;
 };
@@ -15,9 +15,7 @@ export function* getLinksAsync({ payload }) {
 
   const request = yield call(onLinkRequest, userId);
 
-  const result = request.data.sort(
-    (a, b) => new Date(b.date) - new Date(a.date)
-  );
+  const result = request.data.sort((a, b) => new Date(b.date) - new Date(a.date));
 
   yield put(getLinksSuccess(result));
 }

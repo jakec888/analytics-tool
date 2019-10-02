@@ -1,9 +1,9 @@
-import React, { Component, Fragment } from "react";
-import { Navbar, Nav, Card } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
+import React, { Component, Fragment } from 'react';
+import { Navbar, Nav, Card } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-import { logout } from "./redux/actions/authActions.actions";
+import { logout } from './redux/actions/authActions.actions';
 
 class Layout extends Component {
   onLogoutUser = () => {
@@ -13,38 +13,38 @@ class Layout extends Component {
   render() {
     return (
       <div>
-        <Navbar bg="primary" variant="dark">
-          <Link to="/" className="navbar-dark navbar-brand">
+        <Navbar bg='primary' variant='dark'>
+          <Link to='/' className='navbar-dark navbar-brand'>
             Analytics
           </Link>
-          <Nav className="mr-auto">
+          <Nav className='mr-auto'>
             {this.props.isLoggedIn ? (
               <Fragment>
-                <Link to="/" className="nav-link">
+                <Link to='/' className='nav-link'>
                   Links
                 </Link>
-                <Link to="/create" className="nav-link">
+                <Link to='/create' className='nav-link'>
                   Create
                 </Link>
               </Fragment>
             ) : (
-              <Link to="/sign-up" className="nav-link">
+              <Link to='/sign-up' className='nav-link'>
                 Sign Up
               </Link>
             )}
           </Nav>
           {this.props.isLoggedIn ? (
             <Link
-              to="/"
-              style={{ color: "rgba(255,255,255,.5)", textDecoration: "none" }}
+              to='/'
+              style={{ color: 'rgba(255,255,255,.5)', textDecoration: 'none' }}
               onClick={this.onLogoutUser}
             >
               Logout
             </Link>
           ) : (
             <Link
-              to="/login"
-              style={{ color: "rgba(255,255,255,.5)", textDecoration: "none" }}
+              to='/login'
+              style={{ color: 'rgba(255,255,255,.5)', textDecoration: 'none' }}
             >
               Login
             </Link>
@@ -52,14 +52,14 @@ class Layout extends Component {
         </Navbar>
         <Card
           style={{
-            topHeight: "15px",
-            width: "85%",
-            minHeight: "300px",
-            height: "auto",
-            padding: "15px",
-            marginTop: "25px",
-            marginLeft: "auto",
-            marginRight: "auto"
+            topHeight: '15px',
+            width: '85%',
+            minHeight: '300px',
+            height: 'auto',
+            padding: '15px',
+            marginTop: '25px',
+            marginLeft: 'auto',
+            marginRight: 'auto'
           }}
         >
           <Card.Body>{this.props.children}</Card.Body>
@@ -69,7 +69,7 @@ class Layout extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   isLoggedIn: state.Auth.isLoggedIn
 });
 

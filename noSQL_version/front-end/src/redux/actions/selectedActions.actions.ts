@@ -1,16 +1,16 @@
-export const UPDATE_LINK = "UPDATE_LINK";
-export const UPDATE_TITLE = "UPDATE_TITLE";
-export const CREATE_LINK = "CREATE_LINK";
-export const SELECT_LINK = "SELECT_LINK";
-export const GET_LINKS = "GET_LINKS";
-export const CREATE_LINK_SUCCESS = "CREATE_LINK_SUCCESS";
+export const UPDATE_LINK = 'UPDATE_LINK';
+export const UPDATE_TITLE = 'UPDATE_TITLE';
+export const CREATE_LINK = 'CREATE_LINK';
+export const SELECT_LINK = 'SELECT_LINK';
+export const GET_LINKS = 'GET_LINKS';
+export const CREATE_LINK_SUCCESS = 'CREATE_LINK_SUCCESS';
 
-export const updateTitle = title => ({
+export const updateTitle = (title) => ({
   type: UPDATE_TITLE,
   payload: { title: title }
 });
 
-export const updateLink = link => ({
+export const updateLink = (link) => ({
   type: UPDATE_LINK,
   payload: { link: link }
 });
@@ -20,7 +20,7 @@ export const createLink = (selectedLink, userId, history) => ({
   payload: { selectedLink, userId, history }
 });
 
-export const createLinkSuccess = payload => ({
+export const createLinkSuccess = (payload) => ({
   type: CREATE_LINK_SUCCESS,
   payload: payload
 });
@@ -52,16 +52,8 @@ export const createLinkSuccess = payload => ({
 //   };
 // };
 
-export const selectLink = (
-  history,
-  id,
-  redirectURL,
-  link,
-  title,
-  date,
-  data
-) => {
-  return dispatch => {
+export const selectLink = (history, id, redirectURL, link, title, date, data) => {
+  return (dispatch) => {
     dispatch({
       type: SELECT_LINK,
       payload: {
@@ -73,6 +65,6 @@ export const selectLink = (
         data
       }
     });
-    history.push("/view");
+    history.push('/view');
   };
 };

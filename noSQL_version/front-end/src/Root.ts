@@ -1,13 +1,13 @@
-import React from "react";
-import { Provider } from "react-redux";
-import { createStore, applyMiddleware } from "redux";
-import { combineReducers } from "redux";
-import createSagaMiddleware from "redux-saga";
-import ReduxThunk from "redux-thunk";
-import { composeWithDevTools } from "redux-devtools-extension";
+import React from 'react';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import { combineReducers } from 'redux';
+import createSagaMiddleware from 'redux-saga';
+import ReduxThunk from 'redux-thunk';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
-import rootReducer from "./redux/rootReducers";
-import rootSagas from "./redux/rootSaga";
+import rootReducer from './redux/rootReducers';
+import rootSagas from './redux/rootSaga';
 
 export default ({ children, initialState = {} }) => {
   const ReduxSaga = createSagaMiddleware();

@@ -1,9 +1,9 @@
-import { all, takeEvery, put, call } from "redux-saga/effects";
-import API from "../../api";
-import { CREATE_LINK, createLinkSuccess } from "./selectedActions.actions";
+import { all, takeEvery, put, call } from 'redux-saga/effects';
+import API from '../../api';
+import { CREATE_LINK, createLinkSuccess } from './selectedActions.actions';
 
-const onLinkRequest = data => {
-  const request = API.post("/api/link/", data);
+const onLinkRequest = (data) => {
+  const request = API.post('/api/link/', data);
   return request;
 };
 
@@ -27,7 +27,7 @@ export function* createLinkAsync({ payload }) {
 
   yield put(createLinkSuccess(result));
 
-  history.push("/view");
+  history.push('/view');
 }
 
 /* 

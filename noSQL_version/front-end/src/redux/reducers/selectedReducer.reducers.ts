@@ -5,15 +5,15 @@ import {
   SELECT_LINK,
   GET_LINKS,
   CREATE_LINK_SUCCESS
-} from "../actions/selectedActions.actions";
+} from '../actions/selectedActions.actions';
 
 const initialState = {
-  id: "",
-  redirectURL: "",
-  userId: "",
-  link: "",
-  title: "",
-  date: "",
+  id: '',
+  redirectURL: '',
+  userId: '',
+  link: '',
+  title: '',
+  date: '',
   data: []
 };
 

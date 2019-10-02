@@ -1,9 +1,9 @@
-import React from "react";
-import { BrowserRouter } from "react-router-dom";
+import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 
-import Root from "./Root";
-import Router from "./Router";
-import Layout from "./Layout";
+import Root from './Root';
+import Router from './Router';
+import Layout from './Layout';
 
 function App() {
   return (

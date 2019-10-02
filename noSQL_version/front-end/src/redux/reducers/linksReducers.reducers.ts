@@ -1,4 +1,4 @@
-import { GET_LINKS, GET_LINKS_SUCCESS } from "../actions/linksActions.actions";
+import { GET_LINKS, GET_LINKS_SUCCESS } from '../actions/linksActions.actions';
 
 const initialState = {
   links: []

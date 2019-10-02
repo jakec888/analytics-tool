@@ -1,3 +1,5 @@
+import { Link } from '../../types/links/link';
+
 import {
   UPDATE_LINK,
   UPDATE_TITLE,
@@ -23,7 +25,7 @@ export interface updateLinkInterface {
 export interface createLinkInterface {
   type: typeof CREATE_LINK;
   payload: {
-    selectedLink: string;
+    selectedLink: Link;
     userId: string;
     history: any;
   };

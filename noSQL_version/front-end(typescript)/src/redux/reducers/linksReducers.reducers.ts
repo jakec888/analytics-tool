@@ -3,7 +3,7 @@ import { LinksActionTypes } from '../../types/links/links.actions';
 
 import { GET_LINKS, GET_LINKS_SUCCESS } from '../actions/linksActions.actions';
 
-const initialState: InitLink = {
+const initialState = {
   links: []
 };
 

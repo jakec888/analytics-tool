@@ -2,7 +2,7 @@ import { Dispatch } from 'redux';
 
 import { AppState } from '../rootAppState';
 import { AppActions } from '../../types/rootType.actions';
-// import { Link } from '../../types/links/link';
+import { Link } from '../../types/links/link';
 
 export const UPDATE_LINK = 'UPDATE_LINK';
 export const UPDATE_TITLE = 'UPDATE_TITLE';
@@ -21,7 +21,7 @@ export const updateLink = (link: string): AppActions => ({
 });
 
 export const createLink = (
-  selectedLink: string,
+  selectedLink: Link,
   userId: string,
   history: any
 ): AppActions => ({

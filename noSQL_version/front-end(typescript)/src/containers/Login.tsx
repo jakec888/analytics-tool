@@ -3,14 +3,13 @@ import { connect } from 'react-redux';
 
 import { Card, Form, Button } from 'react-bootstrap';
 
-import { ThunkDispatch } from 'redux-thunk';
-
 import {
   updateEmail,
   updatePassword,
   login
 } from '../redux/actions/authActions.actions';
 
+import { ThunkDispatch } from 'redux-thunk';
 import { AppActions } from '../types/rootType.actions';
 import { AppState } from '../redux/rootAppState';
 import { bindActionCreators } from 'redux';
@@ -85,12 +84,6 @@ const mapStateToProps = (state: AppState): LinkStateProps => ({
   email: state.Auth.email,
   password: state.Auth.password
 });
-
-// const mapDispatchToProps = {
-//   updateEmail: updateEmail,
-//   updatePassword: updatePassword,
-//   login: login
-// };
 
 const mapDispatchToProps = (
   dispatch: ThunkDispatch<any, any, AppActions>

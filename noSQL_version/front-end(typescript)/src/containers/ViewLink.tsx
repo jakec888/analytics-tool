@@ -6,7 +6,16 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 import moment from 'moment';
 
-export class ViewLink extends Component {
+import { AppState } from '../redux/rootAppState';
+import { DataTypes } from '../types/links/link';
+
+interface ViewLinkPageProps {}
+
+interface ViewLinkPageState {}
+
+type Props = ViewLinkPageProps & LinkStateProps;
+
+export class ViewLink extends Component<Props, ViewLinkPageState> {
   render() {
     return (
       <Fragment>
@@ -85,7 +94,15 @@ export class ViewLink extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+interface LinkStateProps {
+  link: string;
+  title: string;
+  redirectURL: string;
+  date: string;
+  data: DataTypes[];
+}
+
+const mapStateToProps = (state: AppState): LinkStateProps => ({
   link: state.Selected.link,
   title: state.Selected.title,
   redirectURL: state.Selected.redirectURL,

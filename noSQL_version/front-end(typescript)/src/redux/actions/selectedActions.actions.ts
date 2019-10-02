@@ -34,16 +34,10 @@ export const createLinkSuccess = (payload: any): AppActions => ({
   payload: payload
 });
 
-export const selectLink = (
-  history: any,
-  _id: string,
-  redirectURL: string,
-  link: string,
-  title: string,
-  date: string,
-  data: any
-) => {
+export const selectLink = (history: any, selected: Link) => {
   return (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
+    const { _id, redirectURL, link, title, date, data } = selected;
+
     dispatch({
       type: SELECT_LINK,
       payload: {

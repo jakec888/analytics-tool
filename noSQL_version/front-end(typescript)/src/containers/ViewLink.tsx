@@ -6,23 +6,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 import moment from 'moment';
 
-// import { bindActionCreators } from 'redux';
-// import { ThunkDispatch } from 'redux-thunk';
-import { AppState } from '../Root';
-import { DataTypes } from '../types/links/data';
-
-interface ViewLinkProps {
-  history?: any;
-  email: string;
-  password: string;
-}
-
-interface ViewLinkState {}
-
-// type Props = ViewLinkProps & ViewLinkStateProps & ViewLinkDispatchProps;
-type Props = ViewLinkProps & ViewLinkStateProps;
-
-export class ViewLink extends Component<Props, ViewLinkState> {
+export class ViewLink extends Component {
   render() {
     return (
       <Fragment>
@@ -75,11 +59,11 @@ export class ViewLink extends Component<Props, ViewLinkState> {
         </InputGroup>
         <Bar
           data={{
-            labels: this.props.data.map((data: any) => data.date),
+            labels: this.props.data.map((data) => data.date),
             datasets: [
               {
                 label: 'Clicks',
-                data: this.props.data.map((data: any) => data.clicks),
+                data: this.props.data.map((data) => data.clicks),
                 backgroundColor: '#147afe'
               }
             ]
@@ -101,24 +85,7 @@ export class ViewLink extends Component<Props, ViewLinkState> {
   }
 }
 
-interface ViewLinkStateProps {
-  link: string;
-  title: string;
-  redirectURL: string;
-  date: string;
-  data: DataTypes[];
-}
-
-// interface ViewLinkDispatchProps {
-//   updateEmail: (history?: any) => void;
-//   updatePassword: (history?: any) => void;
-//   ViewLink: (history?: any) => void;
-// }
-
-const mapStateToProps = (
-  state: AppState,
-  ownProps: ViewLinkProps
-): ViewLinkStateProps => ({
+const mapStateToProps = (state) => ({
   link: state.Selected.link,
   title: state.Selected.title,
   redirectURL: state.Selected.redirectURL,

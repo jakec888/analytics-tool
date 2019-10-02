@@ -54,5 +54,3 @@ export type AuthActionTypes =
   | signUpInterface
   | loginInterface
   | logoutInterface;
-
-// export type AuthActions = AuthActionTypes;

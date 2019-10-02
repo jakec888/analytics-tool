@@ -54,5 +54,3 @@ export type SelectedActionTypes =
   | createLinkInterface
   | createLinkSuccessInterface
   | selectLinkInterface;
-
-export type SelectedActions = SelectedActionTypes;

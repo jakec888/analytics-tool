@@ -1,13 +1,16 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
-import { combineReducers } from 'redux';
 import createSagaMiddleware from 'redux-saga';
-import ReduxThunk from 'redux-thunk';
+// import ReduxThunk from 'redux-thunk';
+import thunk, { ThunkMiddleware } from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import { rootReducer } from './redux/rootReducers';
 import rootSagas from './redux/rootSaga';
+
+import { AppState } from './redux/rootAppState';
+import { AppActions } from './types/rootType.actions';
 
 interface Props {
   children: any;
@@ -16,12 +19,10 @@ interface Props {
   };
 }
 
-export type AppState = ReturnType<typeof rootReducer>;
-
 export default ({ children, initialState = {} }: Props) => {
   const ReduxSaga = createSagaMiddleware();
 
-  const middlewares = [ReduxThunk, ReduxSaga];
+  const middlewares = [thunk as ThunkMiddleware<AppState, AppActions>, ReduxSaga];
 
   const composeEnhancers = composeWithDevTools(applyMiddleware(...middlewares));
 

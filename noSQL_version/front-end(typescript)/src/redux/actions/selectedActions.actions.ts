@@ -1,7 +1,8 @@
 import { Dispatch } from 'redux';
-import { AppState } from '../../Root';
-import { SelectedActions } from '../../types/selected/selected.actions';
-import { LinksTypes } from '../../types/links/links';
+
+import { AppState } from '../rootAppState';
+import { AppActions } from '../../types/rootType.actions';
+// import { Link } from '../../types/links/link';
 
 export const UPDATE_LINK = 'UPDATE_LINK';
 export const UPDATE_TITLE = 'UPDATE_TITLE';
@@ -9,26 +10,26 @@ export const CREATE_LINK = 'CREATE_LINK';
 export const SELECT_LINK = 'SELECT_LINK';
 export const CREATE_LINK_SUCCESS = 'CREATE_LINK_SUCCESS';
 
-export const updateTitle = (title: string): SelectedActions => ({
+export const updateTitle = (title: string): AppActions => ({
   type: UPDATE_TITLE,
   payload: { title: title }
 });
 
-export const updateLink = (link: string): SelectedActions => ({
+export const updateLink = (link: string): AppActions => ({
   type: UPDATE_LINK,
   payload: { link: link }
 });
 
 export const createLink = (
-  selectedLink: LinksTypes,
+  selectedLink: string,
   userId: string,
   history: any
-): SelectedActions => ({
+): AppActions => ({
   type: CREATE_LINK,
   payload: { selectedLink, userId, history }
 });
 
-export const createLinkSuccess = (payload: any): SelectedActions => ({
+export const createLinkSuccess = (payload: any): AppActions => ({
   type: CREATE_LINK_SUCCESS,
   payload: payload
 });
@@ -42,7 +43,7 @@ export const selectLink = (
   date: string,
   data: any
 ) => {
-  return (dispatch: Dispatch<SelectedActions>, getState: () => AppState) => {
+  return (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
     dispatch({
       type: SELECT_LINK,
       payload: {

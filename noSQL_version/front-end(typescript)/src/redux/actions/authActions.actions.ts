@@ -1,8 +1,8 @@
 import { Auth } from 'aws-amplify';
 
 import { Dispatch } from 'redux';
-import { AppState } from '../../Root';
-import { AuthActions } from '../../types/auth/auth.actions';
+import { AppState } from '../rootAppState';
+import { AppActions } from '../../types/rootType.actions';
 
 export const LOGOUT = 'LOGOUT';
 export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
@@ -11,7 +11,7 @@ export const UPDATE_EMAIL = 'UPDATE_EMAIL';
 export const UPDATE_PASSWORD = 'UPDATE_PASSWORD';
 
 export const updateEmail = (email: string) => {
-  return (dispatch: Dispatch<AuthActions>, getState: () => AppState) => {
+  return (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
     dispatch({
       type: UPDATE_EMAIL,
       payload: { email: email }
@@ -20,7 +20,7 @@ export const updateEmail = (email: string) => {
 };
 
 export const updatePassword = (password: string) => {
-  return (dispatch: Dispatch<AuthActions>, getState: () => AppState) => {
+  return (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
     dispatch({
       type: UPDATE_PASSWORD,
       payload: { password: password }
@@ -29,7 +29,7 @@ export const updatePassword = (password: string) => {
 };
 
 export const signUp = (history: any) => {
-  return (dispatch: Dispatch<AuthActions>, getState: () => AppState) => {
+  return (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
     const userCred = getState().Auth;
     Auth.signUp({
       username: userCred.email,
@@ -50,7 +50,7 @@ export const signUp = (history: any) => {
 };
 
 export const login = (history: any) => {
-  return (dispatch: Dispatch<AuthActions>, getState: () => AppState) => {
+  return (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
     const userCred = getState().Auth;
     Auth.signIn({
       username: userCred.email,
@@ -77,7 +77,7 @@ export const login = (history: any) => {
 };
 
 export const logout = (history: any) => {
-  return (dispatch: Dispatch<AuthActions>, getState: () => AppState) => {
+  return (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
     Auth.signOut()
       .then((data) => {
         dispatch({

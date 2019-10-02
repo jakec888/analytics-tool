@@ -6,21 +6,24 @@ import createSagaMiddleware from 'redux-saga';
 import ReduxThunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-import rootReducer from './redux/rootReducers';
+import { rootReducer } from './redux/rootReducers';
 import rootSagas from './redux/rootSaga';
 
-export default ({ children, initialState = {} }) => {
+interface Props {
+  children: any;
+  initialState?: {
+    [value: string]: any;
+  };
+}
+
+export default ({ children, initialState = {} }: Props) => {
   const ReduxSaga = createSagaMiddleware();
 
   const middlewares = [ReduxThunk, ReduxSaga];
 
   const composeEnhancers = composeWithDevTools(applyMiddleware(...middlewares));
 
-  const store = createStore(
-    combineReducers(rootReducer),
-    initialState,
-    composeEnhancers
-  );
+  const store = createStore(rootReducer, initialState, composeEnhancers);
 
   ReduxSaga.run(rootSagas);
 

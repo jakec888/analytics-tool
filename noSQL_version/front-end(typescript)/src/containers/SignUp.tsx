@@ -9,31 +9,16 @@ import {
   signUp
 } from '../redux/actions/authActions.actions';
 
-import { bindActionCreators } from 'redux';
-import { ThunkDispatch } from 'redux-thunk';
-import { AppState } from '../Root';
-import { AuthActions } from '../types/auth/auth.actions';
-
-interface SignUpProps {
-  history?: any;
-  email: string;
-  password: string;
-}
-
-interface SignUpState {}
-
-type Props = SignUpProps & SignUpStateProps & SignUpDispatchProps;
-
-export class SignUp extends Component<Props, SignUpState> {
-  onUpdateEmail = (event: any) => {
+export class SignUp extends Component {
+  onUpdateEmail = (event) => {
     this.props.updateEmail(event.target.value);
   };
 
-  onUpdatePassword = (event: any) => {
+  onUpdatePassword = (event) => {
     this.props.updatePassword(event.target.value);
   };
 
-  onSignUp = (event: any) => {
+  onSignUp = (event) => {
     event.preventDefault();
 
     this.props.signUp(this.props.history);
@@ -71,30 +56,16 @@ export class SignUp extends Component<Props, SignUpState> {
   }
 }
 
-interface SignUpStateProps {
-  email: string;
-  password: string;
-}
-
-interface SignUpDispatchProps {
-  updateEmail: (history?: any) => void;
-  updatePassword: (history?: any) => void;
-  signUp: (history?: any) => void;
-}
-
-const mapStateToProps = (state: AppState, ownProps: SignUpProps): SignUpStateProps => ({
+const mapStateToProps = (state) => ({
   email: state.Auth.email,
   password: state.Auth.password
 });
 
-const mapDispatchToProps = (
-  dispatch: ThunkDispatch<any, any, AuthActions>,
-  ownProps: SignUpProps
-): SignUpDispatchProps => ({
-  updateEmail: bindActionCreators(updateEmail, dispatch),
-  updatePassword: bindActionCreators(updatePassword, dispatch),
-  signUp: bindActionCreators(signUp, dispatch)
-});
+const mapDispatchToProps = {
+  updateEmail: updateEmail,
+  updatePassword: updatePassword,
+  signUp: signUp
+};
 
 export default connect(
   mapStateToProps,

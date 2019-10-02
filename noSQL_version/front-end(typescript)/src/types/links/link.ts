@@ -3,7 +3,7 @@ export interface DataTypes {
   clicks: number;
 }
 
-export interface LinkData {
+export interface Link {
   _id: string;
   redirectURL: string;
   link: string;
@@ -12,6 +12,6 @@ export interface LinkData {
   data: DataTypes[];
 }
 
-export interface LinksType {
-  links: LinkData[];
+export interface InitLink {
+  links: Link[];
 }

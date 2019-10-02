@@ -3,10 +3,11 @@ import { Navbar, Nav, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk';
-import { AppState } from './Root';
 import { logout } from './redux/actions/authActions.actions';
 import { bindActionCreators } from 'redux';
-import { AuthActions } from './types/auth/auth.actions';
+
+import { AppState } from './redux/rootAppState';
+import { AppActions } from './types/rootType.actions';
 
 interface LayoutProps {
   history?: any;
@@ -97,7 +98,7 @@ const mapStateToProps = (state: AppState, ownProps: LayoutProps): LayoutStatePro
 });
 
 const mapDispatchToProps = (
-  dispatch: ThunkDispatch<any, any, AuthActions>,
+  dispatch: ThunkDispatch<any, any, AppActions>,
   ownProps: LayoutProps
 ): LayoutDispatchProps => ({
   logout: bindActionCreators(logout, dispatch)

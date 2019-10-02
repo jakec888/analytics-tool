@@ -3,22 +3,36 @@ import { connect } from 'react-redux';
 
 import { Card, Form, Button } from 'react-bootstrap';
 
+import { ThunkDispatch } from 'redux-thunk';
+
 import {
   updateEmail,
   updatePassword,
   login
 } from '../redux/actions/authActions.actions';
 
-export class Login extends Component {
-  onUpdateEmail = (event) => {
+import { AppActions } from '../types/rootType.actions';
+import { AppState } from '../redux/rootAppState';
+import { bindActionCreators } from 'redux';
+
+interface LoginPageProps {
+  history?: any;
+}
+
+interface LoginPageState {}
+
+type Props = LoginPageProps & LinkStateProps & LinkDispatchProps;
+
+export class Login extends Component<Props, LoginPageState> {
+  onUpdateEmail = (event: any) => {
     this.props.updateEmail(event.target.value);
   };
 
-  onUpdatePassword = (event) => {
+  onUpdatePassword = (event: any) => {
     this.props.updatePassword(event.target.value);
   };
 
-  onLogin = (event) => {
+  onLogin = (event: any) => {
     event.preventDefault();
 
     this.props.login(this.props.history);
@@ -56,16 +70,35 @@ export class Login extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+interface LinkStateProps {
+  email: string;
+  password: string;
+}
+
+interface LinkDispatchProps {
+  updateEmail: (e: string) => void;
+  updatePassword: (e: string) => void;
+  login: (history: any) => void;
+}
+
+const mapStateToProps = (state: AppState): LinkStateProps => ({
   email: state.Auth.email,
   password: state.Auth.password
 });
 
-const mapDispatchToProps = {
-  updateEmail: updateEmail,
-  updatePassword: updatePassword,
-  login: login
-};
+// const mapDispatchToProps = {
+//   updateEmail: updateEmail,
+//   updatePassword: updatePassword,
+//   login: login
+// };
+
+const mapDispatchToProps = (
+  dispatch: ThunkDispatch<any, any, AppActions>
+): LinkDispatchProps => ({
+  updateEmail: bindActionCreators(updateEmail, dispatch),
+  updatePassword: bindActionCreators(updatePassword, dispatch),
+  login: bindActionCreators(login, dispatch)
+});
 
 export default connect(
   mapStateToProps,

@@ -17,7 +17,7 @@ links shortner that tracks created links clicks.
 #### Front End
 
 - AWS cognito; authentication
-- React JS (ES6+) - **_Typescript_** _(noSQL Version Only - almost complete)_
+- React JS (ES6+) + Typescript
 - React Bootstrap
 - Chart JS
 - Axios

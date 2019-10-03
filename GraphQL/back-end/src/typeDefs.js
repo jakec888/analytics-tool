@@ -23,13 +23,10 @@ export const typeDefs = gql`
 
   type Mutation {
     createLink(
-      id: ID!
       userId: String!,
-      redirectId: String!,
-      redirectURL: String!,
       link: String!,
       title: String!,
       date: String!
-    ): Link!
+    ): Link
   }
 `;

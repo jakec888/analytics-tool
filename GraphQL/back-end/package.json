@@ -20,6 +20,7 @@
     "mongoose": "^5.7.3"
   },
   "dependencies": {
-    "apollo-server-express": "^2.9.4"
+    "apollo-server-express": "^2.9.4",
+    "uuid": "^3.3.3"
   }
 }

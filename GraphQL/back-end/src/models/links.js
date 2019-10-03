@@ -8,12 +8,7 @@ export const Links = mongoose.model(
     redirectURL: String,
     link: String,
     title: String,
-    date: String,
-    data: [
-      {
-        clicks: Number,
-        date: String
-      }
-    ] 
+    date: String
+    // data: [] 
   }
 );

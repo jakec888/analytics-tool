@@ -2,24 +2,28 @@ import { gql } from "apollo-server-express";
 
 export const typeDefs = gql`
   type Query {
-    links: [Link!]!
+    links: [Link]!
   }
+
   type Link {
     id: ID!
     userId: String!,
     redirectId: String!,
     redirectURL: String!,
     link: String!,
-    title: String!,
-    date: [],
+    title: String!
+    # date: [],
   }
+
   type Mutation {
     createLink(
+      id: ID!
       userId: String!,
       redirectId: String!,
       redirectURL: String!,
       link: String!,
-      title: String!,
+      title: String!
+      # date: [],
     ): Link!
   }
 `;

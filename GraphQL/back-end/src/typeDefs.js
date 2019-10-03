@@ -1,8 +1,9 @@
 import { gql } from "apollo-server-express";
 
 export const typeDefs = gql`
-  type Query {
-    links: [Link]!
+  type Data {
+    clicks: Int,
+    date: String
   }
 
   type Link {
@@ -12,7 +13,12 @@ export const typeDefs = gql`
     redirectURL: String!,
     link: String!,
     title: String!,
-    date: String!
+    date: String!,
+    data: [Data]
+  }
+
+  type Query {
+    getLinks(userId: String!): [Link]
   }
 
   type Mutation {

@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
-export const Links = mongoose.model(
-  "Links", 
+export const Link = mongoose.model(
+  "Link", 
   {   
     userId: String,
     redirectId: String,

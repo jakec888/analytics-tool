@@ -14,12 +14,14 @@ const runServer = async () => {
 
   server.applyMiddleware({ app });
 
-  await mongoose.connect("mongodb://localhost:27017/graphqlbitly", {
-    useNewUrlParser: true
-  });
+  await mongoose.connect("mongodb://localhost:27017/bitlyclone",
+    {
+      useNewUrlParser: true
+    }
+  );
 
-  app.listen({ port: 4000 }, () =>
-    console.log(`GraphQL Server: http://localhost:4000${server.graphqlPath}`)
+  app.listen({ port: 3001 }, () =>
+    console.log(`GraphQL Server: http://localhost:3001${server.graphqlPath}`)
   );
 };
 

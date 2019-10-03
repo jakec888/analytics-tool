@@ -9,6 +9,6 @@ export const Links = mongoose.model(
     link: String,
     title: String,
     date: String,
-    data: [] 
+    data: []
   }
 );

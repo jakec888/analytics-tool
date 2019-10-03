@@ -12,7 +12,7 @@ export const typeDefs = gql`
     redirectURL: String!,
     link: String!,
     title: String!
-    # date: [],
+    # date: []
   }
 
   type Mutation {

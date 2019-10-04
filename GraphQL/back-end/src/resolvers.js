@@ -11,6 +11,8 @@ export const resolvers = {
       const protocol = req.protocol
       const host = req.headers.host
       const redirectId = uuid.v4()
+
+      console.log(redirectId)
     
       const redirectURL = `${protocol}://${host}/redirect/${redirectId}`
 

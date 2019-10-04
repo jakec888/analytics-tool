@@ -16,7 +16,8 @@ const runServer = async () => {
 
   await mongoose.connect("mongodb://localhost:27017/bitlyclone",
     {
-      useNewUrlParser: true
+      useNewUrlParser: true,
+      useUnifiedTopology: true
     }
   );
 

@@ -1,4 +1,4 @@
-import { uuid } from "uuid";
+import uuid from "uuid";
 import { Link } from "./models/link";
 
 export const resolvers = {
@@ -8,13 +8,14 @@ export const resolvers = {
   Mutation: {
     createLink: async (_, { userId, link, title, date }) => {
 
-      const protocol = req.protocol
-      const host = req.headers.host
+      // const protocol = req.protocol
+      // const host = req.headers.host
       const redirectId = uuid.v4()
 
       console.log(redirectId)
     
-      const redirectURL = `${protocol}://${host}/redirect/${redirectId}`
+      // const redirectURL = `${protocol}://${host}/redirect/${redirectId}`
+      const redirectURL = `http://localhost:3001/redirect/${redirectId}`
 
       const newLink = new Link({ 
         redirectId,
@@ -22,8 +23,7 @@ export const resolvers = {
         userId,
         link,
         title,
-        date,
-        data: []
+        date
       });
       await newLink.save();
       return newLink;

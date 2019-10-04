@@ -2,7 +2,7 @@ import { gql } from "apollo-server-express";
 
 export const typeDefs = gql`
   type Data {
-    clicks: Number,
+    clicks: Int,
     date: String
   }
 

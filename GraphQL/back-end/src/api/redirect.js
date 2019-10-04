@@ -1,5 +1,5 @@
 import express from 'express'
-import Links from '../models/link'
+import { Link } from '../models/link'
 
 const router = express.Router()
 
@@ -8,13 +8,15 @@ router.get('/test', (req, res) => {
 })
 
 router.get('/:redirectId', async (req, res) => {
+  // if date does not exists add date and 1 clock
+  // else find date and increment one click
   const date = new Date()
 
   const today = `${date.getMonth()}/${date.getDay()}/${date.getFullYear()}`
 
-  const redirect = await Links.findOne({ redirectId: req.params.redirectId })
+  const redirect = await Link.findOne({ redirectId: req.params.redirectId })
 
-  await redirect.data.some(item => item.date === today) ? (Links.findOneAndUpdate(
+  await redirect.data.some(item => item.date === today) ? (Link.findOneAndUpdate(
     {
       redirectId: req.params.redirectId,
       'data.date': today
@@ -22,7 +24,7 @@ router.get('/:redirectId', async (req, res) => {
     { $inc: { 'data.$.clicks': 1 } }
   ).then(result => {
     res.redirect(result.link)
-  })) : (Links.findOneAndUpdate(
+  })) : (Link.findOneAndUpdate(
     { redirectId: req.params.redirectId },
     { data: { date: today, clicks: 1 } }
   ).then(result => {
@@ -30,5 +32,4 @@ router.get('/:redirectId', async (req, res) => {
   }))
 })
 
-// module.exports = router
 export default router

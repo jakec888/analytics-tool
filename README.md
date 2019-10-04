@@ -30,6 +30,11 @@ links shortner that tracks created links clicks.
 - Jest
 - Enzyme
 
+#### GraphQL [In Progress]
+
+- Node JS
+- Express JS
+
 #### Back End (NoSQL)
 
 - Node JS

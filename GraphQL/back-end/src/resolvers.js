@@ -7,15 +7,14 @@ export const resolvers = {
   },
   Mutation: {
     createLink: async (_, { userId, link, title, date }) => {
+      const protocol = 'http'
+      const host = 'localhost:3001'
 
-      // const protocol = req.protocol
-      // const host = req.headers.host
       const redirectId = uuid.v4()
 
       console.log(redirectId)
     
-      // const redirectURL = `${protocol}://${host}/redirect/${redirectId}`
-      const redirectURL = `http://localhost:3001/redirect/${redirectId}`
+      const redirectURL = `${protocol}://${host}/redirect/${redirectId}`
 
       const newLink = new Link({ 
         redirectId,

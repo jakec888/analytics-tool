@@ -7,7 +7,12 @@ const linkSchema = mongoose.Schema({
   link: String,
   title: String,
   date: String,
-  data: []
+  data: [
+    {
+      clicks: Number,
+      date: String
+    }
+  ]
 })
 
 

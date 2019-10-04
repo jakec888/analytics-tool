@@ -7,7 +7,7 @@ export const typeDefs = gql`
   }
 
   type Link {
-    id: ID!
+    id: ID!,
     userId: String!,
     redirectId: String!,
     redirectURL: String!,

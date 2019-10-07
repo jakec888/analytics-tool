@@ -13,10 +13,11 @@ import { GET_LINKS, getLinksSuccess } from './linksActions.actions';
 
 const onLinkRequest = (userId: string) => {
   console.log('making request!');
+  console.log(`user id: ${userId}`);
   const request = client.query({
     query: gql`
       {
-        getLinks(userId: ${userId}) {
+        getLinks(userId: "65ce5dad-85df-4355-94f5-2669d8fce4de") {
           id
           userId
           redirectId
@@ -32,7 +33,6 @@ const onLinkRequest = (userId: string) => {
       }
     `
   });
-  console.log(request);
   return request;
 };
 
@@ -44,11 +44,14 @@ export function* getLinksAsync({ payload }: any) {
 
   const request = yield call(onLinkRequest, userId);
 
+  console.log('Finished!');
+  console.log(request);
+
   // const result: any = request.data.sort(
   //   (a: any, b: any): any => new Date(b.date).getTime() - new Date(a.date).getTime()
   // );
 
-  const result: any = request.data;
+  const result: any = request.data.getLinks;
 
   yield put(getLinksSuccess(result));
 }

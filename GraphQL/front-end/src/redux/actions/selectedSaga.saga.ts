@@ -1,9 +1,36 @@
 import { all, takeEvery, put, call } from 'redux-saga/effects';
-import API from '../../api';
+
+// import API from '../../api';
+import { client } from '../../api';
+import gql from 'graphql-tag';
+
 import { CREATE_LINK, createLinkSuccess } from './selectedActions.actions';
 
+// const onLinkRequest = (data: any) => {
+//   const request = API.post('/api/link', data);
+//   return request;
+// };
+
 const onLinkRequest = (data: any) => {
-  const request = API.post('/api/link', data);
+  const request = client.query({
+    query: gql`
+      {
+        getLinks(data: ${data}) {
+          id
+          userId
+          redirectId
+          redirectURL
+          link
+          title
+          date
+          data {
+            clicks
+            date
+          }
+        }
+      }
+    `
+  });
   return request;
 };
 

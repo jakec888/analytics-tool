@@ -2,24 +2,23 @@ import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 
 import { ApolloProvider } from 'react-apollo';
+import { client } from './api';
 
 import Root from './Root';
 import Router from './Router';
 import Layout from './Layout';
 
-import { client } from './api';
-
 function App() {
   return (
-    <ApolloProvider client={client}>
-      <Root>
+    <Root>
+      <ApolloProvider client={client}>
         <BrowserRouter>
           <Layout>
             <Router />
           </Layout>
         </BrowserRouter>
-      </Root>
-    </ApolloProvider>
+      </ApolloProvider>
+    </Root>
   );
 }
 

@@ -30,11 +30,6 @@ links shortner that tracks created links clicks.
 - Jest
 - Enzyme
 
-#### GraphQL [In Progress]
-
-- Node JS
-- Express JS
-
 #### Back End (NoSQL)
 
 - Node JS
@@ -45,10 +40,4 @@ links shortner that tracks created links clicks.
 
 - Python 3
 - Flask
-- PostgreSQL
-
-#### Back End (SQL) - PHP [In Progress]
-
-- php 7.3
-- Laravel
 - PostgreSQL

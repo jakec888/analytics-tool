@@ -1,8 +1,8 @@
 import React from "react";
 import { mount } from "enzyme";
 
-import Root from "../../Root";
-import SignUp from "../SignUp";
+import Root from "../src/Root";
+import SignUp from "../src/containers/SignUp";
 
 describe("<SignUp /> Test", () => {
   let wrapper;

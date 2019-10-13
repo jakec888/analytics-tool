@@ -3,8 +3,8 @@ import { mount } from "enzyme";
 
 import moment from "moment";
 
-import Root from "../../Root";
-import ViewLink from "../ViewLink";
+import Root from "../src/Root";
+import ViewLink from "../src/containers/ViewLink";
 
 describe("<ViewLink /> Test", () => {
   let wrapper;

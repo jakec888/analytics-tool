@@ -9,9 +9,6 @@ const initialState: InitLink = {
 
 export default (state = initialState, actions: LinksActionTypes) => {
   switch (actions.type) {
-    // typescript redux saga problem here!!! supposed to pass the userId
-    // case GET_LINKS:
-    //   return { ...state, links: actions.payload.links };
     case GET_LINKS:
       return { ...state };
     case GET_LINKS_SUCCESS:

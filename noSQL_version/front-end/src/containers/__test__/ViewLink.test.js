@@ -6,6 +6,10 @@ import moment from "moment";
 import Root from "../../Root";
 import ViewLink from "../ViewLink";
 
+jest.mock("react-chartjs-2", () => ({
+  Bar: () => null
+}));
+
 describe("<ViewLink /> Test", () => {
   let wrapper;
 

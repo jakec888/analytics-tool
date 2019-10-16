@@ -37,11 +37,7 @@ export class ViewLinks extends Component<Props, ViewLinksPageState> {
           {this.props.links
             ? this.props.links.map((link, index) => {
                 return (
-                  <ListGroup.Item
-                    key={index}
-                    onClick={() => this.onViewLink(link)}
-                    data-testid='link-data'
-                  >
+                  <ListGroup.Item key={index} onClick={() => this.onViewLink(link)}>
                     <Row>
                       <Col sm={8}>{link.title}</Col>
                       <Col

@@ -28,7 +28,7 @@ links shortner that tracks created links clicks.
 #### Testing
 
 - Jest
-- Enzyme (In Progress - Switching to React Testing Library)
+- Enzyme
 
 #### Back End (NoSQL)
 

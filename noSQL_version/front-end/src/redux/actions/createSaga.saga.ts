@@ -21,16 +21,12 @@ export function* createLinkAsync({ payload }: any) {
     data: []
   };
 
-  // const request = yield call(onLinkRequest, data);
   yield call(onLinkRequest, data);
-
-  // const result = request.data;
 
   yield put(createLinkSuccess());
 
-  // yield history.push('/');
-  history.push('/');
-
+  yield history.push('/');
+  // history.push('/');
 }
 
 /* 

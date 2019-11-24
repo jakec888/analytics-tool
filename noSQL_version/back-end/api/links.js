@@ -5,10 +5,7 @@ const router = express.Router()
 
 const Links = require('../models/links')
 
-// Read
-router.get('/links/:userId', (req, res) => {
-  Links.find({ userId: req.params.userId }).then(result => res.json(result))
-})
+// CRUD
 
 // Create
 router.post('/link', (req, res) => {
@@ -35,15 +32,20 @@ router.post('/link', (req, res) => {
   })
 })
 
+// Read
+router.get('/links/:userId', (req, res) => {
+  Links.find({ userId: req.params.userId }).then(result => res.json(result))
+})
+
+// Update
+
 
 // Delete
 router.delete('/link/delete/:linkId', (req, res) => {
-  console.log("Working!")
-  console.log(req.params.linkId)
-  // Links.findByIdAndRemove(req.params.linkId, function (err) {
-  //   if (err) return next(err);
-  //   res.send('Deleted successfully!');
-  // })
+  Links.findByIdAndRemove(req.params.linkId, function (err) {
+    if (err) return next(err);
+    res.send('Deleted successfully!');
+  })
 })
 
 module.exports = router

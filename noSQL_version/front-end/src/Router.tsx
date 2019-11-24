@@ -7,7 +7,7 @@ import SignUp from './containers/SignUp';
 import Login from './containers/Login';
 import ViewLink from './containers/ViewLink';
 import ViewLinks from './containers/ViewLinks';
-
+import EditLink from './containers/EditLink';
 import { AppState } from './redux/rootAppState';
 
 interface RouterProps {}
@@ -54,6 +54,12 @@ class MyRouter extends Component<Props, RouterProps> {
           exact
           path='/view'
           component={ViewLink}
+          isLoggedIn={this.props.isLoggedIn}
+        />
+        <RestrictedRoute
+          exact
+          path='/edit'
+          component={EditLink}
           isLoggedIn={this.props.isLoggedIn}
         />
       </Switch>

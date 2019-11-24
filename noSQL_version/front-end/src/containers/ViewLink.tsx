@@ -25,13 +25,15 @@ type Props = ViewLinkPageProps & LinkStateProps & LinkDispatchProps;
 export class ViewLink extends Component<Props, ViewLinkPageState> {
   onDeleteLink = (event: any) => {
     event.preventDefault();
-    console.log('deleting!')
-    console.log(this.props.linkId)
     this.props.deleteLink(
       this.props.linkId,
       this.props.history
     );
   };
+
+  onUpdateLink = () => {
+    this.props.history.push('/edit');
+  }
 
   render() {
     return (
@@ -47,7 +49,7 @@ export class ViewLink extends Component<Props, ViewLinkPageState> {
             </Card.Text>
           </div>
           <div>
-            <Button variant="outline-primary" style={{marginLeft: '10px', marginRight: '10px'}}>Edit</Button>
+            <Button onClick={this.onUpdateLink} variant="outline-primary" style={{marginLeft: '10px', marginRight: '10px'}}>Edit</Button>
             <Button onClick={this.onDeleteLink} variant="outline-danger">Delete</Button>
           </div>
         </div>

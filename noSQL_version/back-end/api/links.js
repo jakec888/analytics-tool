@@ -38,7 +38,16 @@ router.get('/links/:userId', (req, res) => {
 })
 
 // Update
-
+router.put('/link/update/:linkId', (req, res) => {
+  console.log('Updateing!')
+  console.log(req.params.linkId)
+  console.log(req.body)
+  
+  Links.findByIdAndUpdate(req.params.linkId, {$set: req.body}, function (err, product) {
+    if (err) return next(err);
+    res.send('Product udpated.');
+  });
+})
 
 // Delete
 router.delete('/link/delete/:linkId', (req, res) => {

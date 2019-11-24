@@ -1,4 +1,4 @@
-import { SELECT_LINK } from '../actions/selectedActions.actions';
+import { SELECT_LINK, UPDATE_TITLE } from '../actions/selectedActions.actions';
 
 const initialState = {
   _id: '',
@@ -22,6 +22,11 @@ export default (state = initialState, { type, payload }: any) => {
         date: payload.date,
         data: payload.data
       };
+    case UPDATE_TITLE:
+      return {
+        ...state,
+        title: payload.title
+      }
     default:
       return state;
   }

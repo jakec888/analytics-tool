@@ -3,19 +3,35 @@ import { connect } from 'react-redux';
 import { Card, InputGroup, FormControl, Button } from 'react-bootstrap';
 import { Bar } from 'react-chartjs-2';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-
+import { ThunkDispatch } from 'redux-thunk';
 import moment from 'moment';
+import { bindActionCreators } from 'redux';
+
+import { AppActions } from '../types/rootType.actions';
+
+import { deleteLink } from '../redux/actions/linksActions.actions';
 
 import { AppState } from '../redux/rootAppState';
 import { DataTypes } from '../types/links/link';
 
-interface ViewLinkPageProps {}
+interface ViewLinkPageProps {
+  history?: any;
+}
 
 interface ViewLinkPageState {}
 
 type Props = ViewLinkPageProps & LinkStateProps;
 
 export class ViewLink extends Component<Props, ViewLinkPageState> {
+  onDeleteLink = (event: any) => {
+    event.preventDefault();
+    console.log('clicked!')
+    // this.props.deleteLink(
+    //   this.props.link,
+    //   this.props.history
+    // );
+  };
+
   render() {
     return (
       <Fragment>
@@ -31,7 +47,7 @@ export class ViewLink extends Component<Props, ViewLinkPageState> {
           </div>
           <div>
             <Button variant="outline-primary" style={{marginLeft: '10px', marginRight: '10px'}}>Edit</Button>
-            <Button variant="outline-danger">Delete</Button>
+            <Button onClick={this.onDeleteLink} variant="outline-danger">Delete</Button>
           </div>
         </div>
         <Card.Title>
@@ -45,17 +61,6 @@ export class ViewLink extends Component<Props, ViewLinkPageState> {
             {this.props.title}
           </a>
         </Card.Title>
-        {/* <Card.Text>
-          <a
-            href={this.props.link}
-            rel='noopener noreferrer'
-            target='_blank'
-            style={{ textDecoration: 'none', color: 'black' }}
-            className='link-link'
-          >
-            {this.props.link}
-          </a>
-        </Card.Text> */}
         <InputGroup className='mb-3'>
           <FormControl
             disabled
@@ -110,6 +115,10 @@ interface LinkStateProps {
   data: DataTypes[];
 }
 
+interface LinkDispatchProps {
+  deleteLink: (userId: string, history: any) => void;
+}
+
 const mapStateToProps = (state: AppState): LinkStateProps => ({
   link: state.Selected.link,
   title: state.Selected.title,
@@ -118,7 +127,11 @@ const mapStateToProps = (state: AppState): LinkStateProps => ({
   data: state.Selected.data
 });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = (
+  dispatch: ThunkDispatch<any, any, AppActions>
+): LinkDispatchProps => ({
+  deleteLink: bindActionCreators(deleteLink, dispatch)
+});
 
 export default connect(
   mapStateToProps,

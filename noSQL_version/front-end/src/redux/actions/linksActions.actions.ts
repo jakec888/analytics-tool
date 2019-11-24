@@ -1,15 +1,38 @@
-import { LinksActionTypes } from '../../types/links/links.actions';
+// import { LinksActionTypes } from '../../types/links/links.actions';
+import { AppActions } from '../../types/rootType.actions';
+
 import { Link } from '../../types/links/link';
 
 export const GET_LINKS = 'GET_LINKS';
 export const GET_LINKS_SUCCESS = 'GET_LINKS_SUCCESS';
 
-export const getLinks = (userId: string): LinksActionTypes => ({
+export const DELETE_LINK = 'DELETE_LINK';
+export const DELETE_LINK_SUCCESS = 'DELETE_LINK_SUCCESS';
+
+export const getLinks = (userId: string): AppActions => ({
   type: GET_LINKS,
   payload: { userId }
 });
 
-export const getLinksSuccess = (links: Link[]): LinksActionTypes => ({
+export const getLinksSuccess = (links: Link[]): AppActions => ({
   type: GET_LINKS_SUCCESS,
   payload: { links }
+});
+
+export const deleteLink = (linkId: string, history: any): AppActions => ({
+  type: DELETE_LINK,
+  payload: { linkId, history }
+});
+
+export const deleteLinkSuccess = () => ({
+  type: DELETE_LINK_SUCCESS,
+  payload: {
+    _id: '',
+    redirectURL: '',
+    userId: '',
+    link: '',
+    title: '',
+    date: '',
+    data: []
+  }
 });

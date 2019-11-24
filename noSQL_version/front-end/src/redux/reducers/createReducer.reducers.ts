@@ -6,13 +6,8 @@ import {
 } from '../actions/createActions.actions';
 
 const initialState = {
-  _id: '',
-  redirectURL: '',
-  userId: '',
   link: '',
-  title: '',
-  date: '',
-  data: []
+  title: ''
 };
 
 export default (state = initialState, { type, payload }: any) => {

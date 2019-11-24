@@ -25,7 +25,15 @@ export const createLink = (
   payload: { selectedLink, userId, history }
 });
 
-export const createLinkSuccess = (payload: any): AppActions => ({
+export const createLinkSuccess = () => ({
   type: CREATE_LINK_SUCCESS,
-  payload: payload
+  payload: {
+    _id: '',
+    redirectURL: '',
+    userId: '',
+    link: '',
+    title: '',
+    date: '',
+    data: []
+  }
 });

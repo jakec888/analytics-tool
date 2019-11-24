@@ -30,7 +30,7 @@ class Layout extends Component<Props, LayoutState> {
       <div>
         <Navbar bg='primary' variant='dark'>
           <Link to='/' className='navbar-dark navbar-brand'>
-            Analytics
+            Share Analytics
           </Link>
           <Nav className='mr-auto'>
             {this.props.isLoggedIn ? (

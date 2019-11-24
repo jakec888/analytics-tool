@@ -25,9 +25,10 @@ type Props = ViewLinkPageProps & LinkStateProps;
 export class ViewLink extends Component<Props, ViewLinkPageState> {
   onDeleteLink = (event: any) => {
     event.preventDefault();
-    console.log('clicked!')
+    console.log('deleting!')
+    console.log(this.props.linkId)
     // this.props.deleteLink(
-    //   this.props.link,
+    //   this.props.linkId,
     //   this.props.history
     // );
   };
@@ -108,6 +109,7 @@ export class ViewLink extends Component<Props, ViewLinkPageState> {
 }
 
 interface LinkStateProps {
+  linkId: string;
   link: string;
   title: string;
   redirectURL: string;
@@ -116,10 +118,11 @@ interface LinkStateProps {
 }
 
 interface LinkDispatchProps {
-  deleteLink: (userId: string, history: any) => void;
+  deleteLink: (linkId: string, history: any) => void;
 }
 
 const mapStateToProps = (state: AppState): LinkStateProps => ({
+  linkId: state.Selected._id,
   link: state.Selected.link,
   title: state.Selected.title,
   redirectURL: state.Selected.redirectURL,

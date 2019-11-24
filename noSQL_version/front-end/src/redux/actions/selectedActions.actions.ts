@@ -21,6 +21,7 @@ export const selectLink = (history: any, selected: Link) => {
         data
       }
     });
+
     history.push('/view');
   };
 };

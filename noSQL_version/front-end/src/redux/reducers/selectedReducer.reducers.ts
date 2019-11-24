@@ -15,7 +15,7 @@ export default (state = initialState, { type, payload }: any) => {
     case SELECT_LINK:
       return {
         ...state,
-        _id: payload.id,
+        _id: payload._id,
         redirectURL: payload.redirectURL,
         link: payload.link,
         title: payload.title,

@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon app.js",
+    "mongo": "brew services restart mongodb-community",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

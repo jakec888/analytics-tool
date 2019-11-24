@@ -1,4 +1,4 @@
-# Bitly Clone
+# Share Analytics
 
 ## <center>Walkthrough Update</center>
 
@@ -8,9 +8,7 @@
 
 # Description
 
-bitly clone.
-
-links shortner that tracks created links clicks.
+Give a link you want to have it's clicks tracks and get a link to use to share.
 
 # Tech Stack
 

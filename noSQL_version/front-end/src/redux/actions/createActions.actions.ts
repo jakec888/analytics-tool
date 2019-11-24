@@ -28,7 +28,12 @@ export const createLink = (
 export const createLinkSuccess = () => ({
   type: CREATE_LINK_SUCCESS,
   payload: {
+    _id: '',
+    redirectURL: '',
+    userId: '',
     link: '',
-    title: ''
+    title: '',
+    date: '',
+    data: []
   }
 });

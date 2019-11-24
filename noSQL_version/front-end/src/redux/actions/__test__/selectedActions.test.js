@@ -1,14 +1,8 @@
 import {
   UPDATE_LINK,
   UPDATE_TITLE,
-  // CREATE_LINK,
-  // SELECT_LINK,
-  // CREATE_LINK_SUCCESS,
   updateTitle,
   updateLink
-  // createLink,
-  // createLinkSuccess,
-  // selectLink
 } from "../selectedActions.actions";
 
 describe("Selected Actions tests", () => {

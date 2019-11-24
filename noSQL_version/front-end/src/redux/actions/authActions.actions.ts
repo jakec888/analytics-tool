@@ -10,28 +10,10 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const UPDATE_EMAIL = 'UPDATE_EMAIL';
 export const UPDATE_PASSWORD = 'UPDATE_PASSWORD';
 
-// export const updateEmail = (email: string) => {
-//   return (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
-//     dispatch({
-//       type: UPDATE_EMAIL,
-//       payload: { email: email }
-//     });
-//   };
-// };
-
 export const updateEmail = (email: string) => ({
   type: UPDATE_EMAIL,
   payload: { email: email }
 });
-
-// export const updatePassword = (password: string) => {
-//   return (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
-//     dispatch({
-//       type: UPDATE_PASSWORD,
-//       payload: { password: password }
-//     });
-//   };
-// };
 
 export const updatePassword = (password: string) => ({
   type: UPDATE_PASSWORD,

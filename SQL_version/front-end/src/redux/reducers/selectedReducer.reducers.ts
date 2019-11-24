@@ -3,7 +3,6 @@ import {
   UPDATE_TITLE,
   CREATE_LINK,
   SELECT_LINK,
-  // GET_LINKS,
   CREATE_LINK_SUCCESS
 } from '../actions/selectedActions.actions';
 

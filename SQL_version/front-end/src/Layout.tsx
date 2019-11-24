@@ -67,7 +67,6 @@ class Layout extends Component<Props, LayoutState> {
         </Navbar>
         <Card
           style={{
-            // topHeight: '15px',
             top: '15px',
             width: '85%',
             minHeight: '300px',

@@ -1,7 +1,7 @@
 import { all } from 'redux-saga/effects';
 import linkSagas from './actions/linksSaga.saga';
-import selectedSaga from './actions/selectedSaga.saga';
+import createSaga from './actions/createSaga.saga';
 
 export default function* rootSaga() {
-  yield all([linkSagas(), selectedSaga()]);
+  yield all([linkSagas(), createSaga()]);
 }

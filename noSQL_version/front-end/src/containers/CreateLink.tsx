@@ -6,7 +6,7 @@ import {
   updateLink,
   updateTitle,
   createLink
-} from '../redux/actions/selectedActions.actions';
+} from '../redux/actions/createActions.actions';
 
 import { Link } from '../types/links/link';
 
@@ -91,10 +91,10 @@ interface LinkDispatchProps {
 }
 
 const mapStateToProps = (state: AppState): LinkStateProps => ({
-  selectedLink: state.Selected,
+  selectedLink: state.Create,
   userId: state.Auth.userId,
-  title: state.Selected.title,
-  link: state.Selected.link
+  title: state.Create.title,
+  link: state.Create.link
 });
 
 const mapDispatchToProps = (

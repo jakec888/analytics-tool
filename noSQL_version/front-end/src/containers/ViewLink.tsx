@@ -19,13 +19,21 @@ export class ViewLink extends Component<Props, ViewLinkPageState> {
   render() {
     return (
       <Fragment>
-        <Card.Text>
-          Created On <span className='link-date'>{this.props.date}</span> | (
-          <span className='link-time'>
-            {moment(new Date(this.props.date)).fromNow()}
-          </span>
-          )
-        </Card.Text>
+        <div style={{display: 'flex', justifyContent: 'space-between'}}> 
+          <div>
+            <Card.Text>
+              Created On <span className='link-date'>{moment(this.props.date).format('LLL')}</span> | (
+              <span className='link-time'>
+                {moment(new Date(this.props.date)).fromNow()}
+              </span>
+              )
+            </Card.Text>
+          </div>
+          <div>
+            <Button variant="outline-primary" style={{marginLeft: '10px', marginRight: '10px'}}>Edit</Button>
+            <Button variant="outline-danger">Delete</Button>
+          </div>
+        </div>
         <Card.Title>
           <a
             href={this.props.link}
@@ -37,7 +45,7 @@ export class ViewLink extends Component<Props, ViewLinkPageState> {
             {this.props.title}
           </a>
         </Card.Title>
-        <Card.Text>
+        {/* <Card.Text>
           <a
             href={this.props.link}
             rel='noopener noreferrer'
@@ -47,7 +55,7 @@ export class ViewLink extends Component<Props, ViewLinkPageState> {
           >
             {this.props.link}
           </a>
-        </Card.Text>
+        </Card.Text> */}
         <InputGroup className='mb-3'>
           <FormControl
             disabled

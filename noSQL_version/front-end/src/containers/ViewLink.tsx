@@ -20,17 +20,17 @@ interface ViewLinkPageProps {
 
 interface ViewLinkPageState {}
 
-type Props = ViewLinkPageProps & LinkStateProps;
+type Props = ViewLinkPageProps & LinkStateProps & LinkDispatchProps;
 
 export class ViewLink extends Component<Props, ViewLinkPageState> {
   onDeleteLink = (event: any) => {
     event.preventDefault();
     console.log('deleting!')
     console.log(this.props.linkId)
-    // this.props.deleteLink(
-    //   this.props.linkId,
-    //   this.props.history
-    // );
+    this.props.deleteLink(
+      this.props.linkId,
+      this.props.history
+    );
   };
 
   render() {

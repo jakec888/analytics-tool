@@ -18,18 +18,10 @@ export function* editLinkAsync({ payload }: any) {
     title: title,
     date: new Date().toISOString()
   };
-
-  console.log('Data')
-  console.log(data)
-
+  
   const selected = yield call(onUpdateLinkRequest, linkId, data);
 
-  console.log('Selected!')
-  console.log(selected.data)
-
   yield put(editLinkSuccess(selected.data, history));
-
-  // yield history.push('/view');
 }
 
 /* 

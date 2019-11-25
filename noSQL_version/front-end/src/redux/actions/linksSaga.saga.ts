@@ -27,13 +27,11 @@ const onDeleteLinkRequest = (linkId: string) => {
 export function* deleteLinkAsync({ payload }: any) {
   const { linkId, history } = payload;
 
-  const request = yield call(onDeleteLinkRequest, linkId);
+  yield call(onDeleteLinkRequest, linkId);
 
-  console.log(request)
+  yield put(deleteLinkSuccess(history));
 
-  yield put(deleteLinkSuccess());
-
-  history.push('/');
+  // yield put(history.push('/'));
 }
 
 /* 

@@ -25,11 +25,7 @@ export class EditLink extends Component<Props, EditLinkPageState> {
 
   onEdit = (event: any) => {
     event.preventDefault();
-    console.log('Updating!')
-    console.log(this.props.linkId)
-    console.log(this.props.title)
     this.props.editLink(this.props.linkId, this.props.title, this.props.history)
-    console.log('Done')
   }
 
   render() {

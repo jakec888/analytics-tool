@@ -19,20 +19,7 @@ export const editLink = (linkId: string, title: string, history: any): AppAction
   payload: { linkId, title, history }
 });
 
-// export const editLinkSuccess = (link: Link, history: any): any => ({
-//   type: EDIT_LINK_SUCCESS,
-//   payload: {
-//     _id: link._id,
-//     redirectURL: link.redirectURL,
-//     link: link.link,
-//     title: link.title,
-//     date: link.date,
-//     data: link.data
-//   }
-// });
-
 export const editLinkSuccess = (selected: Link, history: any): any => {
-  console.log('editLinkSuccess')
   return (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
     const { _id, redirectURL, link, title, date, data } = selected;
     dispatch({
@@ -46,29 +33,9 @@ export const editLinkSuccess = (selected: Link, history: any): any => {
         data
       }
     });
-
     history.push('/view')
   };
 };
-
-
-// export const editLinkSuccess = (selected: Link): any => {
-//   console.log('editLinkSuccess')
-//   return (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
-//     const { _id, redirectURL, link, title, date, data } = selected;
-//     dispatch({
-//       type: EDIT_LINK_SUCCESS,
-//       payload: {
-//         _id,
-//         redirectURL,
-//         link,
-//         title,
-//         date,
-//         data
-//       }
-//     });
-//   };
-// };
 
 export const selectLink = (history: any, selected: Link) => {
   return (dispatch: Dispatch<AppActions>, getState: () => AppState) => {

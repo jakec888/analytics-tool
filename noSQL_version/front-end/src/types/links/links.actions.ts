@@ -26,8 +26,14 @@ export interface deleteLinkInterface {
 export interface deleteLinkSuccessInterface {
   type: typeof DELETE_LINK_SUCCESS;
   payload: {
-    payload: any;
-  };
+    _id: string,
+    redirectURL: string,
+    userId: string,
+    link: string,
+    title: string,
+    date: string,
+    data: []
+  },
 }
 
 export type LinksActionTypes = getLinksInterface | getLinksSuccessInterface | deleteLinkInterface | deleteLinkSuccessInterface;

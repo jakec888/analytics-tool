@@ -1,4 +1,6 @@
-// import { LinksActionTypes } from '../../types/links/links.actions';
+import { Dispatch } from 'redux';
+
+import { AppState } from '../rootAppState';
 import { AppActions } from '../../types/rootType.actions';
 
 import { Link } from '../../types/links/link';
@@ -24,15 +26,35 @@ export const deleteLink = (linkId: string, history: any): AppActions => ({
   payload: { linkId, history }
 });
 
-export const deleteLinkSuccess = () => ({
-  type: DELETE_LINK_SUCCESS,
-  payload: {
-    _id: '',
-    redirectURL: '',
-    userId: '',
-    link: '',
-    title: '',
-    date: '',
-    data: []
-  }
-});
+
+export const deleteLinkSuccess = (history: any): any => {
+  return (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
+    dispatch({
+      type: DELETE_LINK_SUCCESS,
+      payload: {
+        _id: '',
+        redirectURL: '',
+        userId: '',
+        link: '',
+        title: '',
+        date: '',
+        data: []
+      }
+    });
+    history.push('/')
+  };
+};
+
+
+// export const deleteLinkSuccess = (history: any) => ({
+//   type: DELETE_LINK_SUCCESS,
+  // payload: {
+  //   _id: '',
+  //   redirectURL: '',
+  //   userId: '',
+  //   link: '',
+  //   title: '',
+  //   date: '',
+  //   data: []
+  // }
+// });

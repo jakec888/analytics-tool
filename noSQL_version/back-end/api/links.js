@@ -39,14 +39,8 @@ router.get('/links/:userId', (req, res) => {
 
 // Update
 router.put('/link/edit/:linkId', (req, res) => {
-  console.log('Updateing!')
-  console.log(req.params.linkId)
-  console.log(req.body)
-  
-  Links.findByIdAndUpdate(req.params.linkId, {$set: req.body}, function (err, link) {
+  Links.findByIdAndUpdate(req.params.linkId, req.body, {new: true}, function (err, link) {
     if (err) return next(err);
-    console.log('Link: ')
-    console.log(link)
     res.send(link);
   });
 })

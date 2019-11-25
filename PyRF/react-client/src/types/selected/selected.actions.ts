@@ -1,4 +1,4 @@
-import { Link } from '../../types/links/link';
+import { Link } from '../links/link';
 
 import {
   UPDATE_LINK,

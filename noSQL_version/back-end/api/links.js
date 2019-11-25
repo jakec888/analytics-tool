@@ -43,9 +43,11 @@ router.put('/link/update/:linkId', (req, res) => {
   console.log(req.params.linkId)
   console.log(req.body)
   
-  Links.findByIdAndUpdate(req.params.linkId, {$set: req.body}, function (err, product) {
+  Links.findByIdAndUpdate(req.params.linkId, {$set: req.body}, function (err, link) {
     if (err) return next(err);
-    res.send('Product udpated.');
+    console.log('Link: ')
+    console.log(link)
+    res.send(link);
   });
 })
 

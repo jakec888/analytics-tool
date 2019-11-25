@@ -1,4 +1,4 @@
-import { SELECT_LINK, UPDATE_TITLE, UPDATE_LINK_SUCCESS } from '../actions/selectedActions.actions';
+import { SELECT_LINK, EDIT_TITLE, EDIT_LINK_SUCCESS } from '../actions/selectedActions.actions';
 
 const initialState = {
   _id: '',
@@ -22,12 +22,12 @@ export default (state = initialState, { type, payload }: any) => {
         date: payload.date,
         data: payload.data
       };
-    case UPDATE_TITLE:
+    case EDIT_TITLE:
       return {
         ...state,
         title: payload.title
       }
-    case UPDATE_LINK_SUCCESS:
+    case EDIT_LINK_SUCCESS:
       return {
         ...state,
         _id: payload._id,

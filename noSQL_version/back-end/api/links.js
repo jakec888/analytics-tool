@@ -38,7 +38,7 @@ router.get('/links/:userId', (req, res) => {
 })
 
 // Update
-router.put('/link/update/:linkId', (req, res) => {
+router.put('/link/edit/:linkId', (req, res) => {
   console.log('Updateing!')
   console.log(req.params.linkId)
   console.log(req.body)

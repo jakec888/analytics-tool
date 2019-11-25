@@ -8,7 +8,7 @@ import { bindActionCreators } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
 import { AppActions } from '../types/rootType.actions';
 
-import { updateTitle, updateLink } from '../redux/actions/selectedActions.actions';
+import { editTitle, editLink } from '../redux/actions/selectedActions.actions';
 
 interface EditLinkPageProps {
   history?: any;
@@ -19,29 +19,29 @@ interface EditLinkPageState {}
 type Props = EditLinkPageProps & LinkStateProps & LinkDispatchProps;
 
 export class EditLink extends Component<Props, EditLinkPageState> {
-  onUpdateTitle = (event: any) => {
-    this.props.updateTitle(event.target.value);
+  onEditTitle = (event: any) => {
+    this.props.editTitle(event.target.value);
   }
 
-  onUpdate = (event: any) => {
+  onEdit = (event: any) => {
     event.preventDefault();
     console.log('Updating!')
     console.log(this.props.linkId)
     console.log(this.props.title)
-    this.props.updateLink(this.props.linkId, this.props.title, this.props.history)
+    this.props.editLink(this.props.linkId, this.props.title, this.props.history)
     console.log('Done')
   }
 
   render() {
     return (
       <Fragment>
-        <Form onSubmit={this.onUpdate}>
+        <Form onSubmit={this.onEdit}>
           <Form.Group controlId='formBasicEmail'>
             <Form.Label>Title</Form.Label>
             <Form.Control
               type='title'
               placeholder='Title'
-              onChange={this.onUpdateTitle}
+              onChange={this.onEditTitle}
               value={this.props.title}
             />
           </Form.Group>
@@ -70,15 +70,15 @@ const mapStateToProps = (state: AppState): LinkStateProps => ({
 
 
 interface LinkDispatchProps {
-  updateTitle: (title: string) => void;
-  updateLink: (linkId: string, title: string, history: any) => void;
+  editTitle: (title: string) => void;
+  editLink: (linkId: string, title: string, history: any) => void;
 }
 
 const mapDispatchToProps = (
   dispatch: ThunkDispatch<any, any, AppActions>
 ): LinkDispatchProps => ({
-  updateTitle: bindActionCreators(updateTitle, dispatch),
-  updateLink: bindActionCreators(updateLink, dispatch)
+  editTitle: bindActionCreators(editTitle, dispatch),
+  editLink: bindActionCreators(editLink, dispatch)
 });
 
 export default connect(

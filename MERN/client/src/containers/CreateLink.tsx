@@ -1,6 +1,5 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Card, Form, Button, InputGroup, FormControl } from 'react-bootstrap';
 
 import {
   updateLink,
@@ -14,6 +13,8 @@ import { ThunkDispatch } from 'redux-thunk';
 import { AppActions } from '../types/rootType.actions';
 import { AppState } from '../redux/rootAppState';
 import { bindActionCreators } from 'redux';
+
+import CreateLinkView from '../views/CreateLinkView';
 
 interface CreateLinkPageProps {
   history?: any;
@@ -43,36 +44,13 @@ export class CreateLink extends Component<Props, CreateLinkPageState> {
 
   render() {
     return (
-      <Fragment>
-        <Card.Title>Create Link</Card.Title>
-        <Form onSubmit={this.onSubmitLink}>
-          <InputGroup className='mb-3'>
-            <InputGroup.Prepend>
-              <InputGroup.Text id='basic-addon3'>Title</InputGroup.Text>
-            </InputGroup.Prepend>
-            <FormControl
-              id='basic-url'
-              aria-describedby='basic-addon3'
-              onChange={this.onUpdateTitle}
-              value={this.props.title}
-            />
-          </InputGroup>
-          <InputGroup className='mb-3'>
-            <InputGroup.Prepend>
-              <InputGroup.Text id='basic-addon3'>Your URL</InputGroup.Text>
-            </InputGroup.Prepend>
-            <FormControl
-              id='basic-url'
-              aria-describedby='basic-addon3'
-              onChange={this.onUpdateLink}
-              value={this.props.link}
-            />
-          </InputGroup>
-          <Button variant='primary' type='submit'>
-            Submit
-          </Button>
-        </Form>
-      </Fragment>
+      <CreateLinkView 
+        title={this.props.title}
+        link={this.props.link}
+        onUpdateTitle={this.onUpdateTitle}
+        onUpdateLink={this.onUpdateLink}
+        onSubmitLink={this.onSubmitLink}
+      />
     );
   }
 }

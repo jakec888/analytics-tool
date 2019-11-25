@@ -1,3 +1,7 @@
+# 
+# CRUD Version is in the MERN folder
+# 
+
 from flask import Flask, jsonify, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime, date

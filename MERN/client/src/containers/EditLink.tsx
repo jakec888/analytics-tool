@@ -1,6 +1,5 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Form, Button } from 'react-bootstrap';
 
 import { AppState } from '../redux/rootAppState';
 
@@ -9,6 +8,8 @@ import { ThunkDispatch } from 'redux-thunk';
 import { AppActions } from '../types/rootType.actions';
 
 import { editTitle, editLink } from '../redux/actions/selectedActions.actions';
+
+import EditLinkView from '../views/EditLinkView';
 
 interface EditLinkPageProps {
   history?: any;
@@ -30,22 +31,11 @@ export class EditLink extends Component<Props, EditLinkPageState> {
 
   render() {
     return (
-      <Fragment>
-        <Form onSubmit={this.onEdit}>
-          <Form.Group controlId='formBasicEmail'>
-            <Form.Label>Title</Form.Label>
-            <Form.Control
-              type='title'
-              placeholder='Title'
-              onChange={this.onEditTitle}
-              value={this.props.title}
-            />
-          </Form.Group>
-          <Button variant='primary' type='submit'>
-            Update
-          </Button>
-        </Form>
-      </Fragment>
+      <EditLinkView
+        title={this.props.title}
+        onEdit={this.onEdit}
+        onEditTitle={this.onEditTitle}
+      />
     );
   }
 }
@@ -53,15 +43,11 @@ export class EditLink extends Component<Props, EditLinkPageState> {
 interface LinkStateProps {
   linkId: string;
   title: string;
-  // redirectURL: string;
-  // date: string;
 }
 
 const mapStateToProps = (state: AppState): LinkStateProps => ({
   linkId: state.Selected._id,
   title: state.Selected.title,
-  // redirectURL: state.Selected.redirectURL,
-  // date: new Date(state.Selected.date).toUTCString(),
 });
 
 

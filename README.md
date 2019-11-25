@@ -3,7 +3,7 @@
 ## <center>Walkthrough Update</center>
 
 <p align="center">
-<img src="walkthough.gif" />
+<img src="walkthrough.gif" />
 </p>
 
 # Description

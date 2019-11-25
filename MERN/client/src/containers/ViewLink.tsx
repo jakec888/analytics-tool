@@ -1,10 +1,6 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Card, InputGroup, FormControl, Button } from 'react-bootstrap';
-import { Bar } from 'react-chartjs-2';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { ThunkDispatch } from 'redux-thunk';
-import moment from 'moment';
 import { bindActionCreators } from 'redux';
 
 import { AppActions } from '../types/rootType.actions';
@@ -13,6 +9,8 @@ import { deleteLink } from '../redux/actions/linksActions.actions';
 
 import { AppState } from '../redux/rootAppState';
 import { DataTypes } from '../types/links/link';
+
+import ViewLinkView from '../views/ViewLinkView';
 
 interface ViewLinkPageProps {
   history?: any;
@@ -37,75 +35,16 @@ export class ViewLink extends Component<Props, ViewLinkPageState> {
 
   render() {
     return (
-      <Fragment>
-        <div style={{display: 'flex', justifyContent: 'space-between'}}> 
-          <div>
-            <Card.Text>
-              Created On <span className='link-date'>{moment(this.props.date).format('LLL')}</span> | (
-              <span className='link-time'>
-                {moment(new Date(this.props.date)).fromNow()}
-              </span>
-              )
-            </Card.Text>
-          </div>
-          <div>
-            <Button onClick={this.onUpdateLink} variant="outline-primary" style={{marginLeft: '10px', marginRight: '10px'}}>Edit</Button>
-            <Button onClick={this.onDeleteLink} variant="outline-danger">Delete</Button>
-          </div>
-        </div>
-        <Card.Title>
-          <a
-            href={this.props.link}
-            rel='noopener noreferrer'
-            target='_blank'
-            style={{ textDecoration: 'none', color: 'black' }}
-            className='link-title'
-          >
-            {this.props.title}
-          </a>
-        </Card.Title>
-        <InputGroup className='mb-3'>
-          <FormControl
-            disabled
-            value={this.props.redirectURL}
-            aria-describedby='basic-addon2'
-            className='link-redirect'
-          />
-          <InputGroup.Append>
-            <CopyToClipboard text={this.props.redirectURL}>
-              <Button
-                variant='outline-secondary'
-                onClick={() => alert('Copied To Clipboard')}
-              >
-                Copy
-              </Button>
-            </CopyToClipboard>
-          </InputGroup.Append>
-        </InputGroup>
-        <Bar
-          data={{
-            labels: this.props.data.map((data) => data.date),
-            datasets: [
-              {
-                label: 'Clicks',
-                data: this.props.data.map((data) => data.clicks),
-                backgroundColor: '#147afe'
-              }
-            ]
-          }}
-          options={{
-            title: {
-              display: true,
-              text: 'Link Statistics',
-              fontSize: 25
-            },
-            legend: {
-              display: true,
-              position: 'bottom'
-            }
-          }}
-        />
-      </Fragment>
+      <ViewLinkView
+        linkId={this.props.linkId}
+        link={this.props.link}
+        title={this.props.title}
+        redirectURL={this.props.redirectURL}
+        date={this.props.date}
+        data={this.props.data}
+        onDeleteLink={this.onDeleteLink}
+        onUpdateLink={this.onUpdateLink}
+      />
     );
   }
 }

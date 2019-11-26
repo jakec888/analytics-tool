@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {Switch, Route, Redirect} from 'react-router-dom';
 
 import CreateLink from './containers/CreateLink';
 import SignUp from './containers/SignUp';
@@ -8,23 +8,23 @@ import Login from './containers/Login';
 import ViewLink from './containers/ViewLink';
 import ViewLinks from './containers/ViewLinks';
 import EditLink from './containers/EditLink';
-import { AppState } from './redux/rootAppState';
+import {AppState} from './redux/rootAppState';
 
 interface RouterProps {}
 
 type Props = RouterProps & LinkStateProps;
 
-const RestrictedRoute = ({ component: Component, isLoggedIn, ...rest }: any) => (
+const RestrictedRoute = ({component: Component, isLoggedIn, ...rest}: any) => (
   <Route
     {...rest}
-    render={(props) =>
+    render={props =>
       isLoggedIn ? (
         <Component {...props} />
       ) : (
         <Redirect
           to={{
             pathname: '/login',
-            state: { from: props.location }
+            state: {from: props.location},
           }}
         />
       )
@@ -36,29 +36,29 @@ class MyRouter extends Component<Props, RouterProps> {
   render() {
     return (
       <Switch>
-        <Route exact path='/sign-up' component={SignUp} />
-        <Route exact path='/login' component={Login} />
+        <Route exact path="/sign-up" component={SignUp} />
+        <Route exact path="/login" component={Login} />
         <RestrictedRoute
           exact
-          path='/'
+          path="/"
           component={ViewLinks}
           isLoggedIn={this.props.isLoggedIn}
         />
         <RestrictedRoute
           exact
-          path='/create'
+          path="/create"
           component={CreateLink}
           isLoggedIn={this.props.isLoggedIn}
         />
         <RestrictedRoute
           exact
-          path='/view'
+          path="/view"
           component={ViewLink}
           isLoggedIn={this.props.isLoggedIn}
         />
         <RestrictedRoute
           exact
-          path='/edit'
+          path="/edit"
           component={EditLink}
           isLoggedIn={this.props.isLoggedIn}
         />
@@ -72,12 +72,12 @@ interface LinkStateProps {
 }
 
 const mapStateToProps = (state: AppState): LinkStateProps => ({
-  isLoggedIn: state.Auth.isLoggedIn
+  isLoggedIn: state.Auth.isLoggedIn,
 });
 
 const mapDispatchToProps = {};
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(MyRouter);

@@ -1,6 +1,6 @@
-import { all, takeEvery, put, call } from 'redux-saga/effects';
+import {all, takeEvery, put, call} from 'redux-saga/effects';
 import API from '../../api';
-import { EDIT_LINK, editLinkSuccess } from './selectedActions.actions';
+import {EDIT_LINK, editLinkSuccess} from './selectedActions.actions';
 
 const onUpdateLinkRequest = (linkId: string, data: any) => {
   const request = API.put(`/api/link/edit/${linkId}`, data);
@@ -10,15 +10,15 @@ const onUpdateLinkRequest = (linkId: string, data: any) => {
 /* 
   Saga Worker
 */
-export function* editLinkAsync({ payload }: any) {
-  const { linkId, title, history } = payload;
+export function* editLinkAsync({payload}: any) {
+  const {linkId, title, history} = payload;
 
   const data = {
     linkId: linkId,
     title: title,
-    date: new Date().toISOString()
+    date: new Date().toISOString(),
   };
-  
+
   const selected = yield call(onUpdateLinkRequest, linkId, data);
 
   yield put(editLinkSuccess(selected.data, history));

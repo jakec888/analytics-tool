@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 
-import { AppState } from '../redux/rootAppState';
+import {AppState} from '../redux/rootAppState';
 
-import { bindActionCreators } from 'redux';
-import { ThunkDispatch } from 'redux-thunk';
-import { AppActions } from '../types/rootType.actions';
+import {bindActionCreators} from 'redux';
+import {ThunkDispatch} from 'redux-thunk';
+import {AppActions} from '../types/rootType.actions';
 
-import { editTitle, editLink } from '../redux/actions/selectedActions.actions';
+import {editTitle, editLink} from '../redux/actions/selectedActions.actions';
 
 import EditLinkView from '../views/EditLinkView';
 
@@ -22,12 +22,16 @@ type Props = EditLinkPageProps & LinkStateProps & LinkDispatchProps;
 export class EditLink extends Component<Props, EditLinkPageState> {
   onEditTitle = (event: any) => {
     this.props.editTitle(event.target.value);
-  }
+  };
 
   onEdit = (event: any) => {
     event.preventDefault();
-    this.props.editLink(this.props.linkId, this.props.title, this.props.history)
-  }
+    this.props.editLink(
+      this.props.linkId,
+      this.props.title,
+      this.props.history,
+    );
+  };
 
   render() {
     return (
@@ -50,20 +54,19 @@ const mapStateToProps = (state: AppState): LinkStateProps => ({
   title: state.Selected.title,
 });
 
-
 interface LinkDispatchProps {
   editTitle: (title: string) => void;
   editLink: (linkId: string, title: string, history: any) => void;
 }
 
 const mapDispatchToProps = (
-  dispatch: ThunkDispatch<any, any, AppActions>
+  dispatch: ThunkDispatch<any, any, AppActions>,
 ): LinkDispatchProps => ({
   editTitle: bindActionCreators(editTitle, dispatch),
-  editLink: bindActionCreators(editLink, dispatch)
+  editLink: bindActionCreators(editLink, dispatch),
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(EditLink);

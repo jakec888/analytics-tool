@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Card, Form, Button } from 'react-bootstrap';
+import * as React from 'react';
+import {Card, Form, Button} from 'react-bootstrap';
 
 type Props = {
   email: string;
@@ -9,8 +9,8 @@ type Props = {
   onSignUp: (e: string) => void;
 };
 
-const SignUpView: React.FC<Props> = (props) => {
-  const { email, password, onUpdateEmail, onUpdatePassword, onSignUp } = props;
+const SignUpView: React.FC<Props> = props => {
+  const {email, password, onUpdateEmail, onUpdatePassword, onSignUp} = props;
 
   const UpdateEmail = (event: any) => {
     onUpdateEmail(event.target.value);
@@ -28,31 +28,30 @@ const SignUpView: React.FC<Props> = (props) => {
     <div>
       <Card.Title>Sign Up</Card.Title>
       <Form onSubmit={SignUp}>
-        <Form.Group controlId='formBasicEmail'>
+        <Form.Group controlId="formBasicEmail">
           <Form.Label>Email</Form.Label>
           <Form.Control
-            type='email'
-            placeholder='Enter email'
+            type="email"
+            placeholder="Enter email"
             onChange={UpdateEmail}
             value={email}
           />
         </Form.Group>
-        <Form.Group controlId='formBasicPassword'>
+        <Form.Group controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
           <Form.Control
-            type='password'
-            placeholder='Password'
+            type="password"
+            placeholder="Password"
             onChange={UpdatePassword}
             value={password}
           />
         </Form.Group>
-        <Button variant='primary' type='submit'>
+        <Button variant="primary" type="submit">
           Submit
         </Button>
       </Form>
     </div>
   );
-
-}
+};
 
 export default SignUpView;

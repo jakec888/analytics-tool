@@ -3,7 +3,7 @@ import {
   SIGNUP_SUCCESS,
   LOGIN_SUCCESS,
   UPDATE_EMAIL,
-  UPDATE_PASSWORD
+  UPDATE_PASSWORD,
 } from '../../redux/actions/authActions.actions';
 
 export interface updateEmailInterface {

@@ -1,21 +1,21 @@
-const express = require('express')
-const uuid = require('uuid')
+const express = require('express');
+const uuid = require('uuid');
 
-const router = express.Router()
+const router = express.Router();
 
-const Links = require('../models/links')
+const Links = require('../models/links');
 
 // CRUD
 
 // Create
 router.post('/link', (req, res) => {
-  const { userId, link, title, date, data } = req.body
+  const {userId, link, title, date, data} = req.body;
 
-  const protocol = req.protocol
-  const host = req.headers.host
-  const redirectId = uuid.v4()
+  const protocol = req.protocol;
+  const host = req.headers.host;
+  const redirectId = uuid.v4();
 
-  const redirectURL = `${protocol}://${host}/redirect/${redirectId}`
+  const redirectURL = `${protocol}://${host}/redirect/${redirectId}`;
 
   const myData = new Links({
     redirectId,
@@ -24,33 +24,36 @@ router.post('/link', (req, res) => {
     link,
     title,
     date,
-    data
-  })
+    data,
+  });
 
-  myData.save().then((result) => {
-    res.json(result)
-  })
-})
+  myData.save().then(result => {
+    res.json(result);
+  });
+});
 
 // Read
 router.get('/links/:userId', (req, res) => {
-  Links.find({ userId: req.params.userId }).then(result => res.json(result))
-})
+  Links.find({userId: req.params.userId}).then(result => res.json(result));
+});
 
 // Update
 router.put('/link/edit/:linkId', (req, res) => {
-  Links.findByIdAndUpdate(req.params.linkId, req.body, {new: true}, function (err, link) {
+  Links.findByIdAndUpdate(req.params.linkId, req.body, {new: true}, function(
+    err,
+    link,
+  ) {
     if (err) return next(err);
     res.send(link);
   });
-})
+});
 
 // Delete
 router.delete('/link/delete/:linkId', (req, res) => {
-  Links.findByIdAndRemove(req.params.linkId, function (err) {
+  Links.findByIdAndRemove(req.params.linkId, function(err) {
     if (err) return next(err);
     res.send('Deleted successfully!');
-  })
-})
+  });
+});
 
-module.exports = router
+module.exports = router;

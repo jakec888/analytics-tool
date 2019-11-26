@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux';
+import {combineReducers} from 'redux';
 
 import authReducers from './reducers/authReducers.reducers';
 import linksReducers from './reducers/linksReducers.reducers';
@@ -9,5 +9,5 @@ export const rootReducer = combineReducers({
   Auth: authReducers,
   AllLinks: linksReducers,
   Create: createReducers,
-  Selected: selectedReducers
+  Selected: selectedReducers,
 });

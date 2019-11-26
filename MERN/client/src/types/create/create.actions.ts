@@ -1,10 +1,10 @@
-import { Link } from '../links/link';
+import {Link} from '../links/link';
 
 import {
   UPDATE_LINK,
   UPDATE_TITLE,
   CREATE_LINK,
-  CREATE_LINK_SUCCESS
+  CREATE_LINK_SUCCESS,
 } from '../../redux/actions/createActions.actions';
 
 export interface updateTitleInterface {

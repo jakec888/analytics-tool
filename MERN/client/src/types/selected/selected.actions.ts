@@ -1,4 +1,9 @@
-import { SELECT_LINK, EDIT_TITLE, EDIT_LINK, EDIT_LINK_SUCCESS } from '../../redux/actions/selectedActions.actions';
+import {
+  SELECT_LINK,
+  EDIT_TITLE,
+  EDIT_LINK,
+  EDIT_LINK_SUCCESS,
+} from '../../redux/actions/selectedActions.actions';
 
 export interface editTitleInterface {
   type: typeof EDIT_TITLE;
@@ -10,9 +15,9 @@ export interface editTitleInterface {
 export interface editLinkInterface {
   type: typeof EDIT_LINK;
   payload: {
-    linkId: string; 
+    linkId: string;
     title: string;
-    history: any
+    history: any;
   };
 }
 
@@ -40,4 +45,8 @@ export interface selectLinkInterface {
   };
 }
 
-export type SelectedActionTypes = selectLinkInterface | editTitleInterface | editLinkInterface | editLinkSuccessInterface;
+export type SelectedActionTypes =
+  | selectLinkInterface
+  | editTitleInterface
+  | editLinkInterface
+  | editLinkSuccessInterface;

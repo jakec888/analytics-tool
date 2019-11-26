@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 
 import {
   updateLink,
   updateTitle,
-  createLink
+  createLink,
 } from '../redux/actions/createActions.actions';
 
-import { Link } from '../types/links/link';
+import {Link} from '../types/links/link';
 
-import { ThunkDispatch } from 'redux-thunk';
-import { AppActions } from '../types/rootType.actions';
-import { AppState } from '../redux/rootAppState';
-import { bindActionCreators } from 'redux';
+import {ThunkDispatch} from 'redux-thunk';
+import {AppActions} from '../types/rootType.actions';
+import {AppState} from '../redux/rootAppState';
+import {bindActionCreators} from 'redux';
 
 import CreateLinkView from '../views/CreateLinkView';
 
@@ -38,13 +38,13 @@ export class CreateLink extends Component<Props, CreateLinkPageState> {
     this.props.createLink(
       this.props.selectedLink,
       this.props.userId,
-      this.props.history
+      this.props.history,
     );
   };
 
   render() {
     return (
-      <CreateLinkView 
+      <CreateLinkView
         title={this.props.title}
         link={this.props.link}
         onUpdateTitle={this.onUpdateTitle}
@@ -72,18 +72,18 @@ const mapStateToProps = (state: AppState): LinkStateProps => ({
   selectedLink: state.Create,
   userId: state.Auth.userId,
   title: state.Create.title,
-  link: state.Create.link
+  link: state.Create.link,
 });
 
 const mapDispatchToProps = (
-  dispatch: ThunkDispatch<any, any, AppActions>
+  dispatch: ThunkDispatch<any, any, AppActions>,
 ): LinkDispatchProps => ({
   updateLink: bindActionCreators(updateLink, dispatch),
   updateTitle: bindActionCreators(updateTitle, dispatch),
-  createLink: bindActionCreators(createLink, dispatch)
+  createLink: bindActionCreators(createLink, dispatch),
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(CreateLink);

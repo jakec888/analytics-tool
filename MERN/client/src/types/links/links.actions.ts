@@ -1,5 +1,10 @@
-import { GET_LINKS, GET_LINKS_SUCCESS, DELETE_LINK, DELETE_LINK_SUCCESS } from '../../redux/actions/linksActions.actions';
-import { Link } from './link';
+import {
+  GET_LINKS,
+  GET_LINKS_SUCCESS,
+  DELETE_LINK,
+  DELETE_LINK_SUCCESS,
+} from '../../redux/actions/linksActions.actions';
+import {Link} from './link';
 
 export interface getLinksInterface {
   type: typeof GET_LINKS;
@@ -18,22 +23,26 @@ export interface getLinksSuccessInterface {
 export interface deleteLinkInterface {
   type: typeof DELETE_LINK;
   payload: {
-    linkId: string,
-    history: any
+    linkId: string;
+    history: any;
   };
 }
 
 export interface deleteLinkSuccessInterface {
   type: typeof DELETE_LINK_SUCCESS;
   payload: {
-    _id: string,
-    redirectURL: string,
-    userId: string,
-    link: string,
-    title: string,
-    date: string,
-    data: []
-  },
+    _id: string;
+    redirectURL: string;
+    userId: string;
+    link: string;
+    title: string;
+    date: string;
+    data: [];
+  };
 }
 
-export type LinksActionTypes = getLinksInterface | getLinksSuccessInterface | deleteLinkInterface | deleteLinkSuccessInterface;
+export type LinksActionTypes =
+  | getLinksInterface
+  | getLinksSuccessInterface
+  | deleteLinkInterface
+  | deleteLinkSuccessInterface;

@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
 const linkSchema = mongoose.Schema({
   userId: String,
@@ -7,9 +7,9 @@ const linkSchema = mongoose.Schema({
   link: String,
   title: String,
   date: String,
-  data: []
-})
+  data: [],
+});
 
-const Links = mongoose.model('links', linkSchema)
+const Links = mongoose.model('links', linkSchema);
 
-module.exports = Links
+module.exports = Links;

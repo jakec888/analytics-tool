@@ -1,8 +1,8 @@
-import { Auth } from 'aws-amplify';
+import {Auth} from 'aws-amplify';
 
-import { Dispatch } from 'redux';
-import { AppState } from '../rootAppState';
-import { AppActions } from '../../types/rootType.actions';
+import {Dispatch} from 'redux';
+import {AppState} from '../rootAppState';
+import {AppActions} from '../../types/rootType.actions';
 
 export const LOGOUT = 'LOGOUT';
 export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
@@ -12,12 +12,12 @@ export const UPDATE_PASSWORD = 'UPDATE_PASSWORD';
 
 export const updateEmail = (email: string) => ({
   type: UPDATE_EMAIL,
-  payload: { email: email }
+  payload: {email: email},
 });
 
 export const updatePassword = (password: string) => ({
   type: UPDATE_PASSWORD,
-  payload: { password: password }
+  payload: {password: password},
 });
 
 export const signUp = (history: any) => {
@@ -25,16 +25,16 @@ export const signUp = (history: any) => {
     const userCred = getState().Auth;
     Auth.signUp({
       username: userCred.email,
-      password: userCred.password
+      password: userCred.password,
     })
-      .then((data) => {
+      .then(data => {
         dispatch({
           type: SIGNUP_SUCCESS,
-          payload: { email: '', password: '' }
+          payload: {email: '', password: ''},
         });
         history.push('/login');
       })
-      .catch((err) => {
+      .catch(err => {
         console.log('Fail!');
         console.log(err);
       });
@@ -46,9 +46,9 @@ export const login = (history: any) => {
     const userCred = getState().Auth;
     Auth.signIn({
       username: userCred.email,
-      password: userCred.password
+      password: userCred.password,
     })
-      .then((data) => {
+      .then(data => {
         dispatch({
           type: LOGIN_SUCCESS,
           payload: {
@@ -56,12 +56,12 @@ export const login = (history: any) => {
             password: '',
             isLoggedIn: true,
             idToken: data.signInUserSession.idToken.jwtToken,
-            userId: data.attributes.sub
-          }
+            userId: data.attributes.sub,
+          },
         });
         history.push('/');
       })
-      .catch((err) => {
+      .catch(err => {
         console.log('Login Fail!');
         console.log(err);
       });
@@ -71,18 +71,18 @@ export const login = (history: any) => {
 export const logout = (history: any) => {
   return (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
     Auth.signOut()
-      .then((data) => {
+      .then(data => {
         dispatch({
           type: LOGOUT,
           payload: {
             isLoggedIn: false,
             idToken: '',
-            userId: ''
-          }
+            userId: '',
+          },
         });
         history.push('/login');
       })
-      .catch((err) => {
+      .catch(err => {
         console.log('Logout Fail!');
         console.log(err);
       });

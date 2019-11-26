@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 
 import {
   updateEmail,
   updatePassword,
-  signUp
+  signUp,
 } from '../redux/actions/authActions.actions';
 
-import { ThunkDispatch } from 'redux-thunk';
-import { AppActions } from '../types/rootType.actions';
-import { AppState } from '../redux/rootAppState';
-import { bindActionCreators } from 'redux';
+import {ThunkDispatch} from 'redux-thunk';
+import {AppActions} from '../types/rootType.actions';
+import {AppState} from '../redux/rootAppState';
+import {bindActionCreators} from 'redux';
 
 import SignUpView from '../views/SignUpView';
 
@@ -63,18 +63,18 @@ interface LinkDispatchProps {
 
 const mapStateToProps = (state: AppState): LinkStateProps => ({
   email: state.Auth.email,
-  password: state.Auth.password
+  password: state.Auth.password,
 });
 
 const mapDispatchToProps = (
-  dispatch: ThunkDispatch<any, any, AppActions>
+  dispatch: ThunkDispatch<any, any, AppActions>,
 ): LinkDispatchProps => ({
   updateEmail: bindActionCreators(updateEmail, dispatch),
   updatePassword: bindActionCreators(updatePassword, dispatch),
-  signUp: bindActionCreators(signUp, dispatch)
+  signUp: bindActionCreators(signUp, dispatch),
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(SignUp);

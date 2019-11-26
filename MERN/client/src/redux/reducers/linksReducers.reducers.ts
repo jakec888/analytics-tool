@@ -1,18 +1,18 @@
-import { InitLink } from '../../types/links/link';
-import { LinksActionTypes } from '../../types/links/links.actions';
+import {InitLink} from '../../types/links/link';
+import {LinksActionTypes} from '../../types/links/links.actions';
 
-import { GET_LINKS, GET_LINKS_SUCCESS } from '../actions/linksActions.actions';
+import {GET_LINKS, GET_LINKS_SUCCESS} from '../actions/linksActions.actions';
 
 const initialState: InitLink = {
-  links: []
+  links: [],
 };
 
 export default (state = initialState, actions: LinksActionTypes) => {
   switch (actions.type) {
     case GET_LINKS:
-      return { ...state };
+      return {...state};
     case GET_LINKS_SUCCESS:
-      return { ...state, links: actions.payload.links };
+      return {...state, links: actions.payload.links};
     default:
       return state;
   }

@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 
-import { selectLink } from '../redux/actions/selectedActions.actions';
-import { getLinks } from '../redux/actions/linksActions.actions';
+import {selectLink} from '../redux/actions/selectedActions.actions';
+import {getLinks} from '../redux/actions/linksActions.actions';
 
-import { Link } from '../types/links/link';
+import {Link} from '../types/links/link';
 
-import { ThunkDispatch } from 'redux-thunk';
-import { AppActions } from '../types/rootType.actions';
-import { AppState } from '../redux/rootAppState';
-import { bindActionCreators } from 'redux';
+import {ThunkDispatch} from 'redux-thunk';
+import {AppActions} from '../types/rootType.actions';
+import {AppState} from '../redux/rootAppState';
+import {bindActionCreators} from 'redux';
 
 import ViewLinksView from '../views/ViewLinksView';
 
@@ -53,17 +53,17 @@ interface LinkDispatchProps {
 
 const mapStateToProps = (state: AppState): LinkStateProps => ({
   userId: state.Auth.userId,
-  links: state.AllLinks.links
+  links: state.AllLinks.links,
 });
 
 const mapDispatchToProps = (
-  dispatch: ThunkDispatch<any, any, AppActions>
+  dispatch: ThunkDispatch<any, any, AppActions>,
 ): LinkDispatchProps => ({
   getLinks: bindActionCreators(getLinks, dispatch),
-  selectLink: bindActionCreators(selectLink, dispatch)
+  selectLink: bindActionCreators(selectLink, dispatch),
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(ViewLinks);

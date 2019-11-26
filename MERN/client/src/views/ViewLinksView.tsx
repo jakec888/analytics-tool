@@ -1,8 +1,8 @@
-import * as React from 'react'
-import { ListGroup, Row, Col } from 'react-bootstrap';
+import * as React from 'react';
+import {ListGroup, Row, Col} from 'react-bootstrap';
 import moment from 'moment';
 
-import { Link } from '../types/links/link';
+import {Link} from '../types/links/link';
 
 type Props = {
   links: Link[];
@@ -10,20 +10,16 @@ type Props = {
   selectLink: (history: any, selected: Link) => void;
 };
 
-const ViewLinksView: React.FC<Props> = (props) => {
-  const {
-    links,
-    history,
-    selectLink
-  } = props;
-  
+const ViewLinksView: React.FC<Props> = props => {
+  const {links, history, selectLink} = props;
+
   const ViewLink = (selected: Link) => {
     selectLink(history, selected);
   };
 
   return (
     <div>
-      <ListGroup variant='flush'>
+      <ListGroup variant="flush">
         {links
           ? links.map((link, index) => {
               return (
@@ -32,9 +28,8 @@ const ViewLinksView: React.FC<Props> = (props) => {
                     <Col sm={8}>{link.title}</Col>
                     <Col
                       sm={4}
-                      className='d-flex justify-content-end'
-                      style={{ fontStyle: 'italic' }}
-                    >
+                      className="d-flex justify-content-end"
+                      style={{fontStyle: 'italic'}}>
                       ({moment(new Date(link.date)).fromNow()})
                     </Col>
                   </Row>
@@ -45,6 +40,6 @@ const ViewLinksView: React.FC<Props> = (props) => {
       </ListGroup>
     </div>
   );
-}
+};
 
 export default ViewLinksView;

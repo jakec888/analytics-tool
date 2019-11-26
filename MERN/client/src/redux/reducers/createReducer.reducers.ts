@@ -2,7 +2,7 @@ import {
   UPDATE_LINK,
   UPDATE_TITLE,
   CREATE_LINK,
-  CREATE_LINK_SUCCESS
+  CREATE_LINK_SUCCESS,
 } from '../actions/createActions.actions';
 
 const initialState = {
@@ -12,15 +12,15 @@ const initialState = {
   link: '',
   title: '',
   date: '',
-  data: []
+  data: [],
 };
 
-export default (state = initialState, { type, payload }: any) => {
+export default (state = initialState, {type, payload}: any) => {
   switch (type) {
     case UPDATE_LINK:
-      return { ...state, link: payload.link };
+      return {...state, link: payload.link};
     case UPDATE_TITLE:
-      return { ...state, title: payload.title };
+      return {...state, title: payload.title};
     case CREATE_LINK:
       return {
         ...state,
@@ -28,7 +28,7 @@ export default (state = initialState, { type, payload }: any) => {
         link: payload.link,
         title: payload.title,
         date: payload.date,
-        data: payload.data
+        data: payload.data,
       };
     case CREATE_LINK_SUCCESS:
       return {
@@ -37,7 +37,7 @@ export default (state = initialState, { type, payload }: any) => {
         link: payload.link,
         title: payload.title,
         date: payload.date,
-        data: payload.data
+        data: payload.data,
       };
     default:
       return state;

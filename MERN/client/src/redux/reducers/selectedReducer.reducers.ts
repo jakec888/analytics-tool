@@ -1,4 +1,8 @@
-import { SELECT_LINK, EDIT_TITLE, EDIT_LINK_SUCCESS } from '../actions/selectedActions.actions';
+import {
+  SELECT_LINK,
+  EDIT_TITLE,
+  EDIT_LINK_SUCCESS,
+} from '../actions/selectedActions.actions';
 
 const initialState = {
   _id: '',
@@ -7,10 +11,10 @@ const initialState = {
   link: '',
   title: '',
   date: '',
-  data: []
+  data: [],
 };
 
-export default (state = initialState, { type, payload }: any) => {
+export default (state = initialState, {type, payload}: any) => {
   switch (type) {
     case SELECT_LINK:
       return {
@@ -20,13 +24,13 @@ export default (state = initialState, { type, payload }: any) => {
         link: payload.link,
         title: payload.title,
         date: payload.date,
-        data: payload.data
+        data: payload.data,
       };
     case EDIT_TITLE:
       return {
         ...state,
-        title: payload.title
-      }
+        title: payload.title,
+      };
     case EDIT_LINK_SUCCESS:
       return {
         ...state,
@@ -35,7 +39,7 @@ export default (state = initialState, { type, payload }: any) => {
         link: payload.link,
         title: payload.title,
         date: payload.date,
-        data: payload.data
+        data: payload.data,
       };
     default:
       return state;

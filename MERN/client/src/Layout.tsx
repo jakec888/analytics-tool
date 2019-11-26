@@ -1,13 +1,13 @@
-import React, { Component, Fragment } from 'react';
-import { Navbar, Nav, Card } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { ThunkDispatch } from 'redux-thunk';
-import { logout } from './redux/actions/authActions.actions';
-import { bindActionCreators } from 'redux';
+import React, {Component, Fragment} from 'react';
+import {Navbar, Nav, Card} from 'react-bootstrap';
+import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {ThunkDispatch} from 'redux-thunk';
+import {logout} from './redux/actions/authActions.actions';
+import {bindActionCreators} from 'redux';
 
-import { AppState } from './redux/rootAppState';
-import { AppActions } from './types/rootType.actions';
+import {AppState} from './redux/rootAppState';
+import {AppActions} from './types/rootType.actions';
 
 interface LayoutProps {
   history?: any;
@@ -28,39 +28,37 @@ class Layout extends Component<Props, LayoutState> {
   render() {
     return (
       <div>
-        <Navbar bg='primary' variant='dark'>
-          <Link to='/' className='navbar-dark navbar-brand'>
+        <Navbar bg="primary" variant="dark">
+          <Link to="/" className="navbar-dark navbar-brand">
             Share Analytics
           </Link>
-          <Nav className='mr-auto'>
+          <Nav className="mr-auto">
             {this.props.isLoggedIn ? (
               <Fragment>
-                <Link to='/' className='nav-link'>
+                <Link to="/" className="nav-link">
                   Links
                 </Link>
-                <Link to='/create' className='nav-link'>
+                <Link to="/create" className="nav-link">
                   Create
                 </Link>
               </Fragment>
             ) : (
-              <Link to='/sign-up' className='nav-link'>
+              <Link to="/sign-up" className="nav-link">
                 Sign Up
               </Link>
             )}
           </Nav>
           {this.props.isLoggedIn ? (
             <Link
-              to='/'
-              style={{ color: 'rgba(255,255,255,.5)', textDecoration: 'none' }}
-              onClick={this.onLogoutUser}
-            >
+              to="/"
+              style={{color: 'rgba(255,255,255,.5)', textDecoration: 'none'}}
+              onClick={this.onLogoutUser}>
               Logout
             </Link>
           ) : (
             <Link
-              to='/login'
-              style={{ color: 'rgba(255,255,255,.5)', textDecoration: 'none' }}
-            >
+              to="/login"
+              style={{color: 'rgba(255,255,255,.5)', textDecoration: 'none'}}>
               Login
             </Link>
           )}
@@ -74,9 +72,8 @@ class Layout extends Component<Props, LayoutState> {
             padding: '15px',
             marginTop: '25px',
             marginLeft: 'auto',
-            marginRight: 'auto'
-          }}
-        >
+            marginRight: 'auto',
+          }}>
           <Card.Body>{this.props.children}</Card.Body>
         </Card>
       </div>
@@ -92,18 +89,21 @@ interface LayoutDispatchProps {
   logout: (history?: any) => void;
 }
 
-const mapStateToProps = (state: AppState, ownProps: LayoutProps): LayoutStateProps => ({
-  isLoggedIn: state.Auth.isLoggedIn
+const mapStateToProps = (
+  state: AppState,
+  ownProps: LayoutProps,
+): LayoutStateProps => ({
+  isLoggedIn: state.Auth.isLoggedIn,
 });
 
 const mapDispatchToProps = (
   dispatch: ThunkDispatch<any, any, AppActions>,
-  ownProps: LayoutProps
+  ownProps: LayoutProps,
 ): LayoutDispatchProps => ({
-  logout: bindActionCreators(logout, dispatch)
+  logout: bindActionCreators(logout, dispatch),
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(Layout);

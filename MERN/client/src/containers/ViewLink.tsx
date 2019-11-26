@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { ThunkDispatch } from 'redux-thunk';
-import { bindActionCreators } from 'redux';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {ThunkDispatch} from 'redux-thunk';
+import {bindActionCreators} from 'redux';
 
-import { AppActions } from '../types/rootType.actions';
+import {AppActions} from '../types/rootType.actions';
 
-import { deleteLink } from '../redux/actions/linksActions.actions';
+import {deleteLink} from '../redux/actions/linksActions.actions';
 
-import { AppState } from '../redux/rootAppState';
-import { DataTypes } from '../types/links/link';
+import {AppState} from '../redux/rootAppState';
+import {DataTypes} from '../types/links/link';
 
 import ViewLinkView from '../views/ViewLinkView';
 
@@ -23,15 +23,12 @@ type Props = ViewLinkPageProps & LinkStateProps & LinkDispatchProps;
 export class ViewLink extends Component<Props, ViewLinkPageState> {
   onDeleteLink = (event: any) => {
     event.preventDefault();
-    this.props.deleteLink(
-      this.props.linkId,
-      this.props.history
-    );
+    this.props.deleteLink(this.props.linkId, this.props.history);
   };
 
   onUpdateLink = () => {
     this.props.history.push('/edit');
-  }
+  };
 
   render() {
     return (
@@ -68,16 +65,16 @@ const mapStateToProps = (state: AppState): LinkStateProps => ({
   title: state.Selected.title,
   redirectURL: state.Selected.redirectURL,
   date: new Date(state.Selected.date).toUTCString(),
-  data: state.Selected.data
+  data: state.Selected.data,
 });
 
 const mapDispatchToProps = (
-  dispatch: ThunkDispatch<any, any, AppActions>
+  dispatch: ThunkDispatch<any, any, AppActions>,
 ): LinkDispatchProps => ({
-  deleteLink: bindActionCreators(deleteLink, dispatch)
+  deleteLink: bindActionCreators(deleteLink, dispatch),
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(ViewLink);

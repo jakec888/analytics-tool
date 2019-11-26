@@ -9,7 +9,7 @@ type Props = {
   onSignUp: (e: string) => void;
 };
 
-export const SignUpView: React.FC<Props> = (props) => {
+const SignUpView: React.FC<Props> = (props) => {
   const { email, password, onUpdateEmail, onUpdatePassword, onSignUp } = props;
 
   const UpdateEmail = (event: any) => {

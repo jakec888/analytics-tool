@@ -17,7 +17,7 @@ type Props = {
   onUpdateLink: () => void;
 };
 
-export const ViewLinkView: React.FC<Props> = (props) => {
+const ViewLinkView: React.FC<Props> = (props) => {
   const {
     link,
     title,

@@ -44,43 +44,7 @@ class Data(db.Model):
 def test_route():
     return jsonify({'working': True})
 
-
-@app.route('/api/links/<userId>/', methods=['GET'])
-def get_links(userId):
-    query = Link.query.filter_by(userId=userId).all()
-
-    links = []
-
-    for l in query:
-
-        link = {}
-
-        link['id'] = l.id
-        link['redirectId'] = l.redirectId
-        link['redirectURL'] = l.redirectURL
-        link['userId'] = l.userId
-        link['link'] = l.link
-        link['title'] = l.title
-        link['date'] = l.date
-
-        data = []
-
-        if l.data:
-            for link_data in l.data:
-                data_object = {}
-
-                data_object['date'] = link_data.date
-                data_object['clicks'] = link_data.clicks
-
-                data.append(data_object)
-
-        link['data'] = data
-
-        links.append(link)
-
-    return jsonify(links)
-
-
+# Create
 @app.route('/api/link/', methods=['POST'])
 def add_link():
     request_data = request.get_json()
@@ -123,6 +87,47 @@ def add_link():
     }
 
     return jsonify(link_data)
+
+# Read
+@app.route('/api/links/<userId>/', methods=['GET'])
+def get_links(userId):
+    query = Link.query.filter_by(userId=userId).all()
+
+    links = []
+
+    for l in query:
+
+        link = {}
+
+        link['id'] = l.id
+        link['redirectId'] = l.redirectId
+        link['redirectURL'] = l.redirectURL
+        link['userId'] = l.userId
+        link['link'] = l.link
+        link['title'] = l.title
+        link['date'] = l.date
+
+        data = []
+
+        if l.data:
+            for link_data in l.data:
+                data_object = {}
+
+                data_object['date'] = link_data.date
+                data_object['clicks'] = link_data.clicks
+
+                data.append(data_object)
+
+        link['data'] = data
+
+        links.append(link)
+
+    return jsonify(links)
+
+# Update
+
+# Delete
+
 
 @app.route('/redirect/<redirectId>', methods=['GET'])
 def redirect_url(redirectId):

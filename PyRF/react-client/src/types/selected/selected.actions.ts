@@ -1,40 +1,35 @@
-import { Link } from '../links/link';
-
 import {
-  UPDATE_LINK,
-  UPDATE_TITLE,
-  CREATE_LINK,
-  CREATE_LINK_SUCCESS,
-  SELECT_LINK
+  SELECT_LINK,
+  EDIT_TITLE,
+  EDIT_LINK,
+  EDIT_LINK_SUCCESS,
 } from '../../redux/actions/selectedActions.actions';
 
-export interface updateTitleInterface {
-  type: typeof UPDATE_TITLE;
+export interface editTitleInterface {
+  type: typeof EDIT_TITLE;
   payload: {
     title: string;
   };
 }
 
-export interface updateLinkInterface {
-  type: typeof UPDATE_LINK;
+export interface editLinkInterface {
+  type: typeof EDIT_LINK;
   payload: {
-    link: string;
-  };
-}
-
-export interface createLinkInterface {
-  type: typeof CREATE_LINK;
-  payload: {
-    selectedLink: Link;
-    userId: string;
+    linkId: string;
+    title: string;
     history: any;
   };
 }
 
-export interface createLinkSuccessInterface {
-  type: typeof CREATE_LINK_SUCCESS;
+export interface editLinkSuccessInterface {
+  type: typeof EDIT_LINK_SUCCESS;
   payload: {
-    payload: any;
+    _id: string;
+    redirectURL: string;
+    link: string;
+    title: string;
+    date: string;
+    data: any;
   };
 }
 
@@ -51,8 +46,7 @@ export interface selectLinkInterface {
 }
 
 export type SelectedActionTypes =
-  | updateTitleInterface
-  | updateLinkInterface
-  | createLinkInterface
-  | createLinkSuccessInterface
-  | selectLinkInterface;
+  | selectLinkInterface
+  | editTitleInterface
+  | editLinkInterface
+  | editLinkSuccessInterface;

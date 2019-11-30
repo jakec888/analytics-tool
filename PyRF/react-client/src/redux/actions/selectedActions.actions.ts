@@ -1,42 +1,49 @@
-import { Dispatch } from 'redux';
+import {Dispatch} from 'redux';
 
-import { AppState } from '../rootAppState';
-import { AppActions } from '../../types/rootType.actions';
-import { Link } from '../../types/links/link';
+import {AppState} from '../rootAppState';
+import {AppActions} from '../../types/rootType.actions';
+import {Link} from '../../types/links/link';
 
-export const UPDATE_LINK = 'UPDATE_LINK';
-export const UPDATE_TITLE = 'UPDATE_TITLE';
-export const CREATE_LINK = 'CREATE_LINK';
 export const SELECT_LINK = 'SELECT_LINK';
-export const CREATE_LINK_SUCCESS = 'CREATE_LINK_SUCCESS';
+export const EDIT_TITLE = 'EDIT_TITLE';
+export const EDIT_LINK = 'EDIT_LINK';
+export const EDIT_LINK_SUCCESS = 'EDIT_LINK_SUCCESS';
 
-export const updateTitle = (title: string): AppActions => ({
-  type: UPDATE_TITLE,
-  payload: { title: title }
+export const editTitle = (title: string): AppActions => ({
+  type: EDIT_TITLE,
+  payload: {title},
 });
 
-export const updateLink = (link: string): AppActions => ({
-  type: UPDATE_LINK,
-  payload: { link: link }
-});
-
-export const createLink = (
-  selectedLink: Link,
-  userId: string,
-  history: any
+export const editLink = (
+  linkId: string,
+  title: string,
+  history: any,
 ): AppActions => ({
-  type: CREATE_LINK,
-  payload: { selectedLink, userId, history }
+  type: EDIT_LINK,
+  payload: {linkId, title, history},
 });
 
-export const createLinkSuccess = (payload: any): AppActions => ({
-  type: CREATE_LINK_SUCCESS,
-  payload: payload
-});
+export const editLinkSuccess = (selected: Link, history: any): any => {
+  return (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
+    const {_id, redirectURL, link, title, date, data} = selected;
+    dispatch({
+      type: EDIT_LINK_SUCCESS,
+      payload: {
+        _id,
+        redirectURL,
+        link,
+        title,
+        date,
+        data,
+      },
+    });
+    history.push('/view');
+  };
+};
 
 export const selectLink = (history: any, selected: Link) => {
   return (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
-    const { _id, redirectURL, link, title, date, data } = selected;
+    const {_id, redirectURL, link, title, date, data} = selected;
 
     dispatch({
       type: SELECT_LINK,
@@ -46,9 +53,10 @@ export const selectLink = (history: any, selected: Link) => {
         link,
         title,
         date,
-        data
-      }
+        data,
+      },
     });
+
     history.push('/view');
   };
 };

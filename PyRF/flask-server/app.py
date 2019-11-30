@@ -89,7 +89,7 @@ def add_link():
     link = request_data['link']
     title = request_data['title']
     date = request_data['date']
-    data = request_data['data']
+    # data = request_data['data']
 
     base_url = urlparse(request.base_url)
 

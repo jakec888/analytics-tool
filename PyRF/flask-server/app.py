@@ -117,9 +117,7 @@ def get_links(userId):
         link['data'] = data
 
         links.append(link)
-
-    print('Working!')
-
+        
     return jsonify(links)
 
 # # Update
@@ -127,18 +125,13 @@ def get_links(userId):
 # def update_link(linkId):
 #     return jsonify({'sample': True})
 
-# # Delete
-# @app.route('/api/link/delete/<linkId>/', methods=['DELETE'])
-# def delete_link(linkId):
-#     print('delete_link')
-#     print(linkId)
-#     print(type(linkId))
-#     link_to_delete = Link.query.filter_by(id=linkId).first_or_404()
-#     print('session delete')
-#     db.session.delete(link_to_delete)
-#     print('session commit')
-#     db.session.commit()
-#     return jsonify({'successfully': True})
+# Delete
+@app.route('/api/link/delete/<linkId>/', methods=['DELETE'])
+def delete_link(linkId):
+    link_to_delete = Link.query.filter_by(id=linkId).first_or_404()
+    db.session.delete(link_to_delete)
+    db.session.commit()
+    return 'Deleted successfully!'
 
 
 @app.route('/redirect/<redirectId>', methods=['GET'])

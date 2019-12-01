@@ -130,21 +130,42 @@ def get_links(userId):
 # Update
 @app.route('/api/link/edit/<linkId>', methods=['PUT'])
 def update_link(linkId):
-    print('updating link!')
     request_data = request.get_json()
-    print(request_data)
 
     title = request_data['title']
-    print(title)
     date = request_data['date']
-    print(date)
 
     link_to_edit = Link.query.filter_by(id=linkId).first_or_404()
+    
     link_to_edit.title = title
     link_to_edit.date = date
+
     db.session.commit()
-    print(link_to_edit.as_dict())
-    return jsonify(link_to_edit.as_dict())
+
+    link = {}
+
+    link['id'] = link_to_edit.id
+    link['redirectId'] = link_to_edit.redirectId
+    link['redirectURL'] = link_to_edit.redirectURL
+    link['userId'] = link_to_edit.userId
+    link['link'] = link_to_edit.link
+    link['title'] = link_to_edit.title
+    link['date'] = link_to_edit.date
+
+    data = []
+
+    if link_to_edit.data:
+        for link_data in link_to_edit.data:
+            data_object = {}
+
+            data_object['date'] = link_data.date
+            data_object['clicks'] = link_data.clicks
+
+            data.append(data_object)
+
+    link['data'] = data
+
+    return jsonify(link)
 
 # Delete
 @app.route('/api/link/delete/<linkId>/', methods=['DELETE'])

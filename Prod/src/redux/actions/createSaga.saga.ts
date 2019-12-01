@@ -1,5 +1,6 @@
 import { API, graphqlOperation } from 'aws-amplify';
 import * as mutations from '../../graphql/mutations';
+import uuidv4 from 'uuid/v4'
 
 import {all, takeEvery, put, call} from 'redux-saga/effects';
 // import API from '../../api';
@@ -19,8 +20,13 @@ const onLinkRequest = (data: any) => {
 export function* createLinkAsync({payload}: any) {
   const {selectedLink, userId, history} = payload;
 
+  const redirectId = uuidv4()
+  const redirectURL = window.location.protocol + '//' + window.location.host + '/redirect/' + redirectId
+
   const data = {
     userId: userId,
+    redirectId: redirectId,
+    redirectURL: redirectURL,
     link: selectedLink.link,
     title: selectedLink.title,
     date: new Date().toISOString(),

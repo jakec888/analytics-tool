@@ -1,0 +1,10 @@
+{
+	"auth": {
+		"musicshare57f427ba": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": []
+		}
+	},
+	"api": {}
+}

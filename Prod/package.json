@@ -1,0 +1,82 @@
+{
+  "name": "front-end",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@babel/preset-env": "^7.6.3",
+    "@babel/preset-react": "^7.6.3",
+    "@types/history": "^4.7.3",
+    "@types/jest": "^24.0.18",
+    "@types/node": "^12.7.8",
+    "@types/react": "^16.9.3",
+    "@types/react-copy-to-clipboard": "^4.3.0",
+    "@types/react-dom": "^16.9.1",
+    "@types/react-router": "^5.1.0",
+    "aws-amplify": "^1.1.36",
+    "aws-amplify-react": "^2.3.12",
+    "axios": "^0.19.0",
+    "babel-jest": "^24.9.0",
+    "bootstrap": "^4.3.1",
+    "chart.js": "^2.8.0",
+    "cheerio": "^1.0.0-rc.3",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "eslint-config-prettier": "^6.1.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "jest": "^24.9.0",
+    "moment": "^2.24.0",
+    "moxios": "^0.4.0",
+    "prettier": "^1.18.2",
+    "pretty-quick": "^1.11.1",
+    "react": "^16.8.6",
+    "react-bootstrap": "^1.0.0-beta.10",
+    "react-chartjs-2": "^2.7.6",
+    "react-copy-to-clipboard": "^5.0.1",
+    "react-dom": "^16.8.6",
+    "react-redux": "^7.1.0",
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "3.0.1",
+    "react-test-renderer": "^16.10.2",
+    "redux": "^4.0.4",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-saga": "^1.0.5",
+    "redux-thunk": "^2.3.0",
+    "uuid": "^3.3.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "mongo": "brew services restart mongodb-community",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.6.3",
+    "@babel/preset-react": "^7.6.3",
+    "@testing-library/dom": "^6.8.1",
+    "@testing-library/react": "^9.3.0",
+    "@types/react-redux": "^7.1.4",
+    "@types/react-router-dom": "^5.1.0",
+    "awesome-typescript-loader": "^5.2.1",
+    "babel-jest": "^24.9.0",
+    "jest": "^24.9.0",
+    "react-test-renderer": "^16.10.2",
+    "source-map-loader": "^0.2.4",
+    "typescript": "^3.6.3"
+  }
+}

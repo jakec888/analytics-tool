@@ -1,0 +1,16 @@
+type Link @model {
+  id: ID!
+  userId: String
+  redirectId: String
+  redirectURL: String
+  link: String
+  title: String
+  date: String
+  data: [Data] @connection(name: "Data")
+}
+type Data @model {
+  id: ID!
+  date: String
+  clicks: Int
+  link: Link @connection(name: "Data")
+}

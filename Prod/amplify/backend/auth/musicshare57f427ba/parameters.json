@@ -1,0 +1,62 @@
+{
+    "identityPoolName": "musicshare57f427ba_identitypool_57f427ba",
+    "allowUnauthenticatedIdentities": false,
+    "openIdLambdaRoleName": "musics57f427ba_openid_lambda_role",
+    "resourceNameTruncated": "musics57f427ba",
+    "userPoolName": "musicshare57f427ba_userpool_57f427ba",
+    "autoVerifiedAttributes": [
+        "email"
+    ],
+    "mfaConfiguration": "OFF",
+    "mfaTypes": [
+        "SMS Text Message"
+    ],
+    "smsAuthenticationMessage": "Your authentication code is {####}",
+    "smsVerificationMessage": "Your verification code is {####}",
+    "emailVerificationSubject": "Your verification code",
+    "emailVerificationMessage": "Your verification code is {####}",
+    "defaultPasswordPolicy": false,
+    "passwordPolicyMinLength": 8,
+    "passwordPolicyCharacters": [],
+    "requiredAttributes": [
+        "email"
+    ],
+    "userpoolClientName": "musics57f427ba_app_client",
+    "userpoolClientGenerateSecret": true,
+    "userpoolClientRefreshTokenValidity": 30,
+    "userpoolClientWriteAttributes": [
+        "email"
+    ],
+    "userpoolClientReadAttributes": [
+        "email"
+    ],
+    "mfaLambdaRole": "musics57f427ba_totp_lambda_role",
+    "userpoolClientLambdaRole": "musics57f427ba_userpoolclient_lambda_role",
+    "userpoolClientSetAttributes": false,
+    "resourceName": "musicshare57f427ba",
+    "authSelections": "identityPoolAndUserPool",
+    "authRoleName": {
+        "Ref": "AuthRoleName"
+    },
+    "unauthRoleName": {
+        "Ref": "UnauthRoleName"
+    },
+    "authRoleArn": {
+        "Fn::GetAtt": [
+            "AuthRole",
+            "Arn"
+        ]
+    },
+    "unauthRoleArn": {
+        "Fn::GetAtt": [
+            "UnauthRole",
+            "Arn"
+        ]
+    },
+    "useDefault": "default",
+    "usernameAttributes": [
+        "email"
+    ],
+    "additionalQuestions": [],
+    "dependsOn": []
+}

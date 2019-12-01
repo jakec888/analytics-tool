@@ -1,7 +1,3 @@
-# 
-# CRUD Version is in the MERN folder
-# 
-
 from flask import Flask, jsonify, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime, date
@@ -37,7 +33,7 @@ class Data(db.Model):
     date = db.Column(db.String(80), nullable=False)
     clicks = db.Column(db.Integer, nullable=False)
 
-    link_id = db.Column(db.Integer, db.ForeignKey('link.id'), nullable=False)
+    link_id = db.Column(db.Integer, db.ForeignKey('link.id'), nullable=True)
 
 
 @app.route('/')
@@ -45,7 +41,7 @@ def test_route():
     return jsonify({'working': True})
 
 # Create
-@app.route('/api/link/', methods=['POST'])
+@app.route('/api/link', methods=['POST'])
 def add_link():
     request_data = request.get_json()
 
@@ -53,7 +49,7 @@ def add_link():
     link = request_data['link']
     title = request_data['title']
     date = request_data['date']
-    # data = request_data['data']
+    data = request_data['data']
 
     base_url = urlparse(request.base_url)
 
@@ -122,11 +118,27 @@ def get_links(userId):
 
         links.append(link)
 
+    print('Working!')
+
     return jsonify(links)
 
-# Update
+# # Update
+# @app.route('/api/link/edit/<linkId>/', methods=['PUT'])
+# def update_link(linkId):
+#     return jsonify({'sample': True})
 
-# Delete
+# # Delete
+# @app.route('/api/link/delete/<linkId>/', methods=['DELETE'])
+# def delete_link(linkId):
+#     print('delete_link')
+#     print(linkId)
+#     print(type(linkId))
+#     link_to_delete = Link.query.filter_by(id=linkId).first_or_404()
+#     print('session delete')
+#     db.session.delete(link_to_delete)
+#     print('session commit')
+#     db.session.commit()
+#     return jsonify({'successfully': True})
 
 
 @app.route('/redirect/<redirectId>', methods=['GET'])

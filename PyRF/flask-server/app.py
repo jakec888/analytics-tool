@@ -27,6 +27,10 @@ class Link(db.Model):
 
     data = db.relationship('Data', backref=db.backref('link', lazy=True))
 
+    def as_dict(self):
+       return {c.name: getattr(self, c.name) for c in self.__table__.columns}
+
+
 
 class Data(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -34,6 +38,9 @@ class Data(db.Model):
     clicks = db.Column(db.Integer, nullable=False)
 
     link_id = db.Column(db.Integer, db.ForeignKey('link.id'), nullable=True)
+
+    def as_dict(self):
+       return {c.name: getattr(self, c.name) for c in self.__table__.columns}
 
 
 @app.route('/')
@@ -117,13 +124,27 @@ def get_links(userId):
         link['data'] = data
 
         links.append(link)
-        
+
     return jsonify(links)
 
-# # Update
-# @app.route('/api/link/edit/<linkId>/', methods=['PUT'])
-# def update_link(linkId):
-#     return jsonify({'sample': True})
+# Update
+@app.route('/api/link/edit/<linkId>', methods=['PUT'])
+def update_link(linkId):
+    print('updating link!')
+    request_data = request.get_json()
+    print(request_data)
+
+    title = request_data['title']
+    print(title)
+    date = request_data['date']
+    print(date)
+
+    link_to_edit = Link.query.filter_by(id=linkId).first_or_404()
+    link_to_edit.title = title
+    link_to_edit.date = date
+    db.session.commit()
+    print(link_to_edit.as_dict())
+    return jsonify(link_to_edit.as_dict())
 
 # Delete
 @app.route('/api/link/delete/<linkId>/', methods=['DELETE'])

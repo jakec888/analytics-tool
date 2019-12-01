@@ -1,9 +1,15 @@
+import { API, graphqlOperation } from 'aws-amplify';
+import * as mutations from '../../graphql/mutations';
+
 import {all, takeEvery, put, call} from 'redux-saga/effects';
-import API from '../../api';
+// import API from '../../api';
 import {EDIT_LINK, editLinkSuccess} from './selectedActions.actions';
 
-const onUpdateLinkRequest = (linkId: string, data: any) => {
-  const request = API.put(`/api/link/edit/${linkId}`, data);
+// const onUpdateLinkRequest = (linkId: string, data: any) => {
+const onUpdateLinkRequest = (data: any) => {
+  // const request = API.put(`/api/link/edit/${linkId}`, data);
+  const request = API.graphql(graphqlOperation(mutations.updateLink, {input: data}));
+
   return request;
 };
 
@@ -19,7 +25,12 @@ export function* editLinkAsync({payload}: any) {
     date: new Date().toISOString(),
   };
 
-  const selected = yield call(onUpdateLinkRequest, linkId, data);
+  console.log('updating link')
+
+  const selected = yield call(onUpdateLinkRequest, data);
+
+  console.log('links updated')
+  console.log(selected)
 
   yield put(editLinkSuccess(selected.data, history));
 }

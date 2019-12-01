@@ -1,9 +1,15 @@
+import { API, graphqlOperation } from 'aws-amplify';
+import * as mutations from '../../graphql/mutations';
+
 import {all, takeEvery, put, call} from 'redux-saga/effects';
-import API from '../../api';
+// import API from '../../api';
 import {CREATE_LINK, createLinkSuccess} from './createActions.actions';
 
 const onLinkRequest = (data: any) => {
-  const request = API.post('/api/link', data);
+  console.log(data)
+  // const request = API.post('/api/link', data);
+  const request = API.graphql(graphqlOperation(mutations.createLink, {input: data}));
+  console.log('onLinkRequest done')
   return request;
 };
 
@@ -18,10 +24,17 @@ export function* createLinkAsync({payload}: any) {
     link: selectedLink.link,
     title: selectedLink.title,
     date: new Date().toISOString(),
-    data: [],
+    // data: [],
   };
 
-  yield call(onLinkRequest, data);
+  // yield call(onLinkRequest, data);
+
+  console.log('creating link')
+
+  const request = yield call(onLinkRequest, data);
+
+  console.log('link created')
+  console.log(request)
 
   yield put(createLinkSuccess());
 

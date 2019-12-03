@@ -13,11 +13,11 @@ const SignUpView: React.FC<Props> = props => {
   const {email, password, onUpdateEmail, onUpdatePassword, onSignUp} = props;
 
   const UpdateEmail = (event: any) => {
-    onUpdateEmail(event.target.value);
+    onUpdateEmail(event);
   };
 
   const UpdatePassword = (event: any) => {
-    onUpdatePassword(event.target.value);
+    onUpdatePassword(event);
   };
 
   const SignUp = (event: any) => {

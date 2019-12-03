@@ -4,7 +4,16 @@ import {
   LOGIN_SUCCESS,
   UPDATE_EMAIL,
   UPDATE_PASSWORD,
+  CLEAR_CREDENTIALS,
 } from '../../redux/actions/authActions.actions';
+
+export interface updateClearCredentials {
+  type: typeof CLEAR_CREDENTIALS;
+  payload: {
+    email: string;
+    password: string;
+  };
+}
 
 export interface updateEmailInterface {
   type: typeof UPDATE_EMAIL;
@@ -53,4 +62,5 @@ export type AuthActionTypes =
   | updatePasswordInterface
   | signUpInterface
   | loginInterface
-  | logoutInterface;
+  | logoutInterface
+  | updateClearCredentials;

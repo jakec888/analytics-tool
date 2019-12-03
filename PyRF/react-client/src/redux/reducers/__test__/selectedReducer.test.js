@@ -3,7 +3,7 @@ import selectedReducer from "../selectedReducer.reducers";
 describe("Auth Reducer test", () => {
   it("update link reducer test", () => {
     const excepctedReducer = {
-      id: "",
+      _id: "",
       redirectURL: "",
       userId: "",
       link: [],
@@ -22,7 +22,7 @@ describe("Auth Reducer test", () => {
 
   it("update title reducer test", () => {
     const excepctedReducer = {
-      id: "",
+      _id: "",
       redirectURL: "",
       userId: "",
       link: "",
@@ -47,7 +47,7 @@ describe("Auth Reducer test", () => {
 
   it("initial state", () => {
     expect(selectedReducer(undefined, {})).toEqual({
-      id: "",
+      _id: "",
       redirectURL: "",
       userId: "",
       link: "",

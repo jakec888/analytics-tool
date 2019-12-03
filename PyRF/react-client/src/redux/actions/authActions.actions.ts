@@ -9,6 +9,12 @@ export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const UPDATE_EMAIL = 'UPDATE_EMAIL';
 export const UPDATE_PASSWORD = 'UPDATE_PASSWORD';
+export const CLEAR_CREDENTIALS = 'CLEAR_CREDENTIALS';
+
+export const clearCredentials = () => ({
+  type: CLEAR_CREDENTIALS,
+  payload: {email: '', password: ''},
+});
 
 export const updateEmail = (email: string) => ({
   type: UPDATE_EMAIL,

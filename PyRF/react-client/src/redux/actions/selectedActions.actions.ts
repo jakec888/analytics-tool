@@ -25,11 +25,11 @@ export const editLink = (
 
 export const editLinkSuccess = (selected: Link, history: any): any => {
   return (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
-    const {id, redirectURL, link, title, date, data} = selected;
+    const {_id, redirectURL, link, title, date, data} = selected;
     dispatch({
       type: EDIT_LINK_SUCCESS,
       payload: {
-        id,
+        _id,
         redirectURL,
         link,
         title,
@@ -43,12 +43,12 @@ export const editLinkSuccess = (selected: Link, history: any): any => {
 
 export const selectLink = (history: any, selected: Link) => {
   return (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
-    const {id, redirectURL, link, title, date, data} = selected;
+    const {_id, redirectURL, link, title, date, data} = selected;
 
     dispatch({
       type: SELECT_LINK,
       payload: {
-        id,
+        _id,
         redirectURL,
         link,
         title,

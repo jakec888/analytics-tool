@@ -5,7 +5,7 @@ import {
 } from '../actions/selectedActions.actions';
 
 const initialState = {
-  id: '',
+  _id: '',
   redirectURL: '',
   userId: '',
   link: '',
@@ -19,7 +19,7 @@ export default (state = initialState, {type, payload}: any) => {
     case SELECT_LINK:
       return {
         ...state,
-        id: payload.id,
+        _id: payload._id,
         redirectURL: payload.redirectURL,
         link: payload.link,
         title: payload.title,
@@ -34,7 +34,7 @@ export default (state = initialState, {type, payload}: any) => {
     case EDIT_LINK_SUCCESS:
       return {
         ...state,
-        id: payload.id,
+        _id: payload._id,
         redirectURL: payload.redirectURL,
         link: payload.link,
         title: payload.title,

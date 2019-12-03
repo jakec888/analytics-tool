@@ -31,7 +31,7 @@ export interface deleteLinkInterface {
 export interface deleteLinkSuccessInterface {
   type: typeof DELETE_LINK_SUCCESS;
   payload: {
-    id: string;
+    _id: string;
     redirectURL: string;
     userId: string;
     link: string;

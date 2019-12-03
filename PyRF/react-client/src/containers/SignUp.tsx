@@ -5,6 +5,7 @@ import {
   updateEmail,
   updatePassword,
   signUp,
+  clearCredentials
 } from '../redux/actions/authActions.actions';
 
 import {ThunkDispatch} from 'redux-thunk';
@@ -23,6 +24,10 @@ interface SignUpPageState {}
 type Props = SignUpPageProps & LinkStateProps & LinkDispatchProps;
 
 export class SignUp extends Component<Props, SignUpPageState> {
+  componentDidMount() {
+    this.props.clearCredentials();
+  }
+
   onUpdateEmail = (event: any) => {
     this.props.updateEmail(event.target.value);
   };
@@ -58,6 +63,7 @@ interface LinkStateProps {
 interface LinkDispatchProps {
   updateEmail: (e: string) => void;
   updatePassword: (e: string) => void;
+  clearCredentials: () => void;
   signUp: (history: any) => void;
 }
 
@@ -72,6 +78,7 @@ const mapDispatchToProps = (
   updateEmail: bindActionCreators(updateEmail, dispatch),
   updatePassword: bindActionCreators(updatePassword, dispatch),
   signUp: bindActionCreators(signUp, dispatch),
+  clearCredentials: bindActionCreators(clearCredentials, dispatch),
 });
 
 export default connect(

@@ -7,18 +7,25 @@ import {
   LOGIN_SUCCESS,
   UPDATE_EMAIL,
   UPDATE_PASSWORD,
+  CLEAR_CREDENTIALS
 } from '../actions/authActions.actions';
 
 const initialState: AuthTypes = {
   idToken: '',
   userId: '',
   isLoggedIn: false,
-  email: 'zapefol@app-expert.com',
-  password: 'zapefol@app-expert.com',
+  email: 'jaconjcondes@gmail.com',
+  password: 'helloworld',
 };
 
 export default (state = initialState, action: AuthActionTypes): AuthTypes => {
   switch (action.type) {
+    case CLEAR_CREDENTIALS:
+      return {
+        ...state,
+        email: action.payload.email,
+        password: action.payload.password
+      };
     case LOGOUT:
       return {
         ...state,

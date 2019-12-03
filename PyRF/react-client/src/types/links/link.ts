@@ -4,7 +4,7 @@ export interface DataTypes {
 }
 
 export interface Link {
-  id: string;
+  _id: string;
   redirectURL: string;
   link: string;
   title: string;

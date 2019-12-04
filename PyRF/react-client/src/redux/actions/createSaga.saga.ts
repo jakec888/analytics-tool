@@ -26,7 +26,6 @@ export function* createLinkAsync({payload}: any) {
   yield put(createLinkSuccess());
 
   yield history.push('/');
-  // history.push('/');
 }
 
 /* 

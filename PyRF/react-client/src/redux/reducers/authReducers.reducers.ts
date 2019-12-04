@@ -7,7 +7,7 @@ import {
   LOGIN_SUCCESS,
   UPDATE_EMAIL,
   UPDATE_PASSWORD,
-  CLEAR_CREDENTIALS
+  CLEAR_CREDENTIALS,
 } from '../actions/authActions.actions';
 
 const initialState: AuthTypes = {
@@ -24,7 +24,7 @@ export default (state = initialState, action: AuthActionTypes): AuthTypes => {
       return {
         ...state,
         email: action.payload.email,
-        password: action.payload.password
+        password: action.payload.password,
       };
     case LOGOUT:
       return {

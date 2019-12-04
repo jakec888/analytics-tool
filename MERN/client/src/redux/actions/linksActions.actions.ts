@@ -43,16 +43,3 @@ export const deleteLinkSuccess = (history: any): any => {
     history.push('/');
   };
 };
-
-// export const deleteLinkSuccess = (history: any) => ({
-//   type: DELETE_LINK_SUCCESS,
-// payload: {
-//   _id: '',
-//   redirectURL: '',
-//   userId: '',
-//   link: '',
-//   title: '',
-//   date: '',
-//   data: []
-// }
-// });

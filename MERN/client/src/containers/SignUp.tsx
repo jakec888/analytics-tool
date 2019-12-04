@@ -5,7 +5,7 @@ import {
   updateEmail,
   updatePassword,
   signUp,
-  clearCredentials
+  clearCredentials,
 } from '../redux/actions/authActions.actions';
 
 import {ThunkDispatch} from 'redux-thunk';

@@ -36,8 +36,6 @@ export function* deleteLinkAsync({payload}: any) {
   yield call(onDeleteLinkRequest, linkId);
 
   yield put(deleteLinkSuccess(history));
-
-  // yield put(history.push('/'));
 }
 
 /* 

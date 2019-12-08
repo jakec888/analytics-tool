@@ -1,5 +1,11 @@
 const mongoose = require('mongoose');
 
+/*
+ * MODEL
+ *
+ * This is the mongo model for the link
+ *
+ */
 const linkSchema = mongoose.Schema({
   userId: String,
   redirectId: String,

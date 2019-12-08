@@ -1,3 +1,8 @@
+/*
+
+This is the "page" that handles the logic for viewing a selected link from the view links "page".
+
+*/
 import * as React from 'react';
 import {Card, Form, Button, InputGroup, FormControl} from 'react-bootstrap';
 

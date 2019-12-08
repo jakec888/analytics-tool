@@ -1,3 +1,8 @@
+/*
+
+This is the "page" that handles the viewing of all the links that you created.
+
+*/
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {ThunkDispatch} from 'redux-thunk';

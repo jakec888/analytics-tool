@@ -1,3 +1,10 @@
+/*
+
+State (w/ redux) Management & Store is created here.
+
+This file makes Enzyme and Jest, or any other testing type library that needs to handle state easier to test.
+
+*/
 import React from 'react';
 import {Provider} from 'react-redux';
 import {createStore, applyMiddleware} from 'redux';

@@ -1,3 +1,8 @@
+/*
+
+This is the "page" that handles the logic for viewing a selected link from the view links "page".
+
+*/
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 

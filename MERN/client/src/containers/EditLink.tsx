@@ -1,3 +1,8 @@
+/*
+
+This is the "page" that handles the logic for editing links.
+
+*/
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 

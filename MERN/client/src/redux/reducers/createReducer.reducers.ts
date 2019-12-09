@@ -1,3 +1,8 @@
+/*
+ *
+ * this is the file that handles the redux reducer for all the create link logic
+ *
+ */
 import {
   UPDATE_LINK,
   UPDATE_TITLE,

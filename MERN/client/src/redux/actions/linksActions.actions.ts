@@ -1,3 +1,8 @@
+/*
+ *
+ * this files handles all the redux actions for getting and deleting link
+ *
+ */
 import {Dispatch} from 'redux';
 
 import {AppState} from '../rootAppState';

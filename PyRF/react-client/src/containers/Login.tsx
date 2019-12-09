@@ -1,3 +1,8 @@
+/*
+ *
+ * This is the file that handles the logic for loggin in.
+ *
+ */
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 

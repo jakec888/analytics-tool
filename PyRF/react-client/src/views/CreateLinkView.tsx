@@ -1,3 +1,8 @@
+/*
+ *
+ * This file handles the UI/view for creating a link
+ *
+ */
 import * as React from 'react';
 import {Card, Form, Button, InputGroup, FormControl} from 'react-bootstrap';
 

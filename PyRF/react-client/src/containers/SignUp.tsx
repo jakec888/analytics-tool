@@ -1,3 +1,8 @@
+/*
+ *
+ * This is the file that handles the logic for signing up a user.
+ *
+ */
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 

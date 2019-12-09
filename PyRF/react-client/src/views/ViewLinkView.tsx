@@ -1,3 +1,8 @@
+/*
+ *
+ * This is the "page" that handles the logic for viewing a selected link.
+ *
+ */
 import * as React from 'react';
 import {Card, InputGroup, FormControl, Button} from 'react-bootstrap';
 import {Bar} from 'react-chartjs-2';

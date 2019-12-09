@@ -1,3 +1,8 @@
+/*
+ *
+ * this is the file that handles the redux reducer for all the authorization logic
+ *
+ */
 import {AuthTypes} from '../../types/auth/auth';
 import {AuthActionTypes} from '../../types/auth/auth.actions';
 

@@ -1,3 +1,9 @@
+/*
+ *
+ * this files handles all the redux actions for editing/switching
+ * and selecting links
+ *
+ */
 import {Dispatch} from 'redux';
 
 import {AppState} from '../rootAppState';

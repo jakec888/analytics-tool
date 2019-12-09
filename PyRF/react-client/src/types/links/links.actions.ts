@@ -1,3 +1,8 @@
+/*
+ *
+ * this is the file that handles the typescript interfaces for all link actions
+ *
+ */
 import {
   GET_LINKS,
   GET_LINKS_SUCCESS,

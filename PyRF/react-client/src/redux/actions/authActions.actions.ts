@@ -1,3 +1,8 @@
+/*
+ *
+ * this files handles all the redux actions for authorization
+ *
+ */
 import {Auth} from 'aws-amplify';
 
 import {Dispatch} from 'redux';

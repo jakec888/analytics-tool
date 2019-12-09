@@ -1,3 +1,8 @@
+/*
+ *
+ * this is the file that handles the typescript interfaces for all selcted link actions
+ *
+ */
 import {
   SELECT_LINK,
   EDIT_TITLE,

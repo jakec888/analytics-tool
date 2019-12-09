@@ -1,3 +1,8 @@
+/*
+ *
+ * This is the file that handles the logic for viewing a selected link.
+ *
+ */
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {ThunkDispatch} from 'redux-thunk';

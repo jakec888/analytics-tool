@@ -1,3 +1,8 @@
+/*
+ *
+ * this is the file that handles the redux reducer for all the selected link logic
+ *
+ */
 import {
   SELECT_LINK,
   EDIT_TITLE,

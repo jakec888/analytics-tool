@@ -1,3 +1,9 @@
+/*
+ *
+ * this files handles all the redux actions for creating,
+ * updating link, and updating title
+ *
+ */
 import {AppActions} from '../../types/rootType.actions';
 import {Link} from '../../types/links/link';
 

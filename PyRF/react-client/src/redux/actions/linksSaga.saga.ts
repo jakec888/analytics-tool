@@ -1,3 +1,10 @@
+/*
+ *
+ * this is the saga file that handles the external api requests
+ * in referece to the logic based in the "linksActions.actions.ts"
+ * file
+ *
+ */
 import {all, takeEvery, put, call} from 'redux-saga/effects';
 import API from '../../api';
 import {

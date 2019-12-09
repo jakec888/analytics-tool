@@ -1,3 +1,8 @@
+/*
+ *
+ * This is the "page" that handles the logic for viewing all links from the user.
+ *
+ */
 import * as React from 'react';
 import {ListGroup, Row, Col} from 'react-bootstrap';
 import moment from 'moment';

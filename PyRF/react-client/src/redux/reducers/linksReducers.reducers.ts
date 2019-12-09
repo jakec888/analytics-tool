@@ -1,3 +1,8 @@
+/*
+ *
+ * this is the file that handles the redux reducer for all the user's query links logic
+ *
+ */
 import {InitLink} from '../../types/links/link';
 import {LinksActionTypes} from '../../types/links/links.actions';
 

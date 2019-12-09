@@ -1,3 +1,11 @@
+/*
+
+This is layour.
+
+The emphasis is the handling of th nav bar with logic based on the auth.
+
+*/
+
 import React, {Component, Fragment} from 'react';
 import {Navbar, Nav, Card} from 'react-bootstrap';
 import {Link} from 'react-router-dom';

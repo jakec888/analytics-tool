@@ -1,3 +1,8 @@
+/*
+ *
+ * this is the file that handles all all the sagas
+ *
+ */
 import {all} from 'redux-saga/effects';
 import linkSagas from './actions/linksSaga.saga';
 import createSaga from './actions/createSaga.saga';

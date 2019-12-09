@@ -1,3 +1,8 @@
+/*
+ *
+ * this is the file that handles the typescript interfaces for all authorization actions
+ *
+ */
 import {
   LOGOUT,
   SIGNUP_SUCCESS,

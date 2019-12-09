@@ -1,3 +1,8 @@
+/*
+ *
+ * This is the file that handles the logic for viewing all the user's links.
+ *
+ */
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 

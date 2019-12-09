@@ -1,3 +1,8 @@
+/*
+ *
+ * This is the "page" that handles the logic for loggin in.
+ *
+ */
 import * as React from 'react';
 import {Card, Form, Button} from 'react-bootstrap';
 

@@ -1,3 +1,8 @@
+/*
+ *
+ * this is the file that handles the typescript interfaces for all creation of link(s) actions
+ *
+ */
 import {Link} from '../links/link';
 
 import {

@@ -1,3 +1,8 @@
+/*
+ *
+ * this is the file that handles the typescript interface actions combined
+ *
+ */
 import {AuthActionTypes} from './auth/auth.actions';
 import {CreateActionTypes} from './create/create.actions';
 import {LinksActionTypes} from './links/links.actions';

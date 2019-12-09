@@ -5,16 +5,22 @@ from uuid import uuid4
 from urllib.parse import urlparse
 from flask_cors import CORS
 
+
+# create an instance of the flask WSGI app
 app = Flask(__name__)
 
+
+# configurations for the app
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
 
 
+# initiate middleware
 CORS(app)
 db = SQLAlchemy(app)
 
 
+# declare models
 class Link(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     userId = db.Column(db.String(80), nullable=False)
@@ -30,8 +36,6 @@ class Link(db.Model):
     def as_dict(self):
        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
 
-
-
 class Data(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     date = db.Column(db.String(80), nullable=False)
@@ -43,13 +47,30 @@ class Data(db.Model):
        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
 
 
+# routes
 @app.route('/')
 def test_route():
+    """
+    this route is to test the server via browser or postman
+    """
     return jsonify({'working': True})
 
-# Create
 @app.route('/api/link', methods=['POST'])
 def add_link():
+    """
+    Create
+
+    post request that takes in the following:
+        - a user id
+        - url/link
+        - title
+        - date
+        - data
+            -- when creating a link data is often a list (that is empty)
+               Rhat includes object of date and click
+
+    should return the input but with mongo id (_id)
+    """
     request_data = request.get_json()
 
     userId = request_data['userId']
@@ -94,6 +115,13 @@ def add_link():
 # Read
 @app.route('/api/links/<userId>/', methods=['GET'])
 def get_links(userId):
+    """
+    READ
+
+    get request that includes the user's id (userId) as a parameter
+
+    should return a list of object of the user's links
+    """
     query = Link.query.filter_by(userId=userId).all()
 
     links = []
@@ -127,16 +155,25 @@ def get_links(userId):
 
     return jsonify(links)
 
-# Update
 @app.route('/api/link/edit/<linkId>', methods=['PUT'])
 def update_link(linkId):
+    """
+    UPDATE
+
+    put request that asks for link id (linkId) as a parameter
+    w/ the request body as an object of the link and it's
+    updated values
+
+    should return the mongo version of the response as an object
+
+    """
     request_data = request.get_json()
 
     title = request_data['title']
     date = request_data['date']
 
     link_to_edit = Link.query.filter_by(id=linkId).first_or_404()
-    
+
     link_to_edit.title = title
     link_to_edit.date = date
 
@@ -167,9 +204,20 @@ def update_link(linkId):
 
     return jsonify(link)
 
-# Delete
 @app.route('/api/link/delete/<linkId>/', methods=['DELETE'])
 def delete_link(linkId):
+    """
+    DELETE
+
+    delete request that takes in the link id (linkId as a parameter)
+    the link id will be used by mongoose to delete the object
+
+    should return a random string with a 200 code to show that the link
+    has been successfully delete the object
+
+    should return a random string with a 200 code to show that the link
+    has been successfully deleted
+    """
     link_to_delete = Link.query.filter_by(id=linkId).first_or_404()
     db.session.delete(link_to_delete)
     db.session.commit()
@@ -178,6 +226,15 @@ def delete_link(linkId):
 
 @app.route('/redirect/<redirectId>', methods=['GET'])
 def redirect_url(redirectId):
+    """
+    REDIRECT
+
+    get requests with a link id (redirectId) as a parameter
+
+    should do the following two things
+    - add a click (+1) to the link's data
+    - should get the link's redirect url and redirect to that url
+    """
     # find out todays name in M/D/Y
     today = date.today()
     formated_day = f'{today.month}/{today.day}/{today.year}'

@@ -1,8 +1,8 @@
 /*
-
-This is the "page" that handles the logic for editing the  selected link from the view links "page".
-
-*/
+ *
+ * This is the "page" that handles the logic for editing the selected link.
+ *
+ */
 import * as React from 'react';
 import {Form, Button} from 'react-bootstrap';
 

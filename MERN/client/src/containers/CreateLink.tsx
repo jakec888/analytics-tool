@@ -1,8 +1,8 @@
 /*
-
-This is the "page" that handles the logic for creating links.
-
-*/
+ *
+ * This is the file that handles the logic for creating links.
+ *
+ */
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 

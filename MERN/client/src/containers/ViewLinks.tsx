@@ -1,8 +1,8 @@
 /*
-
-This is the "page" that handles the logic for viewing a selected link from the view links "page".
-
-*/
+ *
+ * This is the file that handles the logic for viewing all the user's links.
+ *
+ */
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 

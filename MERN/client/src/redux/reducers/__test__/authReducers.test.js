@@ -18,7 +18,7 @@ describe("Auth Reducer test", () => {
           idToken: "",
           userId: "",
           isLoggedIn: false,
-          email: "zapefol@app-expert.com",
+          email: "jaconjcondes@gmail.com",
           password: "helloworld"
         },
         {
@@ -36,7 +36,7 @@ describe("Auth Reducer test", () => {
       idToken: "",
       userId: "",
       isLoggedIn: false,
-      email: "zapefol@app-expert.com",
+      email: "jaconjcondes@gmail.com",
       password: "example-password"
     };
 
@@ -46,7 +46,7 @@ describe("Auth Reducer test", () => {
           idToken: "",
           userId: "",
           isLoggedIn: false,
-          email: "zapefol@app-expert.com",
+          email: "jaconjcondes@gmail.com",
           password: "helloworld"
         },
         {
@@ -68,7 +68,7 @@ describe("Auth Reducer test", () => {
       idToken: "",
       userId: "",
       isLoggedIn: false,
-      email: "zapefol@app-expert.com",
+      email: "jaconjcondes@gmail.com",
       password: "helloworld"
     });
   });

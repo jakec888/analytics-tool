@@ -10,7 +10,7 @@ describe("Auth Actions test", () => {
     const expectedAction = {
       type: UPDATE_EMAIL,
       payload: {
-        email: "jaconjcondes@gmail.com",
+        email: "jaconjcondes@gmail.com"
       }
     };
     expect(updateEmail("example@example.com")).toEqual(expectedAction);

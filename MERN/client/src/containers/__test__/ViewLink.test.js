@@ -21,7 +21,7 @@ describe("<ViewLink /> Test", () => {
       userId: "65ce5dad-85df-4355-94f5-2669d8fce4de",
       link: "https://www.rust-lang.org",
       title: "Rust",
-      date: "Sun, 08 Sep 2019 09:28:25 GMT"
+      date: "September 8, 2019 2:28 AM"
     }
   };
 
@@ -37,12 +37,12 @@ describe("<ViewLink /> Test", () => {
     expect(wrapper.find("input").length).toEqual(1);
   });
 
-  it("shows one copy button", () => {
-    expect(wrapper.find("button").length).toEqual(1);
+  it("shows three buttons (copy, edit, and delete)", () => {
+    expect(wrapper.find("button").length).toEqual(3);
   });
 
   it("copy button should have proper text", () => {
-    expect(wrapper.find("button").text()).toEqual("Copy");
+    expect(wrapper.find("button.copy-button").text()).toEqual("Copy");
   });
 
   it("check if date is properly shown", () => {

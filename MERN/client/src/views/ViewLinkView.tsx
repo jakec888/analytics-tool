@@ -86,6 +86,7 @@ const ViewLinkView: React.FC<Props> = props => {
         <InputGroup.Append>
           <CopyToClipboard text={redirectURL}>
             <Button
+              className="copy-button"
               variant="outline-secondary"
               onClick={() => alert('Copied To Clipboard')}>
               Copy

@@ -8,8 +8,8 @@ describe("Auth Reducer test", () => {
       idToken: "",
       userId: "",
       isLoggedIn: false,
-      email: "example@example.com",
-      password: "zapefol@app-expert.com"
+      email: "jaconjcondes@gmail.com",
+      password: "helloworld"
     };
 
     expect(
@@ -19,12 +19,12 @@ describe("Auth Reducer test", () => {
           userId: "",
           isLoggedIn: false,
           email: "zapefol@app-expert.com",
-          password: "zapefol@app-expert.com"
+          password: "helloworld"
         },
         {
           type: "UPDATE_EMAIL",
           payload: {
-            email: "example@example.com"
+            email: "jaconjcondes@gmail.com"
           }
         }
       )
@@ -47,7 +47,7 @@ describe("Auth Reducer test", () => {
           userId: "",
           isLoggedIn: false,
           email: "zapefol@app-expert.com",
-          password: "zapefol@app-expert.com"
+          password: "helloworld"
         },
         {
           type: "UPDATE_PASSWORD",
@@ -69,7 +69,7 @@ describe("Auth Reducer test", () => {
       userId: "",
       isLoggedIn: false,
       email: "zapefol@app-expert.com",
-      password: "zapefol@app-expert.com"
+      password: "helloworld"
     });
   });
 });

@@ -61,12 +61,6 @@ describe("<ViewLink /> Test", () => {
     expect(wrapper.find("a.link-title").text()).toEqual("Rust");
   });
 
-  it("check if link is correct", () => {
-    expect(wrapper.find("a.link-link").text()).toEqual(
-      "https://www.rust-lang.org"
-    );
-  });
-
   it("check if input value is redirectURL", () => {
     expect(wrapper.find("input.link-redirect").props().value).toEqual(
       "http://localhost:3001/redirect/2059fa03-2f11-4db7-9c82-17c189360e57"

@@ -6,7 +6,7 @@ describe("Auth Reducer test", () => {
       _id: "",
       redirectURL: "",
       userId: "",
-      link: [],
+      link: "",
       title: "",
       date: "",
       data: []
@@ -38,12 +38,6 @@ describe("Auth Reducer test", () => {
       })
     ).toEqual(excepctedReducer);
   });
-
-  it("create link reducer test", () => {});
-
-  it("create link success reducer test", () => {});
-
-  it("select link reducer test", () => {});
 
   it("initial state", () => {
     expect(selectedReducer(undefined, {})).toEqual({

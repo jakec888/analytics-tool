@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Music Share",
+  "name": "Create Music Share Sample",
   "icons": [
     {
       "src": "favicon.ico",

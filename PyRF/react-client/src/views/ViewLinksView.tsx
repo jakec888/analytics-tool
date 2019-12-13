@@ -9,6 +9,8 @@ import moment from 'moment';
 
 import {Link} from '../types/links/link';
 
+import './ViewLinksView.css'
+
 type Props = {
   links: Link[];
   history: any;
@@ -29,12 +31,12 @@ const ViewLinksView: React.FC<Props> = props => {
           ? links.map((link, index) => {
               return (
                 <ListGroup.Item key={index} onClick={() => ViewLink(link)}>
-                  <Row>
+                  <Row className="item">
                     <Col sm={8}>{link.title}</Col>
                     <Col
                       sm={4}
-                      className="d-flex justify-content-end"
-                      style={{fontStyle: 'italic'}}>
+                      className="date"
+                    >
                       ({moment(new Date(link.date)).fromNow()})
                     </Col>
                   </Row>

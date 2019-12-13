@@ -13,7 +13,7 @@ describe("Auth Actions test", () => {
         email: "jaconjcondes@gmail.com"
       }
     };
-    expect(updateEmail("example@example.com")).toEqual(expectedAction);
+    expect(updateEmail("jaconjcondes@gmail.com")).toEqual(expectedAction);
   });
 
   it("tests update password action", () => {

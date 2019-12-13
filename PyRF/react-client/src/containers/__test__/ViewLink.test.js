@@ -21,7 +21,7 @@ describe("<ViewLink /> Test", () => {
       userId: "65ce5dad-85df-4355-94f5-2669d8fce4de",
       link: "https://www.rust-lang.org",
       title: "Rust",
-      date: "Sun, 08 Sep 2019 09:28:25 GMT"
+      date: "September 8, 2019 2:28 AM"
     }
   };
 
@@ -37,12 +37,12 @@ describe("<ViewLink /> Test", () => {
     expect(wrapper.find("input").length).toEqual(1);
   });
 
-  it("shows one copy button", () => {
-    expect(wrapper.find("button").length).toEqual(1);
+  it("shows three buttons (copy, edit, and delete)", () => {
+    expect(wrapper.find("button").length).toEqual(3);
   });
 
   it("copy button should have proper text", () => {
-    expect(wrapper.find("button").text()).toEqual("Copy");
+    expect(wrapper.find("button.copy-button").text()).toEqual("Copy");
   });
 
   it("check if date is properly shown", () => {
@@ -59,12 +59,6 @@ describe("<ViewLink /> Test", () => {
 
   it("check if text shows from redux", () => {
     expect(wrapper.find("a.link-title").text()).toEqual("Rust");
-  });
-
-  it("check if link is correct", () => {
-    expect(wrapper.find("a.link-link").text()).toEqual(
-      "https://www.rust-lang.org"
-    );
   });
 
   it("check if input value is redirectURL", () => {

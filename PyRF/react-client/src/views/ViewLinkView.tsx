@@ -11,6 +11,8 @@ import moment from 'moment';
 
 import {DataTypes} from '../types/links/link';
 
+import './ViewLinkView.css';
+
 type Props = {
   linkId: string;
   link: string;
@@ -43,7 +45,7 @@ const ViewLinkView: React.FC<Props> = props => {
 
   return (
     <div>
-      <div style={{display: 'flex', justifyContent: 'space-between'}}>
+      <div className="link-container">
         <div>
           <Card.Text>
             Created On{' '}
@@ -58,7 +60,8 @@ const ViewLinkView: React.FC<Props> = props => {
           <Button
             onClick={UpdateLink}
             variant="outline-primary"
-            style={{marginLeft: '10px', marginRight: '10px'}}>
+            className="edit-button"
+          >
             Edit
           </Button>
           <Button onClick={DeleteLink} variant="outline-danger">
@@ -71,7 +74,6 @@ const ViewLinkView: React.FC<Props> = props => {
           href={link}
           rel="noopener noreferrer"
           target="_blank"
-          style={{textDecoration: 'none', color: 'black'}}
           className="link-title">
           {title}
         </a>
@@ -86,6 +88,7 @@ const ViewLinkView: React.FC<Props> = props => {
         <InputGroup.Append>
           <CopyToClipboard text={redirectURL}>
             <Button
+              className="copy-button"
               variant="outline-secondary"
               onClick={() => alert('Copied To Clipboard')}>
               Copy

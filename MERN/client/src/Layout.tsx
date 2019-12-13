@@ -17,6 +17,8 @@ import {bindActionCreators} from 'redux';
 import {AppState} from './redux/rootAppState';
 import {AppActions} from './types/rootType.actions';
 
+import './Layout.css'
+
 interface LayoutProps {
   history?: any;
   children: any;
@@ -59,29 +61,21 @@ class Layout extends Component<Props, LayoutState> {
           {this.props.isLoggedIn ? (
             <Link
               to="/"
-              style={{color: 'rgba(255,255,255,.5)', textDecoration: 'none'}}
-              onClick={this.onLogoutUser}>
+              className='nav-link'
+              onClick={this.onLogoutUser}
+            >
               Logout
             </Link>
           ) : (
             <Link
               to="/login"
-              style={{color: 'rgba(255,255,255,.5)', textDecoration: 'none'}}>
+              className='nav-link'
+            >
               Login
             </Link>
           )}
         </Navbar>
-        <Card
-          style={{
-            top: '15px',
-            width: '85%',
-            minHeight: '300px',
-            height: 'auto',
-            padding: '15px',
-            marginTop: '25px',
-            marginLeft: 'auto',
-            marginRight: 'auto',
-          }}>
+        <Card className='card'>
           <Card.Body>{this.props.children}</Card.Body>
         </Card>
       </div>

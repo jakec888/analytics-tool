@@ -1,0 +1,14 @@
+.link-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.edit-button {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.link-title {
+  text-decoration: none;
+  color: black;
+}

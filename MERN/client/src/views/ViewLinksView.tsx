@@ -31,11 +31,11 @@ const ViewLinksView: React.FC<Props> = props => {
           ? links.map((link, index) => {
               return (
                 <ListGroup.Item key={index} onClick={() => ViewLink(link)}>
-                  <Row>
+                  <Row className="item">
                     <Col sm={8}>{link.title}</Col>
                     <Col
                       sm={4}
-                      className="d-flex justify-content-end date"
+                      className="date"
                     >
                       ({moment(new Date(link.date)).fromNow()})
                     </Col>

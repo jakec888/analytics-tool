@@ -9,6 +9,26 @@
 }
 
 .link-title {
+  font-size: xx-large;
   text-decoration: none;
   color: black;
+}
+
+@media only screen and (max-width: 800px) {
+  .link-container {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+  }
+
+  .edit-button {
+    margin-left: 0px;
+    margin-right: 10px;
+  }
+
+  .link-title {
+    font-size: xx-large;
+    text-decoration: none;
+    color: black;
+  }
 }

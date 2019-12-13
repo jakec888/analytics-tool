@@ -8,6 +8,14 @@ Deployment: https://music.jaconjcondes.com/
 <img src="walkthrough.gif" />
 </p>
 
+# Verions
+
+MERN (Mongo Express React Node)
+
+PyRF (Python React Flask)
+
+RoR (React on Rails; React + Ruby on Rails)
+
 # Instructions (MERN)
 
 1. go into the MERN folder

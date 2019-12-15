@@ -1,3 +1,10 @@
+/*
+Most tests work but need to fix the moxios issue; it works with .js but .ts not working
+
+Potential Problems:
+- Root.ts
+
+*/
 import React from "react";
 import { mount } from "enzyme";
 import moxios from "moxios";

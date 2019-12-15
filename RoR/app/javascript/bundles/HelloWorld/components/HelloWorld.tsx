@@ -1,7 +1,15 @@
-import PropTypes from 'prop-types';
-import React from 'react';
+import * as React from 'react';
+import * as PropTypes from 'prop-types';
 
-export default class HelloWorld extends React.Component {
+interface HelloWorldPageProps {
+  name: string;
+}
+
+interface HelloWorldPageState {
+  name: string;
+}
+
+export default class HelloWorld extends React.Component<HelloWorldPageProps, HelloWorldPageState> {
   static propTypes = {
     name: PropTypes.string.isRequired, // this is passed from the Rails view
   };

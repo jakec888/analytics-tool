@@ -6,7 +6,11 @@ import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import * as PropTypes from 'prop-types'
 
-const Hello = props => (
+type Props = {
+  name: string;
+};
+
+const Hello: React.FC<Props> = props => (
   <div>Hello {props.name}!</div>
 )
 

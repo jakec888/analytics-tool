@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Client Layout</title>
+    <%= csrf_meta_tags %>
+    <%
+=begin%>
+ <%= javascript_pack_tag 'client-bundle' %> 
+<%
+=end%>
+  </head>
+
+  <body>
+    <%= yield %>
+  </body>
+</html>

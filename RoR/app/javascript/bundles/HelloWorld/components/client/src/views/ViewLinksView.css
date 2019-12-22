@@ -1,0 +1,19 @@
+.date {
+  display: flex;
+  justify-content: flex-end;
+  font-style: italic
+}
+
+@media only screen and (max-width: 800px) {
+  .row {
+    display: flex;
+    flex-direction: column;
+    justify-content: normal;
+  }
+
+  .date {
+    display: flex;
+    flex-direction: column;
+    justify-content: normal;
+  }
+}

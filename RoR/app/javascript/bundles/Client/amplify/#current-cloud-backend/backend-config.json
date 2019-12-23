@@ -1,9 +1,0 @@
-{
-	"auth": {
-		"analyticsAuth": {
-			"service": "Cognito",
-			"providerPlugin": "awscloudformation",
-			"dependsOn": []
-		}
-	}
-}

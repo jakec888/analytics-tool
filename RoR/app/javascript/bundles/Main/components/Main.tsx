@@ -1,15 +1,15 @@
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-interface HelloWorldProps {
+interface MainProps {
   name: string
 }
 
-interface HelloWorldState {
+interface MainState {
   name: string
 }
 
-export default class HelloWorld extends React.Component<HelloWorldProps, HelloWorldState> {
+export default class Main extends React.Component<MainProps, MainState> {
   static propTypes = {
     name: PropTypes.string.isRequired, // this is passed from the Rails view
   };

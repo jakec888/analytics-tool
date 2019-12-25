@@ -1,24 +1,27 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Instructions (React on Rails)
 
-Things you may want to cover:
+1. go into the RoR folder
+```
+cd RoR
+```
 
-* Ruby version
+2. install dependencies 
+```
+bundle install
 
-* System dependencies
+cd client
+npm install
+```
 
-* Configuration
+3. AWS auth
+```
+amplify init
+amplify add auth (if you dont have a AWS amplify project)
+```
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+4. run both front-end and back-end servers
+```
+cd ..
+RoR/$ rake start
+```

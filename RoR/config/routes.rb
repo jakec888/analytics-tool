@@ -13,10 +13,10 @@ Rails.application.routes.draw do
     # get '/links/', to: 'api#index'
 
     # Update
-    put '/link/edit/:linkId', to: 'api#update'
+    put '/link/edit/:id', to: 'api#update'
 
     # Delete
-    delete '/link/delete/:linkId', to: 'api#destroy'
+    delete '/link/delete/:id', to: 'api#destroy'
   end
 
   get '/redirect', to: 'redirect#index'

@@ -1,23 +1,6 @@
 module Api
   class ApiController < ApplicationController
 
-    # def index
-    #   render json: {status: 'SUCCESS', message:'This is an Example'}, status: :ok
-    # end
-    
-    # Read
-    def index
-      # links = Link.order('created_at DESC');
-      links = Link.where(params[:userId])
-      render json: {status: 'SUCCESS', message:'Loaded links', data:links},status: :ok
-    end
-  
-    # Read
-    def show
-      link = Link.find(params[:userId])
-      render json: {status: 'SUCCESS', message:'Loaded link', data:link},status: :ok
-    end
-  
     # Create
     def create
       link = Link.new(link_params)
@@ -27,17 +10,23 @@ module Api
         render json: {status: 'ERROR', message:'Link not saved', data:link.errors}, status: :unprocessable_entity
       end
     end
-  
-    # Delete
-    def destroy
-      link = Link.find(params[:linkId])
-      link.destroy
-      render json: {status: 'SUCCESS', message:'Deleted link', data:link}, status: :ok
+    
+    # Read
+    def index
+      # links = Link.order('created_at DESC');
+      links = Link.where(params[:userId])
+      render json: {status: 'SUCCESS', message:'Loaded links', data:links},status: :ok
     end
+  
+    # Read One
+    # def show
+    #   link = Link.find(params[:userId])
+    #   render json: {status: 'SUCCESS', message:'Loaded link', data:link},status: :ok
+    # end
   
     # Update
     def update
-      link = Link.find(params[:linkId])
+      link = Link.find(params[:id])
       if link.update_attributes(link_params)
         render json: {status: 'SUCCESS', message:'Updated link', data:link},status: :ok
       else
@@ -45,6 +34,13 @@ module Api
       end
     end
   
+    # Delete
+    def destroy
+      link = Link.find(params[:id])
+      link.destroy
+      render json: {status: 'SUCCESS', message:'Deleted link', data:link}, status: :ok
+    end
+
     private
   
     def link_params

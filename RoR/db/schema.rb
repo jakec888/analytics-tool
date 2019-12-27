@@ -12,16 +12,16 @@
 
 ActiveRecord::Schema.define(version: 2019_12_27_020218) do
 
-  create_table "dataas", force: :cascade do |t|
+  create_table "dataas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "date"
     t.integer "clicks"
-    t.integer "link_id"
+    t.bigint "link_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["link_id"], name: "index_dataas_on_link_id"
   end
 
-  create_table "links", force: :cascade do |t|
+  create_table "links", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "userId"
     t.string "redirectId"
     t.string "redirectURL"

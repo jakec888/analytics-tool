@@ -4,17 +4,19 @@
 #   Ensure the SQLite 3 gem is defined in your Gemfile
 #   gem 'sqlite3'
 #
-default: &default
-  adapter: sqlite3
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  timeout: 5000
-
 # default: &default
-#   adapter: mysql2
-#   username: root
-#   password: helloworld
+#   adapter: sqlite3
 #   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 #   timeout: 5000
+
+default: &default
+  adapter: mysql2
+  username: root
+  password: root
+  host: 127.0.0.1
+  port: 8889
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
 
 development:
   <<: *default

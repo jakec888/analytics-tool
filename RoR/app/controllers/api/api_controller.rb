@@ -1,17 +1,16 @@
 module Api
   class ApiController < ApplicationController
 
-    def index
-      render json: {status: 'SUCCESS', message:'This is an Example'}, status: :ok
-    end
+    # def index
+    #   render json: {status: 'SUCCESS', message:'This is an Example'}, status: :ok
+    # end
     
     # Read
-    # def index
-    #   # links = Link.order('created_at DESC');
-    #   puts userId_params
-    #   links = Link.find(userId_params)
-    #   render json: {status: 'SUCCESS', message:'Loaded links', data:links},status: :ok
-    # end
+    def index
+      # links = Link.order('created_at DESC');
+      links = Link.where(params[:userId])
+      render json: {status: 'SUCCESS', message:'Loaded links', data:links},status: :ok
+    end
   
     # Read
     def show

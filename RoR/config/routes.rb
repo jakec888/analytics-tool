@@ -9,8 +9,8 @@ Rails.application.routes.draw do
     post '/link', to: 'api#create'
 
     # Read
-    # get '/links/:userId', to: 'api#index'
-    get '/links/', to: 'api#index'
+    get '/links/:userId', to: 'api#index'
+    # get '/links/', to: 'api#index'
 
     # Update
     put '/link/edit/:linkId', to: 'api#update'

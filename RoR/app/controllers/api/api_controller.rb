@@ -33,9 +33,12 @@ module Api
       link = Link.create(userId: userId, redirectId: redirectId, redirectURL: redirectURL, link: link, title: title, date: date)
       
       if link.save
-        render json: {status: 'SUCCESS', message:'Saved link', data:link}, status: :ok
+        # render json: {status: 'SUCCESS', message:'Saved link', data:link}, status: :ok
+        render json: link
       else
-        render json: {status: 'ERROR', message:'Link not saved', data:link.errors}, status: :unprocessable_entity
+        # render json: {status: 'ERROR', message:'Link not saved', data:link.errors}, status: :unprocessable_entity
+
+        render json: link.errors, status: :unprocessable_entity
       end
 
     end

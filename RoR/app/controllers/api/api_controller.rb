@@ -3,12 +3,41 @@ module Api
 
     # Create
     def create
-      link = Link.new(link_params)
+      # puts link_params
+
+      # from request params
+      userId = link_params['userId']
+      link = link_params['link']
+      title = link_params['title']
+      date = link_params['date']
+      data = link_params['data']
+
+      puts request.base_url
+
+      base_url = URI(request.base_url)
+
+      protocol = base_url.scheme
+
+      if base_url.port
+        host = "#{base_url.host}:#{base_url.port}"
+      else
+        host = base_url.host
+      end
+
+      redirectId = SecureRandom.uuid
+
+      redirectURL = "#{protocol}://#{host}/redirect/#{redirectId}"
+
+      puts redirectURL
+
+      link = Link.create(userId: userId, redirectId: redirectId, redirectURL: redirectURL, link: link, title: title, date: date)
+      
       if link.save
         render json: {status: 'SUCCESS', message:'Saved link', data:link}, status: :ok
       else
         render json: {status: 'ERROR', message:'Link not saved', data:link.errors}, status: :unprocessable_entity
       end
+
     end
     
     # Read (done)
@@ -42,7 +71,19 @@ module Api
     private
   
     def link_params
-      params.permit(:userId, :redirectId, :redirectURL, :link, :title, :date)
+      params.permit(
+        :userId, 
+        :link, 
+        :title, 
+        :date, 
+        :data,
+      )
+
+      # "userId": "9",
+      # "link": "https://google.com/",
+      # "title": "Sample Python",
+      # "date": "2019-12-28T03:50:38.316Z",
+      # "data": []
     end
   
   end

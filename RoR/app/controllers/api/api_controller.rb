@@ -11,11 +11,9 @@ module Api
       end
     end
     
-    # Read
+    # Read (done)
     def index
-      # links = Link.order('created_at DESC');
-      links = Link.where(params[:userId])
-      render json: {status: 'SUCCESS', message:'Loaded links', data:links},status: :ok
+      render json: Link.where(params[:userId]).order('date DESC')
     end
   
     # Read One
@@ -45,10 +43,6 @@ module Api
   
     def link_params
       params.permit(:userId, :redirectId, :redirectURL, :link, :title, :date)
-    end
-  
-    def userId_params
-      params.permit(:userId)
     end
   
   end

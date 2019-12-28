@@ -30,7 +30,7 @@
                 "IdentityPoolName": "analyticsIP__analytics",
                 "UserPoolName": "analyticsUP"
             },
-            "lastPushTimeStamp": "2019-11-26T01:46:27.790Z",
+            "lastPushTimeStamp": "2019-12-27T12:32:04.476Z",
             "providerMetadata": {
                 "s3TemplateURL": "https://s3.amazonaws.com/analytics-analytics-20190806180802-deployment/amplify-cfn-templates/auth/analyticsAuth-cloudformation-template.yml",
                 "logicalId": "authanalyticsAuth"

@@ -20,7 +20,7 @@ router.get('/:redirectId', async (req, res) => {
   const date = new Date();
 
   // format the date's variable
-  const today = `${date.getMonth()}/${date.getDay()}/${date.getFullYear()}`;
+  const today = `${date.getMonth()}/${date.getDate()}/${date.getFullYear()}`;
 
   // use the parameter's given id and use mongoose to query and put it in a variable
   const redirect = await Links.findOne({redirectId: req.params.redirectId});

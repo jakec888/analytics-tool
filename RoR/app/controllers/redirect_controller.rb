@@ -1,7 +1,10 @@
 class RedirectController < ApplicationController
 
   def index
-    redirect_to "https://google.com"
+    link = Link.find_by(redirectId: params[:redirectId])
+    puts link
+    puts link["id"]
+    redirect_to link["link"]
   end
 
 end

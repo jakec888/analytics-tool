@@ -5,6 +5,6 @@ Rails.application.routes.draw do
     resources :link
   end
 
-  get '/redirect', to: 'redirect#index'
+  get '/redirect/:redirectId', to: 'redirect#index'
 
 end

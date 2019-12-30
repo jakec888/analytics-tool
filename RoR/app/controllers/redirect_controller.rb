@@ -1,13 +1,12 @@
 class RedirectController < ApplicationController
-  # REDIRECT
-
-  # get requests with a link id (redirectId) as a parameter
-
-  # should do the following two things
-  # - add a click (+1) to the link's data
-  # - should get the link's redirect url and redirect to that url
-
   def index
+    # REDIRECT
+
+    # get requests with a link id (redirectId) as a parameter
+
+    # should do the following two things
+    # - add a click (+1) to the link's data
+    # - should get the link's redirect url and redirect to that url
     link = Link.find_by(redirectId: params[:redirectId])
 
     date = Time.now

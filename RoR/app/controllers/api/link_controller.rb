@@ -1,7 +1,9 @@
 module Api
   class LinkController < ApplicationController
-    def index
-      puts params[:userId]
+    def all
+      # READ
+      # get request that includes the user's id (userId) as a parameter
+      # should return a list of object of the user's links
       render json: Link.where(userId: params[:userId]).order('date DESC'), status: :ok
     end
 
@@ -11,6 +13,16 @@ module Api
     end
 
     def create
+      # Create
+      # post request that takes in the following:
+      #     - a user id
+      #     - url/link
+      #     - title
+      #     - date
+      #     - data
+      #         -- when creating a link data is often a list (that is empty)
+      #            Rhat includes object of date and click
+      # should return the input but with mongo id (_id)
       userId = link_params['userId']
       link = link_params['link']
       title = link_params['title']
@@ -36,12 +48,24 @@ module Api
     end
     
     def destroy
+      # DELETE
+      # delete request that takes in the link id (linkId as a parameter)
+      # the link id will be used by mongoose to delete the object
+      # should return a random string with a 200 code to show that the link
+      # has been successfully delete the object
+      # should return a random string with a 200 code to show that the link
+      # has been successfully deleted
       link = Link.find(params[:id])
       link.destroy
       render json: link, status: :ok
     end
 
     def update
+      # UPDATE
+      # put request that asks for link id (linkId) as a parameter
+      # w/ the request body as an object of the link and it's
+      # updated values
+      # should return the mongo version of the response as an object
       link = Link.find(params[:id])
       if link.update_attributes(link_params)
         render json: link, status: :ok

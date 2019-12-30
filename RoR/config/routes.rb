@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  
+
   namespace 'api' do
-    get '/links/:userId', to: 'link#index'
+    get '/links/:userId', to: 'link#all'
     resources :link
   end
 

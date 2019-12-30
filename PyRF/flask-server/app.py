@@ -58,7 +58,7 @@ def test_route():
 @app.route('/api/link', methods=['POST'])
 def add_link():
     """
-    Create
+    CREATE
 
     post request that takes in the following:
         - a user id
@@ -165,7 +165,6 @@ def update_link(linkId):
     updated values
 
     should return the mongo version of the response as an object
-
     """
     request_data = request.get_json()
 

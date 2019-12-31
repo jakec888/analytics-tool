@@ -3,7 +3,7 @@
  * this is the file that handles the typescript interface for the link redux store data structure
  *
  */
-export interface DataTypes {
+export interface AnalyticsTypes {
   date: string;
   clicks: number;
 }
@@ -14,7 +14,7 @@ export interface Link {
   link: string;
   title: string;
   date: string;
-  data: DataTypes[];
+  analytics: AnalyticsTypes[];
 }
 
 export interface InitLink {

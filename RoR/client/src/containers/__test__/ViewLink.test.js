@@ -15,7 +15,7 @@ describe("<ViewLink /> Test", () => {
 
   const initialState = {
     Selected: {
-      data: [],
+      analytics: [],
       redirectURL:
         "http://localhost:3001/redirect/2059fa03-2f11-4db7-9c82-17c189360e57",
       userId: "65ce5dad-85df-4355-94f5-2669d8fce4de",

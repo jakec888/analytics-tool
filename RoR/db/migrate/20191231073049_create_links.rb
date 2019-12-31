@@ -12,4 +12,3 @@ class CreateLinks < ActiveRecord::Migration[6.0]
     end
   end
 end
-# 2019-12-27T02:11:12.417Z

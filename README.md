@@ -14,7 +14,7 @@ MERN (Mongo Express React Node)
 
 PyRF (Python React Flask)
 
-RoR (React on Rails; React + Ruby on Rails) *(In Progress...)*
+RoR (React on Rails; React + Ruby on Rails)
 
 # Instructions (MERN)
 

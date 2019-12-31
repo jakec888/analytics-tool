@@ -42,7 +42,7 @@ export interface deleteLinkSuccessInterface {
     link: string;
     title: string;
     date: string;
-    data: [];
+    analytics: [];
   };
 }
 

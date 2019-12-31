@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_27_020218) do
+ActiveRecord::Schema.define(version: 2019_12_31_073257) do
 
-  create_table "dataas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "date"
+  create_table "analytics", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "clicks"
+    t.string "date"
     t.bigint "link_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["link_id"], name: "index_dataas_on_link_id"
+    t.index ["link_id"], name: "index_analytics_on_link_id"
   end
 
   create_table "links", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

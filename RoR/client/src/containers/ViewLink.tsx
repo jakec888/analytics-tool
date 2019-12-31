@@ -13,7 +13,7 @@ import {AppActions} from '../types/rootType.actions';
 import {deleteLink} from '../redux/actions/linksActions.actions';
 
 import {AppState} from '../redux/rootAppState';
-import {DataTypes} from '../types/links/link';
+import {AnalyticsTypes} from '../types/links/link';
 
 import ViewLinkView from '../views/ViewLinkView';
 
@@ -43,7 +43,7 @@ export class ViewLink extends Component<Props, ViewLinkPageState> {
         title={this.props.title}
         redirectURL={this.props.redirectURL}
         date={this.props.date}
-        data={this.props.data}
+        analytics={this.props.analytics}
         onDeleteLink={this.onDeleteLink}
         onUpdateLink={this.onUpdateLink}
       />
@@ -57,7 +57,7 @@ interface LinkStateProps {
   title: string;
   redirectURL: string;
   date: string;
-  data: DataTypes[];
+  analytics: AnalyticsTypes[];
 }
 
 interface LinkDispatchProps {
@@ -70,7 +70,7 @@ const mapStateToProps = (state: AppState): LinkStateProps => ({
   title: state.Selected.title,
   redirectURL: state.Selected.redirectURL,
   date: new Date(state.Selected.date).toUTCString(),
-  data: state.Selected.data,
+  analytics: state.Selected.analytics,
 });
 
 const mapDispatchToProps = (

@@ -25,7 +25,7 @@ export function* createLinkAsync({payload}: any) {
     link: selectedLink.link,
     title: selectedLink.title,
     date: new Date().toISOString(),
-    data: [],
+    analytics: [],
   };
 
   yield call(onLinkRequest, data);

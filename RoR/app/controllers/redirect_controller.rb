@@ -12,7 +12,7 @@ class RedirectController < ApplicationController
     date = Time.now
     today = date.strftime("%m/%d/%Y")
 
-    data = Dataa.find_by(date: today, link_id: link["id"])
+    data = Analytic.find_by(date: today, link_id: link["id"])
 
     if data
       data.clicks += 1
@@ -22,7 +22,7 @@ class RedirectController < ApplicationController
         render json: data.errors, status: :unprocessable_entity
       end
     else
-      new_data = Dataa.create(date: today, clicks: 1, link_id: link["id"])
+      new_data = Analytic.create(date: today, clicks: 1, link_id: link["id"])
       if new_data.save
         redirect_to link["link"]
       else

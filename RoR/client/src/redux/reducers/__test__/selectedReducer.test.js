@@ -9,7 +9,7 @@ describe("Auth Reducer test", () => {
       link: "",
       title: "",
       date: "",
-      data: []
+      analytics: []
     };
 
     expect(
@@ -28,7 +28,7 @@ describe("Auth Reducer test", () => {
       link: "",
       title: "sample title",
       date: "",
-      data: []
+      analytics: []
     };
 
     expect(
@@ -47,7 +47,7 @@ describe("Auth Reducer test", () => {
       link: "",
       title: "",
       date: "",
-      data: []
+      analytics: []
     });
   });
 });

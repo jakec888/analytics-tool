@@ -6,13 +6,13 @@ module Api
       # should return a list of object of the user's links
       # render json: Link.where(userId: params[:userId]).order('date DESC'), status: :ok
       links = Link.where(userId: params[:userId]).order('date DESC')
-      render :json => links.to_json(:include => :dataas)
+      render :json => links.to_json(:include => :analytics)
     end
 
     def show
       link = Link.find(params[:id])
       render json: link, status: :ok
-      # render :json => link.to_json(:include => :dataas)
+      # render :json => link.to_json(:include => :analytics)
     end
 
     def create

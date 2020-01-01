@@ -27,19 +27,19 @@ router.get('/:redirectId', async (req, res) => {
 
   // if date does not exists add date and 1 clock
   // else find date and increment one click
-  (await redirect.data.some(item => item.date === today))
+  (await redirect.analytics.some(item => item.date === today))
     ? Links.findOneAndUpdate(
         {
           redirectId: req.params.redirectId,
-          'data.date': today,
+          'analytics.date': today,
         },
-        {$inc: {'data.$.clicks': 1}},
+        {$inc: {'analytics.$.clicks': 1}},
       ).then(result => {
         res.redirect(result.link);
       })
     : Links.findOneAndUpdate(
         {redirectId: req.params.redirectId},
-        {data: {date: today, clicks: 1}},
+        {analytics: {date: today, clicks: 1}},
       ).then(result => {
         res.redirect(result.link);
       });

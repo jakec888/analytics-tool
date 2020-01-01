@@ -13,7 +13,7 @@ const linkSchema = mongoose.Schema({
   link: String,
   title: String,
   date: String,
-  data: [],
+  analytics: [],
 });
 
 const Links = mongoose.model('links', linkSchema);

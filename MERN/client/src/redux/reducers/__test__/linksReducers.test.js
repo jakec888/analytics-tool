@@ -14,7 +14,7 @@ describe("Auth Reducer test", () => {
     const excepctedReducer = {
       links: [
         {
-          data: [
+          analytics: [
             {
               date: "8/6/2019",
               clicks: 2
@@ -32,7 +32,7 @@ describe("Auth Reducer test", () => {
           __v: 0
         },
         {
-          data: [
+          analytics: [
             {
               date: "8/1/2019",
               clicks: 1
@@ -50,7 +50,7 @@ describe("Auth Reducer test", () => {
           __v: 0
         },
         {
-          data: [],
+          analytics: [],
           id: "5d6f0a3cd5020f2fff2239f3",
           redirectId: "90668bb1-ffab-459e-aa0f-eeeb299127db",
           redirectURL:
@@ -62,7 +62,7 @@ describe("Auth Reducer test", () => {
           __v: 0
         },
         {
-          data: [],
+          analytics: [],
           id: "5d72191da0a41e24dcb1bb53",
           redirectId: "c19b98bb-622d-4f7c-8910-cc83cee70c6d",
           redirectURL:
@@ -74,7 +74,7 @@ describe("Auth Reducer test", () => {
           __v: 0
         },
         {
-          data: [],
+          analytics: [],
           id: "5d721991a0a41e24dcb1bb54",
           redirectId: "af7d2125-1fd7-4a5f-b0fd-959d6f4a02fe",
           redirectURL:
@@ -86,7 +86,7 @@ describe("Auth Reducer test", () => {
           __v: 0
         },
         {
-          data: [
+          analytics: [
             {
               date: "8/1/2019",
               clicks: 1
@@ -103,7 +103,7 @@ describe("Auth Reducer test", () => {
           __v: 0
         },
         {
-          data: [],
+          analytics: [],
           id: "5d74c9b91e389d45951aced9",
           redirectId: "2059fa03-2f11-4db7-9c82-17c189360e57",
           redirectURL:
@@ -127,7 +127,7 @@ describe("Auth Reducer test", () => {
           payload: {
             links: [
               {
-                data: [
+                analytics: [
                   {
                     date: "8/6/2019",
                     clicks: 2
@@ -145,7 +145,7 @@ describe("Auth Reducer test", () => {
                 __v: 0
               },
               {
-                data: [
+                analytics: [
                   {
                     date: "8/1/2019",
                     clicks: 1
@@ -163,7 +163,7 @@ describe("Auth Reducer test", () => {
                 __v: 0
               },
               {
-                data: [],
+                analytics: [],
                 id: "5d6f0a3cd5020f2fff2239f3",
                 redirectId: "90668bb1-ffab-459e-aa0f-eeeb299127db",
                 redirectURL:
@@ -175,7 +175,7 @@ describe("Auth Reducer test", () => {
                 __v: 0
               },
               {
-                data: [],
+                analytics: [],
                 id: "5d72191da0a41e24dcb1bb53",
                 redirectId: "c19b98bb-622d-4f7c-8910-cc83cee70c6d",
                 redirectURL:
@@ -187,7 +187,7 @@ describe("Auth Reducer test", () => {
                 __v: 0
               },
               {
-                data: [],
+                analytics: [],
                 id: "5d721991a0a41e24dcb1bb54",
                 redirectId: "af7d2125-1fd7-4a5f-b0fd-959d6f4a02fe",
                 redirectURL:
@@ -199,7 +199,7 @@ describe("Auth Reducer test", () => {
                 __v: 0
               },
               {
-                data: [
+                analytics: [
                   {
                     date: "8/1/2019",
                     clicks: 1
@@ -216,7 +216,7 @@ describe("Auth Reducer test", () => {
                 __v: 0
               },
               {
-                data: [],
+                analytics: [],
                 id: "5d74c9b91e389d45951aced9",
                 redirectId: "2059fa03-2f11-4db7-9c82-17c189360e57",
                 redirectURL:

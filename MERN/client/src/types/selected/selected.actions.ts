@@ -34,7 +34,7 @@ export interface editLinkSuccessInterface {
     link: string;
     title: string;
     date: string;
-    data: any;
+    analytics: any;
   };
 }
 
@@ -46,7 +46,7 @@ export interface selectLinkInterface {
     link: string;
     title: string;
     date: string;
-    data: any;
+    analytics: any;
   };
 }
 

@@ -17,8 +17,8 @@ const Links = require('../models/links');
  * - url/link
  * - title
  * - date
- * - data
- * -- when creating a link data is often a list (that is empty) that includes
+ * - analytics
+ * -- when creating a link analytics is often a list (that is empty) that includes
    object of date and click
  *
  * should return the input but with mongo id (_id)
@@ -40,7 +40,7 @@ router.post('/link', (req, res) => {
     link,
     title,
     date,
-    data,
+    analytics,
   });
 
   myData.save().then(result => {

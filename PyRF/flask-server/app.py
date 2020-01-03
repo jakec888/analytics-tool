@@ -31,12 +31,12 @@ class Link(db.Model):
     date = db.Column(db.String(80), nullable=False, default=datetime.utcnow(
     ).strftime('%Y-%m-%dT%H:%M:%S.%f')[:-3] + 'Z')
 
-    data = db.relationship('Data', backref=db.backref('link', lazy=True))
+    analytics = db.relationship('Analytics', backref=db.backref('link', lazy=True))
 
     def as_dict(self):
        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
 
-class Data(db.Model):
+class Analytics(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     date = db.Column(db.String(80), nullable=False)
     clicks = db.Column(db.Integer, nullable=False)
@@ -65,8 +65,8 @@ def add_link():
         - url/link
         - title
         - date
-        - data
-            -- when creating a link data is often a list (that is empty)
+        - analytics
+            -- when creating a link analytics is often a list (that is empty)
                Rhat includes object of date and click
 
     should return the input but with mongo id (_id)
@@ -77,7 +77,7 @@ def add_link():
     link = request_data['link']
     title = request_data['title']
     date = request_data['date']
-    data = request_data['data']
+    analytics = request_data['analytics']
 
     base_url = urlparse(request.base_url)
 
@@ -107,7 +107,7 @@ def add_link():
         'link': link.link,
         'title': link.title,
         'date': link.date,
-        'data': []
+        'analytics': []
     }
 
     return jsonify(link_data)
@@ -138,18 +138,18 @@ def get_links(userId):
         link['title'] = l.title
         link['date'] = l.date
 
-        data = []
+        analytics = []
 
-        if l.data:
-            for link_data in l.data:
+        if l.analytics:
+            for link_data in l.analytics:
                 data_object = {}
 
                 data_object['date'] = link_data.date
                 data_object['clicks'] = link_data.clicks
 
-                data.append(data_object)
+                analytics.append(data_object)
 
-        link['data'] = data
+        link['analytics'] = analytics
 
         links.append(link)
 
@@ -188,18 +188,18 @@ def update_link(linkId):
     link['title'] = link_to_edit.title
     link['date'] = link_to_edit.date
 
-    data = []
+    analytics = []
 
-    if link_to_edit.data:
-        for link_data in link_to_edit.data:
+    if link_to_edit.analytics:
+        for link_data in link_to_edit.analytics:
             data_object = {}
 
             data_object['date'] = link_data.date
             data_object['clicks'] = link_data.clicks
 
-            data.append(data_object)
+            analytics.append(data_object)
 
-    link['data'] = data
+    link['analytics'] = analytics
 
     return jsonify(link)
 
@@ -231,7 +231,7 @@ def redirect_url(redirectId):
     get requests with a link id (redirectId) as a parameter
 
     should do the following two things
-    - add a click (+1) to the link's data
+    - add a click (+1) to the link's analytics
     - should get the link's redirect url and redirect to that url
     """
     # find out todays name in M/D/Y
@@ -241,17 +241,17 @@ def redirect_url(redirectId):
     # find link with redirectID
     link = Link.query.filter_by(redirectId=redirectId).first_or_404()
 
-    if link.data:
+    if link.analytics:
         #  link DOES exsits
-        data = Data.query.filter_by(
+        analytics = Analytics.query.filter_by(
             date=formated_day, link_id=link.id).first_or_404()
-        data.clicks += 1
+        analytics.clicks += 1
         db.session.commit()
         return redirect(link.link)
     else:
         # link DOES NOT exsits
-        data = Data(date=formated_day, clicks=1, link=link)
-        db.session.add(data)
+        analytics = Analytics(date=formated_day, clicks=1, link=link)
+        db.session.add(analytics)
         db.session.commit()
         return redirect(link.link)
 

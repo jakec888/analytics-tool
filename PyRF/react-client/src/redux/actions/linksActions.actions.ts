@@ -42,7 +42,7 @@ export const deleteLinkSuccess = (history: any): any => {
         link: '',
         title: '',
         date: '',
-        data: [],
+        analytics: [],
       },
     });
     history.push('/');

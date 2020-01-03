@@ -40,6 +40,6 @@ export const createLinkSuccess = () => ({
     link: '',
     title: '',
     date: '',
-    data: [],
+    analytics: [],
   },
 });

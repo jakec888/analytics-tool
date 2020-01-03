@@ -17,7 +17,7 @@ const initialState = {
   link: '',
   title: '',
   date: '',
-  data: [],
+  analytics: [],
 };
 
 export default (state = initialState, {type, payload}: any) => {
@@ -33,7 +33,7 @@ export default (state = initialState, {type, payload}: any) => {
         link: payload.link,
         title: payload.title,
         date: payload.date,
-        data: payload.data,
+        analytics: payload.analytics,
       };
     case CREATE_LINK_SUCCESS:
       return {
@@ -42,7 +42,7 @@ export default (state = initialState, {type, payload}: any) => {
         link: payload.link,
         title: payload.title,
         date: payload.date,
-        data: payload.data,
+        analytics: payload.analytics,
       };
     default:
       return state;

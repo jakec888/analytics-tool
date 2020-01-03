@@ -9,7 +9,7 @@ import {Bar} from 'react-chartjs-2';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import moment from 'moment';
 
-import {DataTypes} from '../types/links/link';
+import {AnalyticsTypes} from '../types/links/link';
 
 import './ViewLinkView.css';
 
@@ -19,7 +19,7 @@ type Props = {
   title: string;
   redirectURL: string;
   date: string;
-  data: DataTypes[];
+  analytics: AnalyticsTypes[];
   onDeleteLink: (e: string) => void;
   onUpdateLink: () => void;
 };
@@ -30,7 +30,7 @@ const ViewLinkView: React.FC<Props> = props => {
     title,
     redirectURL,
     date,
-    data,
+    analytics,
     onDeleteLink,
     onUpdateLink,
   } = props;
@@ -98,11 +98,11 @@ const ViewLinkView: React.FC<Props> = props => {
       </InputGroup>
       <Bar
         data={{
-          labels: data.map(data => data.date),
+          labels: analytics.map(analytics => analytics.date),
           datasets: [
             {
               label: 'Clicks',
-              data: data.map(data => data.clicks),
+              data: analytics.map(analytics => analytics.clicks),
               backgroundColor: '#147afe',
             },
           ],

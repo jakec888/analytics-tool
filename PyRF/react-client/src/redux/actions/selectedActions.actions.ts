@@ -31,7 +31,7 @@ export const editLink = (
 
 export const editLinkSuccess = (selected: Link, history: any): any => {
   return (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
-    const {_id, redirectURL, link, title, date, data} = selected;
+    const {_id, redirectURL, link, title, date, analytics} = selected;
     dispatch({
       type: EDIT_LINK_SUCCESS,
       payload: {
@@ -40,7 +40,7 @@ export const editLinkSuccess = (selected: Link, history: any): any => {
         link,
         title,
         date,
-        data,
+        analytics,
       },
     });
     history.push('/view');
@@ -49,7 +49,7 @@ export const editLinkSuccess = (selected: Link, history: any): any => {
 
 export const selectLink = (history: any, selected: Link) => {
   return (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
-    const {_id, redirectURL, link, title, date, data} = selected;
+    const {_id, redirectURL, link, title, date, analytics} = selected;
 
     dispatch({
       type: SELECT_LINK,
@@ -59,7 +59,7 @@ export const selectLink = (history: any, selected: Link) => {
         link,
         title,
         date,
-        data,
+        analytics,
       },
     });
 

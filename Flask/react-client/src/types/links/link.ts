@@ -9,7 +9,7 @@ export interface AnalyticsTypes {
 }
 
 export interface Link {
-  _id: string;
+  id: string;
   redirectURL: string;
   link: string;
   title: string;

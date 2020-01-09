@@ -11,7 +11,7 @@ import {
 } from '../actions/createActions.actions';
 
 const initialState = {
-  _id: '',
+  id: '',
   redirectURL: '',
   userId: '',
   link: '',
@@ -29,7 +29,7 @@ export default (state = initialState, {type, payload}: any) => {
     case CREATE_LINK:
       return {
         ...state,
-        _id: payload.id,
+        id: payload.id,
         link: payload.link,
         title: payload.title,
         date: payload.date,
@@ -38,7 +38,7 @@ export default (state = initialState, {type, payload}: any) => {
     case CREATE_LINK_SUCCESS:
       return {
         ...state,
-        _id: payload.id,
+        id: payload.id,
         link: payload.link,
         title: payload.title,
         date: payload.date,

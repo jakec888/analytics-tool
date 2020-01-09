@@ -10,17 +10,17 @@ Deployment: https://music.jaconjcondes.com/
 
 # Verions
 
-MERN (Mongo Express React Node)
+Express (Mongo Express React Node)
 
-PyRF (Python React Flask)
+Flask (Python React Flask)
 
-RoR (React on Rails; React + Ruby on Rails)
+Rails (React on Rails; React + Ruby on Rails)
 
-# Instructions (MERN)
+# Instructions (Express)
 
-1. go into the MERN folder
+1. go into the Express folder
 ```
-cd MERN
+cd Express
 ```
 
 2. install dependencies 
@@ -42,11 +42,10 @@ npm run dev
 ```
 
 # Instructions (Flask)
-*CRUD in progress (Flask); MERN fully CRUD*
 
-1. go into the PyRF folder
+1. go into the Flask folder
 ```
-cd PyRF
+cd Flask
 ```
 
 2a. install dependencies (front-end)
@@ -68,21 +67,27 @@ amplify init
 amplify add auth
 ```
 
-4a. run both front-end
+4a. run front-end 
 ```
 npm start
 ```
 
-4b. and back-end servers
+4b. create db
+```
+>>> from app import db
+>>> db.create_all()
+```
+
+4c. run back-end
 ```
 python3 app.py
 ```
 
 # Instructions (React on Rails)
 
-1. go into the RoR folder
+1. go into the Rails folder
 ```
-cd RoR
+cd Rails
 ```
 
 2. install dependencies 
@@ -102,7 +107,7 @@ amplify add auth (if you dont have a AWS amplify project)
 4. run both front-end and back-end servers
 ```
 cd ..
-RoR/$ rake start
+Rails/$ rake start
 ```
 
 # Description

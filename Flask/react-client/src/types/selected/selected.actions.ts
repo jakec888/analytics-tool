@@ -29,7 +29,7 @@ export interface editLinkInterface {
 export interface editLinkSuccessInterface {
   type: typeof EDIT_LINK_SUCCESS;
   payload: {
-    _id: string;
+    id: string;
     redirectURL: string;
     link: string;
     title: string;
@@ -41,7 +41,7 @@ export interface editLinkSuccessInterface {
 export interface selectLinkInterface {
   type: typeof SELECT_LINK;
   payload: {
-    _id: string;
+    id: string;
     redirectURL: string;
     link: string;
     title: string;

@@ -65,7 +65,7 @@ interface LinkDispatchProps {
 }
 
 const mapStateToProps = (state: AppState): LinkStateProps => ({
-  linkId: state.Selected._id,
+  linkId: state.Selected.id,
   link: state.Selected.link,
   title: state.Selected.title,
   redirectURL: state.Selected.redirectURL,

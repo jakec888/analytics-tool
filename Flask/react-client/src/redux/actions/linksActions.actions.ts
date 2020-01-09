@@ -36,7 +36,7 @@ export const deleteLinkSuccess = (history: any): any => {
     dispatch({
       type: DELETE_LINK_SUCCESS,
       payload: {
-        _id: '',
+        id: '',
         redirectURL: '',
         userId: '',
         link: '',

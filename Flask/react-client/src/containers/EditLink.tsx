@@ -55,7 +55,7 @@ interface LinkStateProps {
 }
 
 const mapStateToProps = (state: AppState): LinkStateProps => ({
-  linkId: state.Selected._id,
+  linkId: state.Selected.id,
   title: state.Selected.title,
 });
 

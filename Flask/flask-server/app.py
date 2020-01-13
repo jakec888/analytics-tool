@@ -23,6 +23,7 @@ db = SQLAlchemy(app)
 # routes
 from routes import *
 
-
+# local host and port are based on my attemped to use a frontend 
+# that is universal to the other porjects on this repo
 if __name__ == '__main__':
     app.run(host='localhost', port=3001, debug=True)

@@ -7,6 +7,23 @@ const Links = require('../models/links');
 
 /*
  *
+ * Todo: PASSPORT JS (protected routes)
+ * 
+ * Ideally I wanted to do this first. Instead I choose for
+ * the frontend to handle most of the auth. This isn't the
+ * safest or good practice, but the goal was rapid itteration
+ * and to keep up to date with this framework, hence the use of
+ * aws cognito to handle auth. 
+ *
+ * I will be adding add passport js; durring the weekend. 
+ *
+ * I could also use https://www.npmjs.com/package/cognito-express
+ * 
+ */
+
+
+/*
+ *
  * CREATE
  *
  *

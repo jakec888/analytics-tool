@@ -38,7 +38,7 @@ const CreateLinkView: React.FC<Props> = props => {
             <InputGroup.Text id="basic-addon3">Title</InputGroup.Text>
           </InputGroup.Prepend>
           <FormControl
-            id="basic-url"
+            id="basic-title"
             aria-describedby="basic-addon3"
             onChange={UpdateTitle}
             value={title}

@@ -13,13 +13,14 @@ app.use(express.urlencoded({extended: false}));
 app.use(cors());
 
 // Routes
+app.use('/', require('./api/base'))
+app.use('/auth', require('./api/users'))
 app.use('/api', require('./api/links'));
 app.use('/redirect', require('./api/redirect'));
-app.use('/auth', require('./api/users'))
 
 // General Error Handling
 app.use((req, res, next) => {
-  res.status(404).json({error: "Sorry can't find that!"});
+  res.status(404).json({error: "Page does not exist"});
 });
 
 app.use((err, req, res, next) => {

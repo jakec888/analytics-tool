@@ -62,7 +62,7 @@ router.post('/link', verifyAuth, (req, res) => {
   });
 
   myData.save().then(result => {
-    res.json(result);
+    res.status(200).json(result);
   });
 });
 
@@ -75,7 +75,7 @@ router.post('/link', verifyAuth, (req, res) => {
  *
  */
 router.get('/links/:userId', verifyAuth, (req, res) => {
-  Links.find({userId: req.params.userId}).then(result => res.json(result));
+  Links.find({userId: req.params.userId}).then(result => res.status(200).json(result));
 });
 
 /*
@@ -95,7 +95,7 @@ router.put('/link/edit/:linkId', verifyAuth, (req, res) => {
     link,
   ) {
     if (err) return next(err);
-    res.send(link);
+    res.status(200).send(link);
   });
 });
 
@@ -114,7 +114,7 @@ router.put('/link/edit/:linkId', verifyAuth, (req, res) => {
 router.delete('/link/delete/:linkId', verifyAuth, (req, res) => {
   Links.findByIdAndRemove(req.params.linkId, function(err) {
     if (err) return next(err);
-    res.send('Deleted successfully!');
+    res.status(200).send('Deleted successfully!');
   });
 });
 

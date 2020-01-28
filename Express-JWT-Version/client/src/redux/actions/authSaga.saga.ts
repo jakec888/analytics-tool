@@ -41,7 +41,7 @@ export function* signupUserAsync({payload}: any) {
   yield history.push('/login');
 }
 
-//////////////////
+////////////////////////////////////////////////////////////////////////
 
 const loginUserRequest = (data: any) => {
   const request = API.post('/auth/login', data);

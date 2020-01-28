@@ -54,13 +54,13 @@ router.get('/:redirectId', async (req, res) => {
         },
         {$inc: {'analytics.$.clicks': 1}},
       ).then(result => {
-        res.redirect(result.link);
+        res.status(200).redirect(result.link);
       })
     : Links.findOneAndUpdate(
         {redirectId: req.params.redirectId},
         {analytics: {date: today, clicks: 1}},
       ).then(result => {
-        res.redirect(result.link);
+        res.status(200).redirect(result.link);
       });
 });
 

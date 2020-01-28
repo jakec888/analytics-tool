@@ -50,6 +50,7 @@ export interface signUpInterface {
   payload: {
     email: string;
     password: string;
+    history: any;
   };
 }
 

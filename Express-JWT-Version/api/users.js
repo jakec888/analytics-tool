@@ -13,9 +13,9 @@ router.post('/signup', async (req, res) => {
         const user = new User(req.body)
         await user.save()
         const token = await user.generateAuthToken()
-        res.status(201).send({ user, token })
+        res.status(200).send({ user, token })
     } catch (error) {
-        res.status(400).send(error)
+        res.status(200).send(error)
     }
 })
 
@@ -25,19 +25,19 @@ router.post('/login', async(req, res) => {
         const { email, password } = req.body
         const user = await User.findByCredentials(email, password)
         if (!user) {
-            return res.status(401).send({error: 'Login failed! Check authentication credentials'})
+            return res.status(200).send({error: 'Login failed! Check authentication credentials'})
         }
         const token = await user.generateAuthToken()
-        res.send({ user, token })
+        res.status(200).send({ user, token })
     } catch (error) {
-        res.status(400).send(error)
+        res.status(200).send(error)
     }
 
 })
 
 // router.get('/me', verifyAuth, async(req, res) => {
 //     // View logged in user profile
-//     res.send(req.user)
+//     res.status(200).send(req.user)
 // })
 
 router.post('/logout', verifyAuth, async (req, res) => {
@@ -47,9 +47,9 @@ router.post('/logout', verifyAuth, async (req, res) => {
             return token.token != req.token
         })
         await req.user.save()
-        res.send()
+        res.status(200).send()
     } catch (error) {
-        res.status(500).send(error)
+        res.status(200).send(error)
     }
 })
 
@@ -58,9 +58,9 @@ router.post('/logout', verifyAuth, async (req, res) => {
 //     try {
 //         req.user.tokens.splice(0, req.user.tokens.length)
 //         await req.user.save()
-//         res.send()
+//         res.status(200).send()
 //     } catch (error) {
-//         res.status(500).send(error)
+//         res.status(200).send(error)
 //     }
 // })
 

@@ -15,7 +15,6 @@ const verifyAuth = async(req, res, next) => {
     } catch (error) {
         res.status(401).send({ error: 'Not Authorized' })
     }
-
 }
 
 module.exports = verifyAuth

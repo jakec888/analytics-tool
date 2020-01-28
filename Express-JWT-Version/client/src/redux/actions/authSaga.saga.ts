@@ -56,8 +56,12 @@ const loginUserRequest = (data: any) => {
   Saga Worker
 */
 export function* loginUserAsync({payload}: any) {
+  console.log("loginUserAsync")
+
   const {email, password, history} = payload;
 
+  console.log(payload);
+  
   const data = {
     email,
     password,
@@ -65,7 +69,12 @@ export function* loginUserAsync({payload}: any) {
 
   const res = yield call(loginUserRequest, data);
 
-  yield put(loginSuccess(res.idToken, res._id));
+  console.log("login success!")
+  console.log(res)
+
+  const {idToken, _id} = res.data;
+
+  yield put(loginSuccess(idToken, _id));
 
   yield history.push('/');
 }

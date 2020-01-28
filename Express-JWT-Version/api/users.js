@@ -13,7 +13,7 @@ router.post('/signup', async (req, res) => {
     const user = new User(req.body);
     await user.save();
     const token = await user.generateAuthToken();
-    res.status(200).send({user, token});
+    res.status(200).json({user, token});
   } catch (error) {
     res.status(200).send(error);
   }
@@ -21,16 +21,31 @@ router.post('/signup', async (req, res) => {
 
 router.post('/login', async (req, res) => {
   //Login a registered user
+  console.log(req.body)
+
   try {
     const {email, password} = req.body;
+
+    console.log("login in!")
+    console.log(email)
+    console.log(password)
+
     const user = await User.findByCredentials(email, password);
+    
+    console.log(user)
+
     if (!user) {
       return res
         .status(200)
-        .send({error: 'Login failed! Check authentication credentials'});
+        .json({error: 'Login failed! Check authentication credentials'});
     }
-    const token = await user.generateAuthToken();
-    res.status(200).send({user, token});
+    const idToken = await user.generateAuthToken();
+
+    console.log(idToken);
+
+    console.log("sending token and user id")
+
+    res.status(200).json({idToken, _id: user._id});
   } catch (error) {
     res.status(200).send(error);
   }

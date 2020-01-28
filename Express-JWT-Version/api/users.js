@@ -5,10 +5,14 @@ const User = require('../models/users');
 
 const router = express.Router();
 
+/*
+ *
+ * Signup
+ *
+ * creates a new user
+ *
+ */
 router.post('/signup', async (req, res) => {
-  console.log('signup!');
-  console.log(req.body);
-  // Create a new user
   try {
     const user = new User(req.body);
     await user.save();
@@ -19,35 +23,26 @@ router.post('/signup', async (req, res) => {
   }
 });
 
+/*
+ *
+ * Login
+ *
+ * login a registered user
+ *
+ */
 router.post('/login', async (req, res) => {
-  //Login a registered user
-  console.log(req.body)
-
   try {
     const {email, password} = req.body;
-
-    console.log("login in!")
-    console.log(email)
-    console.log(password)
-
     const user = await User.findByCredentials(email, password);
-    
-    console.log(user)
-
     if (!user) {
       return res
         .status(200)
-        .json({error: 'Login failed! Check authentication credentials'});
+        .json({error: 'Login failed! Check authentication credentials!!!!'});
     }
     const idToken = await user.generateAuthToken();
-
-    console.log(idToken);
-
-    console.log("sending token and user id")
-
     res.status(200).json({idToken, _id: user._id});
   } catch (error) {
-    res.status(200).send(error);
+    res.status(200).json({error: 'Wrong Credentials!!!!'});
   }
 });
 

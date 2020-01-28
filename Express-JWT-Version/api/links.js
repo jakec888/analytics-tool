@@ -1,6 +1,6 @@
 const express = require('express');
 const uuid = require('uuid');
-const verifyAuth = require('../middleware/auth')
+const verifyAuth = require('../middleware/auth');
 
 const router = express.Router();
 
@@ -9,19 +9,18 @@ const Links = require('../models/links');
 /*
  *
  * Todo: PASSPORT JS (protected routes)
- * 
+ *
  * Ideally I wanted to do this first. Instead I choose for
  * the frontend to handle most of the auth. This isn't the
  * safest or good practice, but the goal was rapid itteration
  * and to keep up to date with this framework, hence the use of
- * aws cognito to handle auth. 
+ * aws cognito to handle auth.
  *
- * I will be adding add passport js; durring the weekend. 
+ * I will be adding add passport js; durring the weekend.
  *
  * I could also use https://www.npmjs.com/package/cognito-express
- * 
+ *
  */
-
 
 /*
  *
@@ -75,7 +74,9 @@ router.post('/link', verifyAuth, (req, res) => {
  *
  */
 router.get('/links/:userId', verifyAuth, (req, res) => {
-  Links.find({userId: req.params.userId}).then(result => res.status(200).json(result));
+  Links.find({userId: req.params.userId}).then(result =>
+    res.status(200).json(result),
+  );
 });
 
 /*

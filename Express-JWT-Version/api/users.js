@@ -1,39 +1,40 @@
-const express = require('express')
-const verifyAuth = require('../middleware/auth')
+const express = require('express');
+const verifyAuth = require('../middleware/auth');
 
-const User = require('../models/users')
+const User = require('../models/users');
 
-const router = express.Router()
+const router = express.Router();
 
 router.post('/signup', async (req, res) => {
-    console.log("signup!")
-    console.log(req.body)
-    // Create a new user
-    try {
-        const user = new User(req.body)
-        await user.save()
-        const token = await user.generateAuthToken()
-        res.status(200).send({ user, token })
-    } catch (error) {
-        res.status(200).send(error)
-    }
-})
+  console.log('signup!');
+  console.log(req.body);
+  // Create a new user
+  try {
+    const user = new User(req.body);
+    await user.save();
+    const token = await user.generateAuthToken();
+    res.status(200).send({user, token});
+  } catch (error) {
+    res.status(200).send(error);
+  }
+});
 
-router.post('/login', async(req, res) => {
-    //Login a registered user
-    try {
-        const { email, password } = req.body
-        const user = await User.findByCredentials(email, password)
-        if (!user) {
-            return res.status(200).send({error: 'Login failed! Check authentication credentials'})
-        }
-        const token = await user.generateAuthToken()
-        res.status(200).send({ user, token })
-    } catch (error) {
-        res.status(200).send(error)
+router.post('/login', async (req, res) => {
+  //Login a registered user
+  try {
+    const {email, password} = req.body;
+    const user = await User.findByCredentials(email, password);
+    if (!user) {
+      return res
+        .status(200)
+        .send({error: 'Login failed! Check authentication credentials'});
     }
-
-})
+    const token = await user.generateAuthToken();
+    res.status(200).send({user, token});
+  } catch (error) {
+    res.status(200).send(error);
+  }
+});
 
 // router.get('/me', verifyAuth, async(req, res) => {
 //     // View logged in user profile
@@ -41,17 +42,17 @@ router.post('/login', async(req, res) => {
 // })
 
 router.post('/logout', verifyAuth, async (req, res) => {
-    // Log user out of the application
-    try {
-        req.user.tokens = req.user.tokens.filter((token) => {
-            return token.token != req.token
-        })
-        await req.user.save()
-        res.status(200).send()
-    } catch (error) {
-        res.status(200).send(error)
-    }
-})
+  // Log user out of the application
+  try {
+    req.user.tokens = req.user.tokens.filter(token => {
+      return token.token != req.token;
+    });
+    await req.user.save();
+    res.status(200).send();
+  } catch (error) {
+    res.status(200).send(error);
+  }
+});
 
 // router.post('/me/logoutall', verifyAuth, async(req, res) => {
 //     // Log user out of all devices
@@ -64,4 +65,4 @@ router.post('/logout', verifyAuth, async (req, res) => {
 //     }
 // })
 
-module.exports = router
+module.exports = router;

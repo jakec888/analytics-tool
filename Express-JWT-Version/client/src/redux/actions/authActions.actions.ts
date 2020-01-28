@@ -63,9 +63,9 @@ export const updatePassword = (password: string) => ({
 
 export const signUp = (history: any) => {
   return (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
-    console.log("sign up initiated!")
+    console.log('sign up initiated!');
     const userCred = getState().Auth;
-    console.log("dispatching")
+    console.log('dispatching');
     console.log(userCred);
     dispatch({
       type: SIGNUP,
@@ -73,7 +73,7 @@ export const signUp = (history: any) => {
         email: userCred.email,
         password: userCred.password,
         history: history,
-      }
+      },
     });
   };
 };
@@ -151,7 +151,7 @@ export const login = (history: any) => {
         email: userCred.email,
         password: userCred.password,
         history: history,
-      }
+      },
     });
   };
 };
@@ -189,6 +189,5 @@ export const loginSuccess = (idToken: string, userId: string): AppActions => ({
 // };
 
 export const logout = () => {
-  return null
+  return null;
 };
-

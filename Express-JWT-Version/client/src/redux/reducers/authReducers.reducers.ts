@@ -47,7 +47,7 @@ export default (state = initialState, action: AuthActionTypes): AuthTypes => {
       return {
         ...state,
         email: action.payload.email,
-        password: action.payload.password
+        password: action.payload.password,
       };
     case SIGNUP_SUCCESS:
       return {

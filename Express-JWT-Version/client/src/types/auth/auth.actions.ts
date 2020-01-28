@@ -22,7 +22,6 @@ import {
   CLEAR_CREDENTIALS,
 } from '../../redux/actions/authActions.actions';
 
-
 export interface updateClearCredentials {
   type: typeof CLEAR_CREDENTIALS;
   payload: {
@@ -59,7 +58,7 @@ export interface signUpSuccessInterface {
   payload: {
     email: string;
     password: string;
-    isLoggedIn: boolean,
+    isLoggedIn: boolean;
     idToken: string;
     userId: string;
   };

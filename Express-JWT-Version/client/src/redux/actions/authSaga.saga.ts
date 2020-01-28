@@ -7,8 +7,12 @@
  */
 import {all, takeEvery, put, call} from 'redux-saga/effects';
 import API from '../../api';
-import {LOGIN, loginSuccess, SIGNUP, signUpSuccess} from './authActions.actions';
-
+import {
+  LOGIN,
+  loginSuccess,
+  SIGNUP,
+  signUpSuccess,
+} from './authActions.actions';
 
 const signupUserRequest = (data: any) => {
   const request = API.post('/auth/signup', data);
@@ -27,14 +31,14 @@ export function* signupUserAsync({payload}: any) {
 
   const data = {
     email,
-    password
+    password,
   };
 
   console.log(data);
 
   const res = yield call(signupUserRequest, data);
 
-  console.log(res)
+  console.log(res);
 
   yield put(signUpSuccess(res.idToken, res._id));
 
@@ -56,7 +60,7 @@ export function* loginUserAsync({payload}: any) {
 
   const data = {
     email,
-    password
+    password,
   };
 
   const res = yield call(loginUserRequest, data);
@@ -71,7 +75,7 @@ export function* loginUserAsync({payload}: any) {
 */
 export default function* rootSaga() {
   yield all([
-    takeEvery(SIGNUP, signupUserAsync), 
-    takeEvery(LOGIN, loginUserAsync)
+    takeEvery(SIGNUP, signupUserAsync),
+    takeEvery(LOGIN, loginUserAsync),
   ]);
 }

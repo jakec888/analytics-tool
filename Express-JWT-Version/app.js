@@ -29,17 +29,11 @@ app.use((err, req, res, next) => {
 });
 
 // Mongoose
-// mongoose.connect('mongodb://localhost:27017/shareanalytics', {
-//   useNewUrlParser: true,
-// });
-// mongoose.connection.once('open', () => {
-//   console.log('connected to mongoose database: shareanalytics');
-// });
-mongoose.connect('mongodb://localhost:27017/deleteSample1', {
+mongoose.connect('mongodb://localhost:27017/shareanalytics', {
   useNewUrlParser: true,
 });
 mongoose.connection.once('open', () => {
-  console.log('connected to mongoose database: deleteSample1');
+  console.log('connected to mongoose database: shareanalytics');
 });
 
 // Start

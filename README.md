@@ -12,11 +12,13 @@ Deployment: https://music.jaconjcondes.com/
 
 Express (MERN - Mongo Express React Node)
 
+Express-JWT-Version (MERN - Mongo Express React Node)
+
 Flask (Python React Flask)
 
 Rails (React on Rails; React + Ruby on Rails)
 
-# Instructions (Express)
+# Instructions (Express and Express-JWT-Version)
 
 1. go into the Express folder
 ```

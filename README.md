@@ -10,7 +10,7 @@ Deployment: https://music.jaconjcondes.com/
 
 # Verions
 
-Express (MERN - Mongo Express React Node)
+Express (MERN - Mongo Express React Node) *__Deployed Version__*
 
 Express-JWT-Version (MERN - Mongo Express React Node)
 

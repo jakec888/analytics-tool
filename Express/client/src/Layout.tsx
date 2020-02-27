@@ -16,8 +16,9 @@ import {bindActionCreators} from 'redux';
 
 import {AppState} from './redux/rootAppState';
 import {AppActions} from './types/rootType.actions';
+import { Storage } from 'aws-amplify';
 
-import './Layout.css'
+import './Layout.css';
 
 interface LayoutProps {
   history?: any;
@@ -59,23 +60,16 @@ class Layout extends Component<Props, LayoutState> {
             )}
           </Nav>
           {this.props.isLoggedIn ? (
-            <Link
-              to="/"
-              className='nav-link'
-              onClick={this.onLogoutUser}
-            >
+            <Link to="/" className="nav-link" onClick={this.onLogoutUser}>
               Logout
             </Link>
           ) : (
-            <Link
-              to="/login"
-              className='nav-link'
-            >
+            <Link to="/login" className="nav-link">
               Login
             </Link>
           )}
         </Navbar>
-        <Card className='card'>
+        <Card className="card">
           <Card.Body>{this.props.children}</Card.Body>
         </Card>
       </div>
@@ -105,7 +99,4 @@ const mapDispatchToProps = (
   logout: bindActionCreators(logout, dispatch),
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Layout);
+export default connect(mapStateToProps, mapDispatchToProps)(Layout);

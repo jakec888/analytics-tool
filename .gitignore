@@ -101,4 +101,5 @@ package-lock.json
 
 venv
 
-0/
+# Ruby on Rails
+Gemfile.lock

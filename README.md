@@ -160,8 +160,3 @@ Give a link you want to have it's clicks tracks and get a link to use to share.
 - Python 3
 - Flask
 - PostgreSQL
-
-# Things to do (MERN)
-
-- remove AWS cognito
-- replace with passport js

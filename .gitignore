@@ -102,4 +102,4 @@ package-lock.json
 venv
 
 # Ruby on Rails
-Gemfile.lock
+# Gemfile.lock

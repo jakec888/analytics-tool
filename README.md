@@ -1,7 +1,5 @@
 # Share Analytics
 
-Deployment: https://music.jaconjcondes.com/
-
 ## <center>Walkthrough Update</center>
 
 <p align="center">

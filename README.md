@@ -6,7 +6,7 @@
 <img src="walkthrough.gif" />
 </p>
 
-# Verions
+# Versions
 
 Express (MERN - Mongo Express React Node) _**Deployed Version**_
 
